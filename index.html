@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Student Help Club | Sarkari Result, Latest Jobs, Admit Card & IGNOU 2026</title>
+    <meta name="description" content="Student Help Club (SHC) provides fastest updates for Sarkari Result, Latest Govt Jobs, Admit Cards, Exam Results, and IGNOU Solved Assignments.">
+    <meta name="keywords" content="Student Help Club, SHC, Sarkari Result, IGNOU Assignment PDF, Latest Jobs 2026, Admit Card, Sarkari Exam Updates, Scholarship, Student Tools">
+    <meta name="author" content="Vishal - Student Help Club">
+    <meta name="robots" content="index, follow">
+    
+    <meta property="og:title" content="Student Help Club | Government Jobs & Education Portal">
+    <meta property="og:description" content="Get all Government Job updates, Results and Admit cards first on SHC.">
+    <meta property="og:image" content="shc-logo.jpg">
+    <meta property="og:url" content="https://www.studenthelpclub.in">
+
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root { --primary: #003366; --accent: #e74c3c; --bg-body: #f4f7f9; --white: #ffffff; --nav-bg: #002244; }
+        body { font-family: 'Segoe UI', Roboto, sans-serif; background: var(--bg-body); margin: 0; color: #333; }
+
+        /* --- Top Bar --- */
+        .top-bar { background: var(--nav-bg); color: white; padding: 6px 0; font-size: 13px; border-bottom: 2px solid var(--accent); }
+        .top-container { max-width: 1200px; margin: auto; display: flex; justify-content: space-between; padding: 0 15px; align-items: center; }
+        .top-links a { color: white; text-decoration: none; margin-left: 15px; transition: 0.3s; }
+        .top-links a:hover { color: #25D366; }
+
+        /* --- Header: Logo Left, Search Right --- */
+        .header-main { background: var(--white); padding: 12px 0; box-shadow: 0 2px 15px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
+        .header-container { max-width: 1200px; margin: auto; display: flex; align-items: center; justify-content: space-between; padding: 0 15px; gap: 15px; }
+        
+        .logo-box { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; }
+        .logo-img { height: 40px; width: auto; margin-right: 8px; border-radius: 4px; }
+        .logo-text { font-size: 1.5rem; font-weight: 900; color: var(--primary); text-transform: uppercase; letter-spacing: -0.5px; margin: 0; }
+        .logo-text span { color: var(--accent); }
+
+        /* Search Section */
+        .search-wrapper { flex-grow: 1; max-width: 450px; position: relative; }
+        .search-box { display: flex; position: relative; }
+        .search-box input { width: 100%; padding: 10px 45px 10px 18px; border-radius: 25px; border: 2px solid #e1e4e8; outline: none; font-size: 14px; }
+        .search-box button { position: absolute; right: 4px; top: 4px; height: 34px; width: 35px; border: none; background: var(--primary); color: white; border-radius: 50%; cursor: pointer; }
+
+        #search-results { position: absolute; top: 50px; left: 0; width: 100%; background: white; border-radius: 10px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); display: none; z-index: 2000; max-height: 350px; overflow-y: auto; }
+
+        /* Ticker */
+        .ticker-wrap { background: #fffbe6; color: #856404; padding: 8px 0; border-bottom: 1px solid #ffeeba; font-weight: 600; font-size: 13px; text-align: center; }
+
+        /* Grid Section */
+        .main-wrapper { max-width: 1250px; margin: 25px auto; padding: 0 15px; }
+        .portal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .card { background: var(--white); border-radius: 8px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border: 1px solid #e1e4e8; }
+        .card-header { padding: 12px 15px; font-weight: 800; font-size: 1rem; color: white; display: flex; align-items: center; gap: 8px; }
+        .h-jobs { background: #2980b9; } .h-admit { background: #e67e22; } .h-result { background: #27ae60; } .h-yojna { background: #8e44ad; } .h-scholarship { background: #c0392b; }
+        .card-body ul { list-style: none; padding: 0; margin: 0; }
+        .card-body li a { text-decoration: none; color: #333; padding: 10px 15px; display: block; border-bottom: 1px solid #f0f0f0; font-size: 0.9rem; font-weight: 500; transition: 0.2s; }
+        .card-body li a:hover { background: #f8fbff; color: var(--primary); padding-left: 20px; }
+        .view-all { display: block; text-align: center; padding: 10px; background: #f8f9fa; color: var(--primary); text-decoration: none; font-weight: 700; font-size: 0.85rem; border-top: 1px solid #eee; }
+
+        /* --- Text Above Footer --- */
+        .footer-intro { max-width: 1200px; margin: 50px auto 0; padding: 0 15px; text-align: center; color: #666; }
+        .footer-intro h2 { color: var(--primary); font-size: 1.4rem; margin-bottom: 10px; }
+        .footer-intro p { font-size: 0.95rem; line-height: 1.6; }
+
+        /* --- Footer --- */
+        footer { background: #0b1622; color: #bdc3c7; padding: 40px 15px 20px; margin-top: 30px; border-top: 4px solid var(--primary); }
+        .footer-container { max-width: 1200px; margin: auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px; text-align: left; }
+        .footer-sec h3 { color: #fff; font-size: 1.1rem; margin-bottom: 15px; border-left: 3px solid var(--accent); padding-left: 10px; text-transform: uppercase; }
+        .footer-sec ul { list-style: none; padding: 0; margin: 0; }
+        .footer-sec ul li { margin-bottom: 10px; }
+        .footer-sec ul li a { color: #bdc3c7; text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
+        .footer-sec ul li a:hover { color: #fff; padding-left: 5px; }
+        .social-box { display: flex; gap: 12px; margin-top: 10px; }
+        .social-box a { color: white; background: #1e293b; width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: 0.3s; text-decoration: none; }
+        .social-box a:hover { background: var(--primary); transform: translateY(-3px); }
+        .footer-bottom { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 13px; opacity: 0.6; }
+
+        @media (max-width: 768px) { 
+            .header-container { justify-content: space-between; gap: 10px; }
+            .logo-text { font-size: 1.1rem; }
+            .search-wrapper { max-width: 140px; }
+            .portal-grid { grid-template-columns: 1fr; }
+            .footer-container { grid-template-columns: 1fr; text-align: center; }
+            .footer-sec h3 { border-left: none; border-bottom: 2px solid var(--accent); display: inline-block; }
+            .social-box { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="top-bar">
+    <div class="top-container">
+        <span><i class="fas fa-calendar-alt"></i> <span id="current-date"></span></span>
+        <div class="top-links">
+            <a href="https://t.me/studenthelpclub" target="_blank"><i class="fab fa-telegram"></i> Telegram</a>
+            <a href="https://whatsapp.com/channel/0029VbCJ2xI7IUYa1zMB6n1f" target="_blank" style="color: #25D366;"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        </div>
+    </div>
+</div>
+
+<div class="header-main">
+    <div class="header-container">
+        <a href="index.html" class="logo-box">
+            <img src="shc-logo.jpg" alt="Student Help Club Logo" class="logo-img">
+            <h1 class="logo-text">Student Help <span>Club</span></h1>
+        </a>
+        <div class="search-wrapper">
+            <div class="search-box">
+                <input type="text" id="live-search" placeholder="Search Results, Jobs...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            <div id="search-results"></div>
+        </div>
+    </div>
+</div>
+
+<div class="ticker-wrap">
+    <marquee id="top-ticker" scrollamount="6" onmouseover="this.stop();" onmouseout="this.start();">Loading latest updates...</marquee>
+</div>
+
+<div class="main-wrapper">
+    <div class="portal-grid">
+        <div class="card"><div class="card-header h-jobs"><i class="fas fa-briefcase"></i> Latest Jobs</div><div class="card-body"><ul id="list-jobs"></ul></div><a href="jobs.html" class="view-all">View All</a></div>
+        <div class="card"><div class="card-header h-admit"><i class="fas fa-id-card"></i> Admit Card</div><div class="card-body"><ul id="list-admit"></ul></div><a href="admit-cards.html" class="view-all">View All</a></div>
+        <div class="card"><div class="card-header h-result"><i class="fas fa-trophy"></i> Results</div><div class="card-body"><ul id="list-result"></ul></div><a href="results.html" class="view-all">View All</a></div>
+        <div class="card"><div class="card-header h-yojna"><i class="fas fa-university"></i> Sarkari Yojna</div><div class="card-body"><ul id="list-yojna"></ul></div><a href="yojna.html" class="view-all">View All</a></div>
+        <div class="card"><div class="card-header h-scholarship"><i class="fas fa-user-graduate"></i> Scholarship</div><div class="card-body"><ul id="list-scholarship"></ul></div><a href="scholarship.html" class="view-all">View All</a></div>
+    </div>
+</div>
+
+<div class="footer-intro">
+    <h2>About Student Help Club (SHC)</h2>
+    <p>Student Help Club is a dedicated educational portal for Indian students. We provide real-time updates on <b>Sarkari Result 2026</b>, Latest Government Jobs, Admit Cards, and Exam Syllabuses. Additionally, we provide <b>IGNOU Solved Assignments</b> and useful educational tools like Age Calculators and Image Resizers to help students in their academic journey.</p>
+</div>
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-sec"><h3>Important Pages</h3><ul><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact Us</a></li><li><a href="privacy-policy.html">Privacy Policy</a></li><li><a href="disclaimer.html">Disclaimer</a></li></ul></div>
+        <div class="footer-sec"><h3>Resources</h3><ul><li><a href="https://tools.studenthelpclub.in" target="_blank">Tools for Students</a></li><li><a href="https://studenthelpclub.in" target="_blank">IGNOU Assignment PDF</a></li></ul></div>
+        <div class="footer-sec"><h3>Connect</h3><div class="social-box"><a href="https://t.me/studenthelpclub" target="_blank"><i class="fab fa-telegram-plane"></i></a><a href="https://youtube.com/@vishalhelpclub" target="_blank"><i class="fab fa-youtube"></i></a><a href="https://whatsapp.com/channel/0029VbCJ2xI7IUYa1zMB6n1f" target="_blank"><i class="fab fa-whatsapp"></i></a></div></div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 Student Help Club | Admin: Vishal</p></div>
+</footer>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getFirestore, collection, query, orderBy, limit, onSnapshot } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyAv_ExAgpnZnfFuc-OjDLppmavG2Z79pnw",
+        authDomain: "web-app-410cf.firebaseapp.com",
+        projectId: "web-app-410cf",
+        storageBucket: "web-app-410cf.firebasestorage.app",
+        messagingSenderId: "964826648513",
+        appId: "1:964826648513:web:8e3e1fa1d97db99f10a940"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    let searchData = [];
+    let marqueeCandidates = {};
+
+    document.getElementById('current-date').innerText = new Date().toLocaleDateString('en-US', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' });
+
+    function updateGlobalMarquee() {
+        const categories = Object.values(marqueeCandidates);
+        if (categories.length > 0) {
+            const latest = categories.sort((a, b) => b.time - a.time)[0];
+            document.getElementById('top-ticker').innerHTML = `🔥 <span style="color:red">LATEST:</span> ${latest.title} <a href="post.html?col=${latest.cat}&id=${latest.id}" style="color:blue; text-decoration:none; font-weight:bold;"> [Check Now]</a>`;
+        }
+    }
+
+    function loadData(colName, elementId) {
+        const q = query(collection(db, colName), orderBy("timestamp", "desc"), limit(12));
+        onSnapshot(q, (snapshot) => {
+            const list = document.getElementById(elementId);
+            list.innerHTML = '';
+            snapshot.docs.forEach((doc, index) => {
+                const data = doc.data();
+                if (index === 0 && data.timestamp) {
+                    marqueeCandidates[colName] = { id: doc.id, title: data.title, cat: colName, time: data.timestamp.toMillis() };
+                    updateGlobalMarquee();
+                }
+                list.innerHTML += `<li><a href="post.html?col=${colName}&id=${doc.id}">${data.title}</a></li>`;
+                searchData.push({ id: doc.id, title: data.title, cat: colName });
+            });
+        });
+    }
+
+    loadData('jobs', 'list-jobs');
+    loadData('admit', 'list-admit');
+    loadData('result', 'list-result');
+    loadData('yojna', 'list-yojna');
+    loadData('scholarship', 'list-scholarship');
+
+    const searchInput = document.getElementById('live-search');
+    const resultsDiv = document.getElementById('search-results');
+    searchInput.addEventListener('input', (e) => {
+        const val = e.target.value.toLowerCase();
+        resultsDiv.innerHTML = '';
+        if (val.length < 2) { resultsDiv.style.display = 'none'; return; }
+        const filtered = searchData.filter((v, i, a) => a.findIndex(t => (t.id === v.id)) === i)
+                         .filter(item => item.title.toLowerCase().includes(val));
+        if (filtered.length > 0) {
+            resultsDiv.style.display = 'block';
+            filtered.slice(0, 10).forEach(item => {
+                resultsDiv.innerHTML += `<a href="post.html?col=${item.cat}&id=${item.id}" style="padding:10px; display:block; border-bottom:1px solid #eee; text-decoration:none; color:#333; font-size:14px;">[${item.cat.toUpperCase()}] ${item.title}</a>`;
+            });
+        }
+    });
+    document.addEventListener('click', (e) => { if(!searchInput.contains(e.target)) resultsDiv.style.display = 'none'; });
+</script>
+</body>
+</html>

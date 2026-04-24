@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Post Details | Student Help Club</title>
+    <meta name="description" content="Latest Government Jobs, Results, Admit Card and Scholarship Updates.">
+    <meta name="keywords" content="Student Help Club, Sarkari Result, Latest Jobs, Admit Card 2026">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root { --primary: #003366; --accent: #e74c3c; --bg: #f4f7f9; --white: #ffffff; --border: #ccd1d9; }
+        
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); margin: 0; padding: 0; color: #333; line-height: 1.6; }
+
+        /* --- Header & Logo --- */
+        .top-nav { background: var(--white); border-bottom: 3px solid var(--primary); padding: 10px 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .nav-container { max-width: 1200px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 0 15px; flex-wrap: wrap; }
+        
+        .logo-box { display: flex; align-items: center; text-decoration: none; }
+        .logo-img { height: 40px; width: auto; margin-right: 10px; }
+        .logo-text { font-size: 1.2rem; font-weight: 800; color: var(--primary); text-transform: uppercase; }
+        .logo-text span { color: var(--accent); }
+
+        /* --- Header Menu --- */
+        .header-menu { display: flex; gap: 15px; }
+        .header-menu a { text-decoration: none; color: var(--primary); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; transition: 0.3s; }
+        .header-menu a:hover { color: var(--accent); }
+
+        /* --- Content Container --- */
+        .container { max-width: 900px; margin: 25px auto; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); position: relative; }
+        
+        /* --- Back Button --- */
+        .back-btn { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; color: #555; font-weight: 600; font-size: 0.9rem; margin-bottom: 15px; transition: 0.3s; padding: 5px 10px; border-radius: 5px; background: #f0f0f0; }
+        .back-btn:hover { background: var(--primary); color: #fff; }
+
+        .post-header { border-bottom: 3px solid #f1f2f6; margin-bottom: 25px; padding-bottom: 15px; text-align: center; }
+        .post-header h1 { color: #d63384; font-size: 1.8rem; margin: 0; line-height: 1.4; text-transform: uppercase; }
+        .meta-info { font-size: 0.85rem; color: #666; margin-top: 10px; font-weight: 600; }
+
+        .short-info { display: block; margin-bottom: 40px; padding: 15px; background: #f8fbff; border-left: 5px solid var(--primary); font-size: 1rem; border-radius: 0 8px 8px 0; }
+
+        #dynamic-body .info-box { border: 1px solid var(--border); margin-bottom: 30px; border-radius: 8px; overflow: hidden; }
+        #dynamic-body .box-title { background: #e0f2fe; color: #0369a1; padding: 12px; text-align: center; font-weight: 800; text-transform: uppercase; }
+        #dynamic-body .box-content { padding: 15px; }
+
+        /* --- BULLET POINT FIX --- */
+        #dynamic-body ul { 
+            list-style-type: disc; 
+            list-style-position: inside; 
+            padding-left: 10px; 
+            margin: 0;
+        }
+        #dynamic-body li { 
+            padding: 5px 0; 
+            border-bottom: 1px dashed #eee; 
+            text-align: left;
+        }
+        #dynamic-body li:last-child { border-bottom: none; }
+
+        table { width: 100%; border-collapse: collapse; margin: 10px 0; } 
+        th, td { border: 1px solid var(--border); padding: 12px; font-size: 0.95rem; text-align: center; }
+        th { background: #f8fafc; color: var(--primary); font-weight: 700; }
+
+        .link-table td:first-child { text-align: left; font-weight: 700; color: #444; }
+        .link-table a { color: #2563eb; text-decoration: none; font-weight: bold; }
+
+        .instruction-note { color: #b91c1c; background: #fef2f2; border: 1px dashed #f87171; padding: 20px; border-radius: 8px; margin-top: 30px; text-align: center; font-weight: 600; }
+
+        /* --- Footer --- */
+        footer { background: #0f172a; color: #cbd5e1; padding: 50px 20px; text-align: center; margin-top: 60px; }
+        .social-icons { margin-bottom: 25px; }
+        .social-icons a { color: white; background: #1e293b; width: 45px; height: 45px; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; margin: 0 10px; transition: 0.4s; font-size: 1.3rem; text-decoration: none; }
+        .social-icons a:hover { transform: translateY(-8px); background: var(--primary); }
+
+        .footer-links { margin-bottom: 20px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+        .footer-links a { color: #cbd5e1; text-decoration: none; font-size: 0.9rem; }
+        .footer-links a:hover { color: #fff; text-decoration: underline; }
+
+        @media (max-width: 768px) {
+            .nav-container { flex-direction: column; gap: 10px; }
+            .header-menu { flex-wrap: wrap; justify-content: center; gap: 10px; }
+            .container { margin: 15px; padding: 20px; }
+            .post-header h1 { font-size: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="top-nav">
+    <div class="nav-container">
+        <a href="index.html" class="logo-box">
+            <img src="shc-logo.jpg" alt="Logo" class="logo-img">
+            <div class="logo-text">Student Help <span>Club</span></div>
+        </a>
+        <div class="header-menu">
+            <a href="index.html">Home</a>
+            <a href="jobs.html">Jobs</a>
+            <a href="admit-cards.html">Admit Card</a>
+            <a href="results.html">Results</a>
+            <a href="scholarship.html">Scholarship</a>
+        </div>
+    </div>
+</nav>
+
+<div id="loader" style="text-align:center; padding:100px; font-weight:bold; color:var(--primary);">
+    <i class="fas fa-spinner fa-spin fa-2x"></i><br><br>DATA LOAD HO RAHA HAI...
+</div>
+
+<div class="container" id="main-content" style="display:none;">
+    <a href="javascript:history.back()" class="back-btn"><i class="fas fa-arrow-left"></i> Back</a>
+
+    <div class="post-header">
+        <h1 id="post-title"></h1>
+        <div class="meta-info"><i class="far fa-calendar-alt"></i> UPDATE DATE: <span id="post-date"></span></div>
+    </div>
+
+    <div id="dynamic-body"></div>
+
+    <div class="instruction-note">
+        नोट: फॉर्म भरने से पहले विभाग द्वारा जारी विज्ञापन (Official Notification) को ध्यान से जरूर पढ़ें।
+    </div>
+</div>
+
+<footer>
+    <div class="social-icons">
+        <a href="https://t.me/studenthelpclub"><i class="fab fa-telegram-plane"></i></a>
+        <a href="https://whatsapp.com/channel/0029VbCJ2xI7IUYa1zMB6n1f"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://youtube.com/@vishalhelpclub"><i class="fab fa-youtube"></i></a>
+    </div>
+    <div class="footer-links">
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="disclaimer.html">Disclaimer</a>
+    </div>
+    <p>© 2026 Student Help Club | Admin: Vishal</p>
+</footer>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyAv_ExAgpnZnfFuc-OjDLppmavG2Z79pnw",
+        authDomain: "web-app-410cf.firebaseapp.com",
+        projectId: "web-app-410cf",
+        storageBucket: "web-app-410cf.firebasestorage.app",
+        messagingSenderId: "964826648513",
+        appId: "1:964826648513:web:8e3e1fa1d97db99f10a940"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const postId = urlParams.get('id');
+    const colName = urlParams.get('col') || 'jobs'; 
+
+    if (postId) {
+        getDoc(doc(db, colName, postId)).then((docSnap) => {
+            if (docSnap.exists()) {
+                const data = docSnap.data();
+                document.getElementById('post-title').innerText = data.title;
+                
+                if(data.timestamp) {
+                    document.getElementById('post-date').innerText = data.timestamp.toDate().toLocaleDateString('hi-IN');
+                }
+
+                let bodyContent = data.details || "";
+                bodyContent = bodyContent.replace('display:flex; gap:10px; flex-wrap:wrap;', 'display:flex; flex-direction:column; gap:25px;');
+
+                // Yahan Important Links section ko handle kiya gaya hai
+                if (bodyContent.includes("Important Links")) {
+                    const toolLinks = `
+                        <tr><td><b>Age Calculator (Umar Nikale)</b></td><td><a href="https://tools.studenthelpclub.in/age-calculator.html" target="_blank">Click Here</a></td></tr>
+                        <tr><td><b>Image Resizer (KB Kam Kare)</b></td><td><a href="https://tools.studenthelpclub.in/image-resizer.html" target="_blank">Click Here</a></td></tr>
+                    `;
+                    
+                    // Logic: Social links hamesha niche rahein, tools uske upar
+                    // Hum check karenge ki social link pehle se table mein hai ya nahi
+                    if (bodyContent.includes("Join Telegram")) {
+                        bodyContent = bodyContent.replace('<tr><td>Join Telegram', toolLinks + '<tr><td>Join Telegram');
+                    } else {
+                        // Agar social link nahi hai toh end mein add kar do
+                        bodyContent = bodyContent.replace("</table>", toolLinks + "</table>");
+                    }
+                }
+
+                document.getElementById('dynamic-body').innerHTML = bodyContent;
+                document.getElementById('loader').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+            }
+        });
+    }
+</script>
+</body>
+</html>
