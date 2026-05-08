@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7RK3WFVY3Q"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-7RK3WFVY3Q');
-</script>
-    <meta name="google-site-verification" content="ySBKvgRcffZgkku3SImRkt6T7rm0r_L6OfClnFXGrrc" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -182,16 +173,14 @@
     }
 
     function loadData(colName, elementId) {
-        // Sync with Python bot field 'added_on'
-        const q = query(collection(db, colName), orderBy("added_on", "desc"), limit(12));
+        const q = query(collection(db, colName), orderBy("timestamp", "desc"), limit(12));
         onSnapshot(q, (snapshot) => {
             const list = document.getElementById(elementId);
-            if (!list) return;
             list.innerHTML = '';
             snapshot.docs.forEach((doc, index) => {
                 const data = doc.data();
-                if (index === 0 && data.added_on) {
-                    marqueeCandidates[colName] = { id: doc.id, title: data.title, cat: colName, time: data.added_on.toMillis() };
+                if (index === 0 && data.timestamp) {
+                    marqueeCandidates[colName] = { id: doc.id, title: data.title, cat: colName, time: data.timestamp.toMillis() };
                     updateGlobalMarquee();
                 }
                 list.innerHTML += `<li><a href="post.html?col=${colName}&id=${doc.id}">${data.title}</a></li>`;
@@ -213,7 +202,7 @@
         resultsDiv.innerHTML = '';
         if (val.length < 2) { resultsDiv.style.display = 'none'; return; }
         const filtered = searchData.filter((v, i, a) => a.findIndex(t => (t.id === v.id)) === i)
-                                 .filter(item => item.title.toLowerCase().includes(val));
+                         .filter(item => item.title.toLowerCase().includes(val));
         if (filtered.length > 0) {
             resultsDiv.style.display = 'block';
             filtered.slice(0, 10).forEach(item => {
