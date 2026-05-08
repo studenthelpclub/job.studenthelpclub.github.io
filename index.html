@@ -14,7 +14,6 @@
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Aapka purana CSS yahan rahega */
         :root { --primary: #003366; --accent: #e74c3c; --bg-body: #f4f7f9; --white: #ffffff; --nav-bg: #002244; }
         body { font-family: 'Segoe UI', Roboto, sans-serif; background: var(--bg-body); margin: 0; color: #333; }
         .top-bar { background: var(--nav-bg); color: white; padding: 6px 0; font-size: 13px; border-bottom: 2px solid var(--accent); }
@@ -78,10 +77,26 @@
 
 <div class="main-wrapper">
     <div class="portal-grid">
-        <div class="card"><div class="card-header h-jobs"><i class="fas fa-briefcase"></i> Latest Jobs</div><div class="card-body"><ul id="list-jobs"><li>Loading...</li></ul></div><a href="jobs.html" class="view-all">View All</a></div>
-        <div class="card"><div class="card-header h-admit"><i class="fas fa-id-card"></i> Admit Card</div><div class="card-body"><ul id="list-admit"><li>Loading...</li></ul></div><a href="admit-cards.html" class="view-all">View All</a></div>
-        <div class="card"><div class="card-header h-result"><i class="fas fa-trophy"></i> Results</div><div class="card-body"><ul id="list-result"><li>Loading...</li></ul></div><a href="results.html" class="view-all">View All</a></div>
-        <div class="card"><div class="card-header h-scholarship"><i class="fas fa-user-graduate"></i> Scholarship</div><div class="card-body"><ul id="list-scholarship"><li>Loading...</li></ul></div><a href="scholarship.html" class="view-all">View All</a></div>
+        <div class="card">
+            <div class="card-header h-jobs"><i class="fas fa-briefcase"></i> Latest Jobs</div>
+            <div class="card-body"><ul id="list-jobs"><li>Loading...</li></ul></div>
+            <a href="jobs.html" class="view-all">View All</a>
+        </div>
+        <div class="card">
+            <div class="card-header h-admit"><i class="fas fa-id-card"></i> Admit Card</div>
+            <div class="card-body"><ul id="list-admit"><li>Loading...</li></ul></div>
+            <a href="admit-cards.html" class="view-all">View All</a>
+        </div>
+        <div class="card">
+            <div class="card-header h-result"><i class="fas fa-trophy"></i> Results</div>
+            <div class="card-body"><ul id="list-result"><li>Loading...</li></ul></div>
+            <a href="results.html" class="view-all">View All</a>
+        </div>
+        <div class="card">
+            <div class="card-header h-scholarship"><i class="fas fa-user-graduate"></i> Scholarship</div>
+            <div class="card-body"><ul id="list-scholarship"><li>Loading...</li></ul></div>
+            <a href="scholarship.html" class="view-all">View All</a>
+        </div>
     </div>
 </div>
 
@@ -113,7 +128,8 @@
         const categories = Object.values(marqueeCandidates);
         if (categories.length > 0) {
             const latest = categories.sort((a, b) => b.time - a.time)[0];
-            document.getElementById('top-ticker').innerHTML = `🔥 <span style="color:red">LATEST:</span> ${latest.title} <a href="${latest.url}" target="_blank" style="color:blue; font-weight:bold;"> [Click Here]</a>`;
+            // Link pointed to internal post page
+            document.getElementById('top-ticker').innerHTML = `🔥 <span style="color:red">LATEST:</span> ${latest.title} <a href="post.html?col=${latest.cat}&id=${latest.id}" style="color:blue; font-weight:bold;"> [Check Now]</a>`;
         }
     }
 
@@ -123,25 +139,41 @@
             const list = document.getElementById(elementId);
             if(!list) return;
             list.innerHTML = '';
+            
+            if (snapshot.empty) {
+                list.innerHTML = '<li>No updates found</li>';
+            }
+
             snapshot.docs.forEach((doc, index) => {
                 const data = doc.data();
+                
+                // Marquee Setup
                 if (index === 0 && data.added_on) {
-                    marqueeCandidates[colName] = { title: data.title, url: data.link, time: data.added_on.toMillis() };
+                    marqueeCandidates[colName] = { 
+                        title: data.title, 
+                        id: doc.id, 
+                        cat: colName, 
+                        time: data.added_on.toMillis() 
+                    };
                     updateGlobalMarquee();
                 }
-                list.innerHTML += `<li><a href="${data.link}" target="_blank">${data.title}</a></li>`;
-                searchData.push({ title: data.title, url: data.link });
+
+                // Internal Link pointing to post.html with Doc ID
+                list.innerHTML += `<li><a href="post.html?col=${colName}&id=${doc.id}">${data.title}</a></li>`;
+                
+                // Search Data setup
+                searchData.push({ title: data.title, id: doc.id, cat: colName });
             });
         });
     }
 
-    // Matching Python Collections
+    // Load Collections (Mapping with Firebase)
     loadData('jobs', 'list-jobs');
     loadData('scholarship', 'list-scholarship');
     loadData('result', 'list-result');
     loadData('admit', 'list-admit');
 
-    // Simple Search
+    // Search Logic
     const searchInput = document.getElementById('live-search');
     const resultsDiv = document.getElementById('search-results');
     searchInput.addEventListener('input', (e) => {
@@ -152,10 +184,11 @@
         if (filtered.length > 0) {
             resultsDiv.style.display = 'block';
             filtered.slice(0, 5).forEach(item => {
-                resultsDiv.innerHTML += `<a href="${item.url}" target="_blank" style="padding:10px; display:block; border-bottom:1px solid #eee; text-decoration:none; color:#333;">${item.title}</a>`;
+                resultsDiv.innerHTML += `<a href="post.html?col=${item.cat}&id=${item.id}" style="padding:10px; display:block; border-bottom:1px solid #eee; text-decoration:none; color:#333;">${item.title}</a>`;
             });
         }
     });
+    document.addEventListener('click', (e) => { if(!searchInput.contains(e.target)) resultsDiv.style.display = 'none'; });
 </script>
 </body>
 </html>
