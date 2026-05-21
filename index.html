@@ -1,17 +1,25 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7RK3WFVY3Q"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-7RK3WFVY3Q');
+    </script>
+    <meta name="google-site-verification" content="ySBKvgRcffZgkku3SImRkt6T7rm0r_L6OfClnFXGrrc" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Student Help Club | Sarkari Result, Latest Jobs, Admit Card & IGNOU 2026</title>
-    <meta name="description" content="Student Help Club (SHC) provides fastest updates for Sarkari Result, Latest Govt Jobs, Admit Cards, Exam Results, and IGNOU Solved Assignments.">
-    <meta name="keywords" content="Student Help Club, SHC, Sarkari Result, IGNOU Assignment PDF, Latest Jobs 2026, Admit Card, Sarkari Exam Updates, Scholarship, Student Tools">
+    <title>Student Help Club | Latest Government Jobs, Sarkari Result & Admit Cards</title>
+    <meta name="description" content="Find the latest Central and State Government Jobs, Sarkari Results, Admit Cards, Scholarships, and Free Job Alerts instantly on Student Help Club (SHC).">
+    <meta name="keywords" content="Student Help Club, Sarkari Result, Latest Jobs, Admit Card, Government Schemes, Free Job Alert, Study Material, Recruitment Updates">
     <meta name="author" content="Vishal - Student Help Club">
     <meta name="robots" content="index, follow">
     
-    <meta property="og:title" content="Student Help Club | Government Jobs & Education Portal">
-    <meta property="og:description" content="Get all Government Job updates, Results and Admit cards first on SHC.">
+    <meta property="og:title" content="Student Help Club - India's Trusted Educational & Job Portal">
+    <meta property="og:description" content="Get instant notifications for all new government jobs, exam dates, admit cards, and results on SHC.">
     <meta property="og:image" content="shc-logo.jpg">
     <meta property="og:url" content="https://www.studenthelpclub.in">
 
@@ -40,6 +48,9 @@
             margin: 0; 
             color: var(--text-main);
             -webkit-font-smoothing: antialiased;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         /* --- Top Bar --- */
@@ -49,7 +60,7 @@
         .top-links a:hover { color: #fff; }
         .top-links a.ws-link:hover { color: #22c55e; }
 
-        /* --- Header --- */
+        /* --- Main Nav Header --- */
         .header-main { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); padding: 14px 0; box-shadow: 0 4px 20px -2px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; transition: var(--transition); }
         .header-container { max-width: 1200px; margin: auto; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; gap: 20px; }
         
@@ -59,8 +70,7 @@
         .logo-text { font-size: 1.6rem; font-weight: 800; color: var(--primary); text-transform: uppercase; letter-spacing: -0.5px; margin: 0; }
         .logo-text span { color: var(--accent); }
 
-        /* Search Section */
-        .search-wrapper { flex-grow: 1; max-width: 460px; position: relative; }
+        .search-wrapper { flex-grow: 1; max-width: 400px; position: relative; }
         .search-box { display: flex; position: relative; }
         .search-box input { 
             width: 100%; 
@@ -79,142 +89,76 @@
             box-shadow: 0 0 0 4px rgba(15, 23, 42, 0.08);
         }
         .search-box button { 
-            position: absolute; 
-            right: 5px; 
-            top: 5px; 
-            height: 38px; 
-            width: 38px; 
-            border: none; 
-            background: var(--primary); 
-            color: white; 
-            border-radius: 50%; 
-            cursor: pointer; 
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            position: absolute; right: 5px; top: 5px; height: 38px; width: 38px; 
+            border: none; background: var(--primary); color: white; border-radius: 50%; 
+            cursor: pointer; transition: var(--transition); display: flex; align-items: center; justify-content: center;
         }
-        .search-box button:hover { background: var(--primary-light); transform: scale(1.05); }
 
         #search-results { 
-            position: absolute; 
-            top: 55px; 
-            left: 0; 
-            width: 100%; 
-            background: white; 
-            border-radius: var(--radius); 
-            box-shadow: 0 12px 30px rgba(0,0,0,0.15); 
-            display: none; 
-            z-index: 2000; 
-            max-height: 380px; 
-            overflow-y: auto; 
-            border: 1px solid #e2e8f0;
-            padding: 8px 0;
+            position: absolute; top: 55px; left: 0; width: 100%; 
+            background: white; border-radius: var(--radius); 
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15); display: none; 
+            z-index: 2000; max-height: 380px; overflow-y: auto; 
+            border: 1px solid #e2e8f0; padding: 8px 0;
         }
         #search-results::-webkit-scrollbar { width: 6px; }
         #search-results::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
 
-        /* Ticker */
+        .header-menu { display: flex; gap: 20px; align-items: center; }
+        .header-menu a { text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 0.88rem; text-transform: uppercase; transition: var(--transition); letter-spacing: 0.3px; }
+        .header-menu a:hover { color: var(--accent); }
+
+        /* Ticker Marquee Style */
         .ticker-wrap { background: #fefce8; color: #713f12; padding: 10px 0; border-bottom: 1px solid #fef08a; font-weight: 600; font-size: 13.5px; text-align: center; }
 
-        /* Grid Section - Balanced 4-Columns Layout */
-        .main-wrapper { max-width: 1340px; margin: 40px auto; padding: 0 20px; }
-        .portal-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; }
-        
-        .card { 
-            background: var(--white); 
-            border-radius: var(--radius); 
-            overflow: hidden; 
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02), 0 10px 15px -3px rgba(0,0,0,0.03); 
-            border: 1px solid #e2e8f0; 
-            transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-        }
-        .card:hover { 
-            transform: translateY(-4px); 
-            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.05), 0 10px 10px -5px rgba(0,0,0,0.02); 
-        }
-        
-        .card-header { padding: 14px 20px; font-weight: 700; font-size: 1.05rem; color: white; display: flex; align-items: center; gap: 10px; letter-spacing: 0.3px; flex-shrink: 0; }
-        .h-jobs { background: linear-gradient(135deg, #2563eb, #1d4ed8); } 
-        .h-admit { background: linear-gradient(135deg, #f97316, #ea580c); } 
-        .h-result { background: linear-gradient(135deg, #10b981, #059669); } 
-        .h-yojna { background: linear-gradient(135deg, #8b5cf6, #7c3aed); } 
-        .h-scholarship { background: linear-gradient(135deg, #ef4444, #dc2626); }
-        
-        .card-body { flex-grow: 1; }
-        .card-body ul { list-style: none; padding: 0; margin: 0; }
-        
-        /* Title Ellipsis & Layout Stability Fix */
-        .card-body li a { 
-            text-decoration: none; 
-            color: #475569; 
-            padding: 12px 20px; 
-            display: flex; 
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 1px solid #f1f5f9; 
-            font-size: 0.92rem; 
-            font-weight: 500; 
-            transition: var(--transition); 
-            line-height: 1.4;
-        }
-        .card-body li a .title-text {
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            flex-grow: 1;
-            margin-right: 8px;
-        }
-        .card-body li a:hover { 
-            background: #f8fafc; 
-            color: #2563eb; 
-            padding-left: 24px; 
-        }
-        .card-body li:last-child a { border-bottom: none; }
-        
-        .view-all { 
-            display: block; 
-            text-align: center; 
-            padding: 12px; 
-            background: #f8fafc; 
-            color: var(--primary-light); 
-            text-decoration: none; 
-            font-weight: 600; 
-            font-size: 0.88rem; 
-            border-top: 1px solid #e2e8f0; 
-            transition: var(--transition);
-            flex-shrink: 0;
-        }
-        .view-all:hover { background: #f1f5f9; color: var(--accent); }
+        /* --- Main Layout Content Grid --- */
+        .main-content { flex: 1; padding: 30px 20px; }
+        .grid-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; }
 
-        /* --- New Badge Blinking Animation --- */
-        .new-badge {
-            background: #ef4444; 
-            color: white; 
-            font-size: 9px; 
-            padding: 2px 5px; 
-            border-radius: 4px; 
-            font-weight: 700; 
-            display: inline-block; 
-            flex-shrink: 0;
-            animation: blink 1.2s infinite linear;
-        }
-        @keyframes blink {
-            0% { opacity: 1; }
-            50% { opacity: 0.3; }
-            100% { opacity: 1; }
-        }
+        /* Balanced 4-Column Card Design Wrapper */
+        .category-card { background: var(--white); border-radius: var(--radius); border: 1px solid #e2e8f0; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); overflow: hidden; display: flex; flex-direction: column; }
+        .card-header { padding: 16px 20px; color: var(--white); font-weight: 800; font-size: 1.05rem; letter-spacing: 0.3px; text-transform: uppercase; text-align: center; display: flex; justify-content: space-between; align-items: center; }
+        
+        /* Dynamic Theme Palette */
+        .theme-jobs { background: linear-gradient(135deg, #2563eb, #1d4ed8); }
+        .theme-admit { background: linear-gradient(135deg, #f97316, #ea580c); }
+        .theme-results { background: linear-gradient(135deg, #10b981, #059669); }
+        .theme-scholarship { background: linear-gradient(135deg, #ef4444, #dc2626); }
+        .theme-yojna { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
 
-        /* --- Intro Section --- */
-        .footer-intro { max-width: 900px; margin: 60px auto 20px; padding: 0 20px; text-align: center; color: #64748b; }
-        .footer-intro h2 { color: var(--primary); font-size: 1.6rem; margin-bottom: 14px; font-weight: 800; }
-        .footer-intro p { font-size: 1rem; line-height: 1.7; }
+        .card-header a { color: var(--white); text-decoration: none; font-size: 0.82rem; background: rgba(255,255,255,0.15); padding: 4px 10px; border-radius: 20px; text-transform: none; font-weight: 600; transition: var(--transition); }
+        .card-header a:hover { background: var(--white); color: var(--primary); }
+
+        /* Post Items Navigation Stack Layout */
+        .post-stack { list-style: none; padding: 0; margin: 0; flex-grow: 1; }
+        .post-stack li { border-bottom: 1px solid #f1f5f9; transition: var(--transition); }
+        .post-stack li:last-child { border-bottom: none; }
+        .post-stack li a { text-decoration: none; color: #475569; padding: 14px 18px; display: block; font-size: 0.9rem; font-weight: 500; line-height: 1.4; transition: var(--transition); }
+        
+        /* Interactive Card Hover Echo System */
+        .category-card.jobs-card li:hover { background: #eff6ff; }
+        .category-card.jobs-card li:hover a { color: #2563eb; padding-left: 22px; }
+        .category-card.admit-card li:hover { background: #fff7ed; }
+        .category-card.admit-card li:hover a { color: #f97316; padding-left: 22px; }
+        .category-card.results-card li:hover { background: #f0fdf4; }
+        .category-card.results-card li:hover a { color: #10b981; padding-left: 22px; }
+        .category-card.scholarship-card li:hover { background: #fef2f2; }
+        .category-card.scholarship-card li:hover a { color: #ef4444; padding-left: 22px; }
+        .category-card.yojna-card li:hover { background: #f5f3ff; }
+        .category-card.yojna-card li:hover a { color: #8b5cf6; padding-left: 22px; }
+
+        /* Blinking New Badge */
+        .new-badge { background: #ef4444; color: white; font-size: 9px; padding: 2px 5px; border-radius: 4px; font-weight: 700; display: inline-block; margin-left: 6px; animation: blink 1.2s infinite linear; flex-shrink: 0; }
+        @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+
+        /* Rich Text Section for AdSense Value Optimization */
+        .adsense-text-container { max-width: 1200px; margin: 40px auto 10px auto; background: var(--white); padding: 35px; border-radius: var(--radius); border: 1px solid #e2e8f0; text-align: left; }
+        .adsense-text-container h2 { font-size: 1.35rem; color: var(--primary); margin-top: 0; margin-bottom: 15px; font-weight: 800; border-left: 4px solid var(--accent); padding-left: 12px; text-transform: uppercase; }
+        .adsense-text-container p { font-size: 0.98rem; line-height: 1.7; color: #475569; margin-bottom: 18px; text-align: justify; }
 
         /* --- Footer --- */
-        footer { background: #0f172a; color: #94a3b8; padding: 50px 20px 25px; margin-top: 40px; border-top: 4px solid var(--primary-light); }
-        .footer-container { max-width: 1200px; margin: auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 50px; text-align: left; }
+        footer { background: #0f172a; color: #94a3b8; padding: 50px 20px 25px; margin-top: auto; border-top: 4px solid var(--primary-light); text-align: left; }
+        .footer-container { max-width: 1200px; margin: auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 50px; }
         .footer-sec h3 { color: #fff; font-size: 1.05rem; margin-bottom: 20px; border-left: 3px solid var(--accent); padding-left: 12px; text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px; }
         .footer-sec ul { list-style: none; padding: 0; margin: 0; }
         .footer-sec ul li { margin-bottom: 12px; }
@@ -230,19 +174,19 @@
         
         .footer-bottom { text-align: center; margin-top: 50px; padding-top: 22px; border-top: 1px solid #1e293b; font-size: 13px; color: #64748b; }
 
-        /* --- Responsive Design --- */
-        @media (max-width: 1200px) {
-            .portal-grid { grid-template-columns: repeat(3, 1fr); }
-        }
+        /* --- Responsive Viewports Style --- */
+        @media (max-width: 1200px) { .grid-container { grid-template-columns: repeat(2, 1fr); gap: 20px; } }
         @media (max-width: 992px) {
-            .portal-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        @media (max-width: 768px) { 
-            .header-container { flex-direction: column; align-items: stretch; gap: 14px; padding: 5px 15px; }
+            .header-container { flex-direction: column; gap: 12px; padding: 5px 15px; }
             .logo-box { justify-content: center; }
-            .logo-text { font-size: 1.3rem; }
-            .search-wrapper { max-width: 100%; }
-            .portal-grid { grid-template-columns: 1fr; gap: 20px; }
+            .search-wrapper { max-width: 100%; width: 100%; }
+            .header-menu { flex-wrap: wrap; justify-content: center; gap: 12px; padding-bottom: 5px; }
+        }
+        @media (max-width: 600px) { 
+            .grid-container { grid-template-columns: 1fr; gap: 18px; } 
+            .main-content { padding: 15px 12px; }
+            .header-menu a { font-size: 0.8rem; padding: 2px 4px; }
+            .adsense-text-container { padding: 22px 18px; }
             .footer-container { grid-template-columns: 1fr; gap: 35px; text-align: center; }
             .footer-sec h3 { border-left: none; border-bottom: 2px solid var(--accent); display: inline-block; padding-left: 0; padding-bottom: 4px; }
             .social-box { justify-content: center; }
@@ -256,7 +200,7 @@
         <span><i class="fas fa-calendar-alt"></i> <span id="current-date"></span></span>
         <div class="top-links">
             <a href="https://t.me/studenthelpclub" target="_blank"><i class="fab fa-telegram"></i> Telegram</a>
-            <a href="https://whatsapp.com/channel/0029VbCJ2xI7IUYa1zMB6n1f" target="_blank" class="ws-link" style="color: #25D366;"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="https://whatsapp.com/channel/0029VbCJ2xI7IUYa1zMB6n1f" class="ws-link" style="color: #25D366;" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
         </div>
     </div>
 </div>
@@ -274,6 +218,13 @@
             </div>
             <div id="search-results"></div>
         </div>
+        <div class="header-menu">
+            <a href="index.html">Home</a>
+            <a href="jobs.html">Jobs</a>
+            <a href="admit-cards.html">Admit Card</a>
+            <a href="results.html">Results</a>
+            <a href="scholarship.html">Scholarship</a>
+        </div>
     </div>
 </div>
 
@@ -281,28 +232,71 @@
     <marquee id="top-ticker" scrollamount="6" onmouseover="this.stop();" onmouseout="this.start();">Loading latest updates...</marquee>
 </div>
 
-<div class="main-wrapper">
-    <div class="portal-grid">
-        <div class="card"><div class="card-header h-jobs"><i class="fas fa-briefcase"></i> Latest Jobs</div><div class="card-body"><ul id="list-jobs"></ul></div><a href="jobs.html" class="view-all">View All</a></div>
-        <div class="card"><div class="card-header h-admit"><i class="fas fa-id-card"></i> Admit Card</div><div class="card-body"><ul id="list-admit"></ul></div><a href="admit-cards.html" class="view-all">View All</a></div>
-        <div class="card"><div class="card-header h-result"><i class="fas fa-trophy"></i> Results</div><div class="card-body"><ul id="list-result"></ul></div><a href="results.html" class="view-all">View All</a></div>
-        <div class="card"><div class="card-header h-yojna"><i class="fas fa-university"></i> Sarkari Yojna</div><div class="card-body"><ul id="list-yojna"></ul></div><a href="yojna.html" class="view-all">View All</a></div>
-        <div class="card"><div class="card-header h-scholarship"><i class="fas fa-user-graduate"></i> Scholarship</div><div class="card-body"><ul id="list-scholarship"></ul></div><a href="scholarship.html" class="view-all">View All</a></div>
-    </div>
-</div>
+<div class="main-content">
+    <div class="grid-container">
+        
+        <div class="category-card jobs-card">
+            <div class="card-header theme-jobs">
+                <span><i class="fas fa-briefcase"></i> Latest Jobs</span>
+                <a href="jobs.html">View All</a>
+            </div>
+            <ul class="post-stack" id="stack-jobs"></ul>
+        </div>
 
-<div class="footer-intro">
-    <h2>About Student Help Club (SHC)</h2>
-    <p>Student Help Club is a dedicated educational portal for Indian students. We provide real-time updates on <b>Sarkari Result 2026</b>, Latest Government Jobs, Admit Cards, and Exam Syllabuses. Additionally, we provide <b>IGNOU Solved Assignments</b> and useful educational tools like Age Calculators and Image Resizers to help students in their academic journey.</p>
+        <div class="category-card admit-card">
+            <div class="card-header theme-admit">
+                <span><i class="fas fa-id-card"></i> Admit Card</span>
+                <a href="admit-cards.html">View All</a>
+            </div>
+            <ul class="post-stack" id="stack-admit"></ul>
+        </div>
+
+        <div class="category-card results-card">
+            <div class="card-header theme-results">
+                <span><i class="fas fa-graduation-cap"></i> Results</span>
+                <a href="results.html">View All</a>
+            </div>
+            <ul class="post-stack" id="stack-result"></ul>
+        </div>
+
+        <div class="category-card scholarship-card">
+            <div class="card-header theme-scholarship">
+                <span><i class="fas fa-hand-holding-usd"></i> Scholarship</span>
+                <a href="scholarship.html">View All</a>
+            </div>
+            <ul class="post-stack" id="stack-scholarship"></ul>
+        </div>
+
+        <div class="category-card yojna-card">
+            <div class="card-header theme-yojna">
+                <span><i class="fas fa-landmark"></i> Sarkari Yojna</span>
+                <a href="yojna.html">View All</a>
+            </div>
+            <ul class="post-stack" id="stack-yojna"></ul>
+        </div>
+
+    </div>
+
+    <div class="adsense-text-container">
+        <h2>India's Leading Hub for Central & State Recruitment Updates</h2>
+        <p>Welcome to <b>Student Help Club (SHC)</b>, your premier online information repository designed to streamline the career building process for state and federal job aspirants across India. Navigating through countless web parameters to find reliable recruitment metrics can be challenging. Our professional tracking team works round the clock to aggregate authentic, official employment board releases into clear dashboards.</p>
+        <p>Whether you are tracking notifications for Civil Services, Defence sectors, Banking recruitment cells, Railway selection boards, or academic state staff selection commissions, SHC delivers instant notification pathways. We provide direct access links to original online recruitment forms, application eligibility sheets, required credential listings, and explicit step-by-step submission procedures to minimize rejection risks during registration phases.</p>
+        
+        <h2>Advanced Examination Tools and Fellowship Tracking Systems</h2>
+        <p>In addition to foundational vacancy listings, Student Help Club offers deep integration features for down-the-line candidate stages. Our portal monitors active board releases to host fast-server download paths for Exam Hall Tickets, Admit Cards, and roll-number rollouts. Once examinations conclude, candidates can utilize our responsive interfaces to monitor officially sanctioned Answer Keys, cut-off percentages, evaluation merit lists, and final board selection metrics natively.</p>
+        <p>We are firmly committed to ensuring that financial barriers do not halt educational momentum. SHC maps national standard fellowships, minority financial aids, post-matric scholarship programs, and specialized corporate social responsibility (CSR) grants. By delivering crisp parameter overviews covering eligibility verification limits, document compliance matrices, and portal application deadlines, we empower the next generation of professionals to easily secure their educational support channels seamlessly.</p>
+    </div>
 </div>
 
 <footer>
     <div class="footer-container">
         <div class="footer-sec"><h3>Important Pages</h3><ul><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact Us</a></li><li><a href="privacy-policy.html">Privacy Policy</a></li><li><a href="disclaimer.html">Disclaimer</a></li></ul></div>
-        <div class="footer-sec"><h3>Resources</h3><ul><li><a href="https://tools.studenthelpclub.in" target="_blank">Tools for Students</a></li><li><a href="https://studenthelpclub.in" target="_blank">IGNOU Assignment PDF</a></li></ul></div>
+        <div class="footer-sec"><h3>Resources</h3><ul><li><a href="https://tools.studenthelpclub.in" target="_blank">Tools for Students</a></li><li><a href="about.html" target="_blank">Study Material Support</a></li></ul></div>
         <div class="footer-sec"><h3>Connect</h3><div class="social-box"><a href="https://t.me/studenthelpclub" class="tg-f" target="_blank"><i class="fab fa-telegram-plane"></i></a><a href="https://youtube.com/@vishalhelpclub" class="yt-f" target="_blank"><i class="fab fa-youtube"></i></a><a href="https://whatsapp.com/channel/0029VbCJ2xI7IUYa1zMB6n1f" class="wa-f" target="_blank"><i class="fab fa-whatsapp"></i></a></div></div>
     </div>
-    <div class="footer-bottom"><p>© 2026 Student Help Club | Admin: Vishal</p></div>
+    <div class="footer-bottom">
+        <p>© <span id="current-year"></span> Student Help Club | Admin: Vishal</p>
+    </div>
 </footer>
 
 <script type="module">
@@ -320,11 +314,16 @@
 
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
+
     let searchData = [];
     let marqueeCandidates = {};
 
-    document.getElementById('current-date').innerText = new Date().toLocaleDateString('en-US', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' });
+    // Dynamic Future-Proof Calendar Setup
+    const d = new Date();
+    document.getElementById('current-date').innerText = d.toLocaleDateString('en-US', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' });
+    document.getElementById('current-year').innerText = d.getFullYear(); // Keeps copyright year hamesha up-to-date automatically
 
+    // Streamlined Marquee Engine
     function updateGlobalMarquee() {
         const categories = Object.values(marqueeCandidates);
         if (categories.length > 0) {
@@ -333,41 +332,61 @@
         }
     }
 
-    function loadData(colName, elementId) {
-        const q = query(collection(db, colName), orderBy("timestamp", "desc"), limit(12));
+    // Consolidated Realtime Stream Listener Engine
+    function streamCategory(colId, elementId) {
+        const q = query(collection(db, colId), orderBy("timestamp", "desc"), limit(12));
         onSnapshot(q, (snapshot) => {
-            const list = document.getElementById(elementId);
-            list.innerHTML = '';
+            const listEl = document.getElementById(elementId);
+            if(!listEl) return;
+            listEl.innerHTML = '';
+            
+            if(snapshot.empty) {
+                listEl.innerHTML = `<li style="padding:20px; text-align:center; font-size:13px; color:#94a3b8;">No Updates</li>`;
+                return;
+            }
+
             snapshot.docs.forEach((doc, index) => {
                 const data = doc.data();
+                
+                // Realtime Sync with Search Engine and Marquee arrays
                 if (index === 0 && data.timestamp) {
-                    marqueeCandidates[colName] = { id: doc.id, title: data.title, cat: colName, time: data.timestamp.toMillis() };
+                    marqueeCandidates[colId] = { id: doc.id, title: data.title, cat: colId, time: data.timestamp.toMillis() };
                     updateGlobalMarquee();
                 }
-                
-                // हर केटेगरी की पहली 2 पोस्ट्स के लिए Blinking NEW टैग
-                const newTag = index < 2 ? `<span class="new-badge">NEW</span>` : '';
-                
-                list.innerHTML += `<li><a href="post.html?col=${colName}&id=${doc.id}"><span class="title-text">${data.title}</span>${newTag}</a></li>`;
-                searchData.push({ id: doc.id, title: data.title, cat: colName });
+                searchData.push({ id: doc.id, title: data.title, cat: colId });
+
+                // Render lists with blinking NEW tag exclusively on the top 2 elements
+                if (index < 8) {
+                    const li = document.createElement('li');
+                    const newTag = index < 2 ? `<span class="new-badge">NEW</span>` : '';
+                    li.innerHTML = `<a href="post.html?col=${colId}&id=${doc.id}">${data.title} ${newTag}</a>`;
+                    listEl.appendChild(li);
+                }
             });
         });
     }
 
-    loadData('jobs', 'list-jobs');
-    loadData('admit', 'list-admit');
-    loadData('result', 'list-result');
-    loadData('yojna', 'list-yojna');
-    loadData('scholarship', 'list-scholarship');
+    // Execute Streaming listeners safely
+    const targetCols = [
+        { col: 'jobs', el: 'stack-jobs' },
+        { col: 'admit', el: 'stack-admit' },
+        { col: 'result', el: 'stack-result' },
+        { col: 'scholarship', el: 'stack-scholarship' },
+        { col: 'yojna', el: 'stack-yojna' }
+    ];
+    targetCols.forEach(item => streamCategory(item.col, item.el));
 
+    // Live Search Box Controller Box
     const searchInput = document.getElementById('live-search');
     const resultsDiv = document.getElementById('search-results');
     searchInput.addEventListener('input', (e) => {
         const val = e.target.value.toLowerCase();
         resultsDiv.innerHTML = '';
         if (val.length < 2) { resultsDiv.style.display = 'none'; return; }
+        
         const filtered = searchData.filter((v, i, a) => a.findIndex(t => (t.id === v.id)) === i)
                          .filter(item => item.title.toLowerCase().includes(val));
+                         
         if (filtered.length > 0) {
             resultsDiv.style.display = 'block';
             filtered.slice(0, 10).forEach(item => {
