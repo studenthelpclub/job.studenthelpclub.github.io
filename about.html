@@ -129,33 +129,34 @@
             color: var(--accent); border-color: var(--accent); transform: translateX(-3px);
         }
 
+        .content-main-card {
+            background: var(--white); border-radius: var(--radius); border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02), 0 10px 15px -3px rgba(0,0,0,0.03); 
+            padding: 40px 35px; text-align: left;
+        }
+
         .page-header-box {
-            background: var(--header-gradient); padding: 22px; border-radius: var(--radius);
+            background: var(--header-gradient); padding: 24px; border-radius: var(--radius);
             color: white; box-shadow: 0 10px 20px -5px rgba(15, 23, 42, 0.15);
             margin-bottom: 30px; text-align: center;
         }
-        h1 { margin: 0; font-size: 1.6rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
+        .page-header-box h1 { margin: 0; font-size: 1.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; color: #fff; }
 
-        .content-card {
-            background: var(--white); border-radius: var(--radius); border: 1px solid #e2e8f0;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02), 0 10px 15px -3px rgba(0,0,0,0.03); 
-            padding: 35px; line-height: 1.8; color: #475569; font-size: 1.05rem;
-        }
-        .content-card p { margin-top: 0; margin-bottom: 20px; }
-        .content-card b { color: var(--primary); font-weight: 700; }
+        .content-main-card p { line-height: 1.8; color: #475569; font-size: 1.05rem; margin-top: 0; margin-bottom: 22px; text-align: justify; }
+        .content-main-card b { color: var(--primary); font-weight: 700; }
         
-        .features-list { margin: 25px 0; padding-left: 20px; }
-        .features-list li { margin-bottom: 12px; position: relative; list-style: none; padding-left: 10px; }
-        .features-list li::before { content: "⚡"; position: absolute; left: -18px; top: 1px; }
+        .features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 25px 0; }
+        .feature-item { background: #f8fafc; border: 1px solid #e2e8f0; padding: 12px 18px; border-radius: 6px; font-weight: 600; color: var(--primary-light); font-size: 0.95rem; display: flex; align-items: center; gap: 10px; }
+        .feature-item i { color: #16a34a; font-size: 1.1rem; }
 
         .contact-info-box {
-            background: #f8fafc; border-left: 4px solid var(--accent); padding: 20px;
-            border-radius: 0 var(--radius) var(--radius) 0; margin-top: 30px; border-top: 1px solid #e2e8f0;
+            background: #f8fafc; border-left: 4px solid var(--accent); padding: 22px;
+            border-radius: 0 var(--radius) var(--radius) 0; margin-top: 35px; border-top: 1px solid #e2e8f0;
             border-right: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0;
         }
-        .contact-info-box h2 { font-size: 1.2rem; margin-top: 0; margin-bottom: 15px; color: var(--primary); font-weight: 700; text-transform: uppercase; }
-        .contact-item { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; font-size: 0.95rem; }
-        .contact-item i { color: var(--accent); width: 18px; }
+        .contact-info-box h2 { font-size: 1.15rem; margin-top: 0; margin-bottom: 15px; color: var(--primary); font-weight: 700; text-transform: uppercase; letter-spacing: 0.3px; }
+        .contact-item { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; font-size: 1rem; font-weight: 500; }
+        .contact-item i { color: var(--accent); width: 18px; font-size: 1.1rem; text-align: center; }
         .contact-item a { color: #2563eb; text-decoration: none; font-weight: 600; }
         .contact-item a:hover { text-decoration: underline; }
 
@@ -186,9 +187,11 @@
         @media (max-width: 768px) { 
             .header-menu a { font-size: 0.8rem; padding: 2px 4px; }
             .main-content { padding: 20px 12px; }
+            .content-main-card { padding: 25px 20px; }
             .page-header-box { padding: 18px; margin-bottom: 20px; }
-            h1 { font-size: 1.25rem; }
-            .content-card { padding: 22px; font-size: 0.98rem; }
+            .page-header-box h1 { font-size: 1.35rem; }
+            .content-main-card p { font-size: 0.98rem; }
+            .features-grid { grid-template-columns: 1fr; gap: 10px; }
             .footer-container { grid-template-columns: 1fr; gap: 35px; text-align: center; }
             .footer-sec h3 { border-left: none; border-bottom: 2px solid var(--accent); display: inline-block; padding-left: 0; padding-bottom: 4px; }
             .social-box { justify-content: center; }
@@ -238,24 +241,35 @@
     <div class="container">
         <a href="index.html" class="btn-home"><i class="fas fa-arrow-left"></i> Back to Home</a>
         
-        <div class="page-header-box">
-            <h1>About Us</h1>
-        </div>
-        
-        <div class="content-card">
-            <p>स्वागत है <b>Student Help Club (SHC)</b> पर। यह एक विश्वसनीय शैक्षिक और करियर मार्गदर्शन पोर्टल है जिसकी शुरुआत <b>Vishal</b> द्वारा की गई है।</p>
-            <p>हमारा मुख्य उद्देश्य भारत भर के छात्रों और नौकरी चाहने वालों को सरकारी नौकरियों (Latest Jobs), एडमिट कार्ड (Admit Card), रिजल्ट (Results), और छात्रवृत्ति (Scholarship) की ताजा और सटीक जानकारी सबसे पहले प्रदान करना है।</p>
-            <p>आज के समय में इंटरनेट पर बहुत सारी भ्रामक जानकारियां मौजूद हैं। इसलिए, हम अपनी टीम के माध्यम से हर अपडेट को आधिकारिक अधिसूचना (Official Notification) के साथ जांचने के बाद ही यहाँ प्रकाशित करते हैं। हम चाहते हैं कि हर छात्र अपनी योग्यता के अनुसार सही करियर चुन सके।</p>
+        <div class="content-main-card">
+            <div class="page-header-box">
+                <h1>About Us</h1>
+            </div>
+            
+            <p>स्वागत है <b>Student Help Club (SHC)</b> पर। यह भारत भर के छात्रों, रोजगार चाहने वालों और युवाओं के लिए एक विश्वसनीय और समर्पित ऑनलाइन करियर मार्गदर्शन और सूचना प्रदाता पोर्टल है, जिसकी स्थापना <b>Vishal</b> द्वारा की गई है।</p>
+            
+            <p>हमारा मुख्य उद्देश्य देश भर के योग्य उम्मीदवारों को केंद्रीय और राज्य स्तर की सरकारी नौकरियों (Latest Government Jobs), एडमिट कार्ड (Admit Cards), परीक्षा परिणामों (Sarkari Results), उत्तर कुंजी (Answer Keys) और विभिन्न सरकारी छात्रवृत्ति योजनाओं (Scholarship Schemes) की सबसे तेज, सटीक और निष्पक्ष जानकारी प्रदान करना है।</p>
+            
+            <p>आज के डिजिटल युग में इंटरनेट पर सूचनाओं की भरमार है, लेकिन उसी के साथ कई भ्रामक और अधूरी सामग्रियां भी मौजूद हैं। इस समस्या को ध्यान में रखते हुए, हम अपनी विशेषज्ञ टीम के माध्यम से प्रत्येक अधिसूचना की जांच संबंधित विभागों द्वारा जारी आधिकारिक विज्ञापनों (Official Notifications) से करने के बाद ही यहाँ प्रकाशित करते हैं। हम यह सुनिश्चित करते हैं कि हमारे यूज़र्स तक केवल प्रामाणिक क्रेडेंशियल्स ही पहुँचें।</p>
+
+            <div class="features-grid">
+                <div class="feature-item"><i class="fas fa-check-circle"></i> 100% Verified Official Notifications</div>
+                <div class="feature-item"><i class="fas fa-check-circle"></i> Instant Exam Calendar Updates</div>
+                <div class="feature-item"><i class="fas fa-check-circle"></i> Real-time Merit List Tracking</div>
+                <div class="feature-item"><i class="fas fa-check-circle"></i> Seamless Mobile Navigation</div>
+            </div>
+            
+            <p>हमारा लक्ष्य भारत के सुदूर क्षेत्रों में रहने वाले विद्यार्थियों को भी समान अवसर प्रदान करना है ताकि वे किसी भी महत्वपूर्ण भर्ती प्रक्रिया या पात्रता आवेदन से न चूकें। छात्र हित हमारी सर्वोच्च प्राथमिकता है।</p>
             
             <div class="contact-info-box">
                 <h2>Contact Information</h2>
                 <div class="contact-item">
                     <i class="fas fa-envelope"></i>
-                    <span>Email: <a href="mailto:officialstudenthelpclub@gmail.com">officialstudenthelpclub@gmail.com</a></span>
+                    <span>Official Email: <a href="mailto:officialstudenthelpclub@gmail.com">officialstudenthelpclub@gmail.com</a></span>
                 </div>
                 <div class="contact-item">
                     <i class="fas fa-phone-alt"></i>
-                    <span>Phone: <a href="tel:+919776986830">+91 9776986830</a></span>
+                    <span>Contact Support: <a href="tel:+919776986830">+91 9776986830</a></span>
                 </div>
             </div>
         </div>
