@@ -12,16 +12,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Latest Updates | Sarkari Result & Govt Exams 2026</title>
-    <meta name="description" content="Get all Latest Government Job updates, Results, Admit Cards, and Sarkari Yojna first on Student Help Club (SHC).">
-    <meta name="keywords" content="Admit Card 2026, Latest Jobs, Sarkari Result, Student Help Club, SHC Result, Govt Exam Updates">
+    <title>Latest Admit Cards | Sarkari Result & Govt Exam Hall Ticket 2026</title>
+    <meta name="description" content="Download Latest Government Exam Admit Cards, Hall Tickets, and Call Letters first on Student Help Club (SHC). Get fastest Sarkari Result exam updates.">
+    <meta name="keywords" content="Admit Card 2026, Latest Admit Card, Sarkari Result Admit Card, Download Hall Ticket, Exam Call Letter, Govt Exam Dates, Student Help Club">
     <meta name="author" content="Vishal - Student Help Club">
     <meta name="robots" content="index, follow">
     
-    <meta property="og:title" content="Latest Updates & Education Portal - Student Help Club">
+    <meta property="og:title" content="Latest Admit Cards & Exam Updates - Student Help Club">
     <meta property="og:description" content="Get all Government Job updates, Results and Admit cards first on SHC.">
     <meta property="og:image" content="shc-logo.jpg">
-    <meta property="og:url" content="https://www.studenthelpclub.in">
+    <meta property="og:url" content="https://www.studenthelpclub.in/admit-cards.html">
 
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,7 +40,8 @@
             --text-main: #334155;
             --radius: 12px;
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            --header-gradient: linear-gradient(135deg, #1e293b, #0f172a);
+            --header-gradient: linear-gradient(135deg, #f97316, #ea580c); /* Admit Card Premium Orange Theme */
+            --theme-orange: #ea580c;
         }
         
         body { 
@@ -54,14 +55,14 @@
             min-height: 100vh;
         }
 
-        /* --- Top Bar (Index.html Match) --- */
+        /* --- Top Bar --- */
         .top-bar { background: var(--nav-bg); color: #cbd5e1; padding: 8px 0; font-size: 13px; border-bottom: 1px solid rgba(255,255,255,0.1); }
         .top-container { max-width: 1200px; margin: auto; display: flex; justify-content: space-between; padding: 0 20px; align-items: center; }
         .top-links a { color: #cbd5e1; text-decoration: none; margin-left: 20px; transition: var(--transition); display: inline-flex; align-items: center; gap: 6px; }
         .top-links a:hover { color: #fff; }
         .top-links a.ws-link:hover { color: #22c55e; }
 
-        /* --- Main Nav Header with Search (Index.html Match) --- */
+        /* --- Main Nav Header --- */
         .header-main { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); padding: 14px 0; box-shadow: 0 4px 20px -2px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; transition: var(--transition); }
         .header-container { max-width: 1200px; margin: auto; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; gap: 20px; }
         
@@ -71,8 +72,7 @@
         .logo-text { font-size: 1.6rem; font-weight: 800; color: var(--primary); text-transform: uppercase; letter-spacing: -0.5px; margin: 0; }
         .logo-text span { color: var(--accent); }
 
-        /* Search Section Fix */
-        .search-wrapper { flex-grow: 1; max-width: 460px; position: relative; }
+        .search-wrapper { flex-grow: 1; max-width: 400px; position: relative; }
         .search-box { display: flex; position: relative; }
         .search-box input { 
             width: 100%; 
@@ -106,7 +106,6 @@
             align-items: center;
             justify-content: center;
         }
-        .search-box button:hover { background: var(--primary-light); transform: scale(1.05); }
 
         #search-results { 
             position: absolute; 
@@ -126,14 +125,16 @@
         #search-results::-webkit-scrollbar { width: 6px; }
         #search-results::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
 
-        /* Ticker (Index.html Match) */
+        .header-menu { display: flex; gap: 20px; align-items: center; }
+        .header-menu a { text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 0.88rem; text-transform: uppercase; transition: var(--transition); letter-spacing: 0.3px; }
+        .header-menu a:hover, .header-menu a.active-page { color: var(--theme-orange); }
+
         .ticker-wrap { background: #fefce8; color: #713f12; padding: 10px 0; border-bottom: 1px solid #fef08a; font-weight: 600; font-size: 13.5px; text-align: center; }
 
         /* --- Main Content Area --- */
         .main-content { flex: 1; padding: 40px 20px; }
         .container { max-width: 850px; margin: 0 auto; }
         
-        /* Back Button Style */
         .btn-home { 
             display: inline-flex; 
             align-items: center; 
@@ -151,25 +152,23 @@
             transition: var(--transition);
         }
         .btn-home:hover { 
-            color: #2563eb; 
-            border-color: #2563eb;
+            color: var(--theme-orange); 
+            border-color: var(--theme-orange);
             transform: translateX(-3px);
         }
 
-        /* Dynamic Page Heading Box */
         .page-header-box {
             background: var(--header-gradient); 
             padding: 22px;
             border-radius: var(--radius);
             color: white;
-            box-shadow: 0 10px 20px -5px rgba(15, 23, 42, 0.1);
+            box-shadow: 0 10px 20px -5px rgba(234, 88, 12, 0.15);
             margin-bottom: 30px;
             text-align: center;
             transition: var(--transition);
         }
         h1 { margin: 0; font-size: 1.6rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
 
-        /* --- List Box --- */
         .list-wrapper {
             background: var(--white);
             border-radius: var(--radius);
@@ -179,7 +178,7 @@
         }
 
         .post-list { list-style: none; padding: 0; margin: 0; }
-        .post-list li { border-bottom: 1px solid #f1f5f9; transition: var(--transition); }
+        .post-list li { border-bottom: 1px solid #f1f5f9; transition: var(--transition); border-left: 4px solid transparent; }
         .post-list li:last-child { border-bottom: none; }
         
         .post-list li a { 
@@ -201,8 +200,8 @@
             flex-grow: 1;
         }
         
-        .post-list li:hover { background: #f8fafc; }
-        .post-list li:hover a { color: #2563eb; padding-left: 28px; }
+        .post-list li:hover { background: #f8fafc; border-left-color: var(--theme-orange); }
+        .post-list li:hover a { padding-left: 28px; color: var(--theme-orange); }
         
         .date { 
             color: #94a3b8; 
@@ -217,9 +216,26 @@
             gap: 5px;
         }
 
-        /* --- Footer (Index.html Match 100% Fix) --- */
-        footer { background: #0f172a; color: #94a3b8; padding: 50px 20px 25px; margin-top: auto; border-top: 4px solid var(--primary-light); }
-        .footer-container { max-width: 1200px; margin: auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 50px; text-align: left; }
+        .new-badge {
+            background: #ef4444; 
+            color: white; 
+            font-size: 9px; 
+            padding: 2px 5px; 
+            border-radius: 4px; 
+            font-weight: 700; 
+            display: inline-block; 
+            flex-shrink: 0;
+            margin-left: 8px;
+            animation: blink 1.2s infinite linear;
+        }
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+
+        footer { background: #0f172a; color: #94a3b8; padding: 50px 20px 25px; margin-top: auto; border-top: 4px solid var(--primary-light); text-align: left; }
+        .footer-container { max-width: 1200px; margin: auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 50px; }
         .footer-sec h3 { color: #fff; font-size: 1.05rem; margin-bottom: 20px; border-left: 3px solid var(--accent); padding-left: 12px; text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px; }
         .footer-sec ul { list-style: none; padding: 0; margin: 0; }
         .footer-sec ul li { margin-bottom: 12px; }
@@ -235,12 +251,14 @@
         
         .footer-bottom { text-align: center; margin-top: 50px; padding-top: 22px; border-top: 1px solid #1e293b; font-size: 13px; color: #64748b; }
 
-        /* --- Responsive Design --- */
-        @media (max-width: 768px) { 
-            .header-container { flex-direction: column; align-items: stretch; gap: 14px; padding: 5px 15px; }
+        @media (max-width: 992px) {
+            .header-container { flex-direction: column; gap: 12px; padding: 5px 15px; }
             .logo-box { justify-content: center; }
-            .logo-text { font-size: 1.3rem; }
-            .search-wrapper { max-width: 100%; }
+            .search-wrapper { max-width: 100%; width: 100%; }
+            .header-menu { flex-wrap: wrap; justify-content: center; gap: 12px; padding-bottom: 5px; }
+        }
+        @media (max-width: 768px) { 
+            .header-menu a { font-size: 0.8rem; padding: 2px 4px; }
             .main-content { padding: 20px 12px; }
             .page-header-box { padding: 18px; margin-bottom: 20px; }
             h1 { font-size: 1.25rem; }
@@ -260,7 +278,7 @@
         <span><i class="fas fa-calendar-alt"></i> <span id="current-date"></span></span>
         <div class="top-links">
             <a href="https://t.me/studenthelpclub" target="_blank"><i class="fab fa-telegram"></i> Telegram</a>
-            <a href="https://whatsapp.com/channel/0029VbCJ2xI7IUYa1zMB6n1f" target="_blank" class="ws-link" style="color: #25D366;"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="https://whatsapp.com/channel/0029VbCJ2xI7IUYa1zMB6n1f" class="ws-link" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
         </div>
     </div>
 </div>
@@ -277,6 +295,13 @@
                 <button aria-label="Search"><i class="fas fa-search"></i></button>
             </div>
             <div id="search-results"></div>
+        </div>
+        <div class="header-menu">
+            <a href="index.html">Home</a>
+            <a href="jobs.html">Jobs</a>
+            <a href="admit-cards.html" class="active-page">Admit Card</a>
+            <a href="results.html">Results</a>
+            <a href="scholarship.html">Scholarship</a>
         </div>
     </div>
 </div>
@@ -326,16 +351,15 @@
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
 
-    // --- CONFIGURATION & DYNAMIC THEME SYSTEM ---
     const COLLECTION_NAME = "admit"; 
     let searchData = [];
     let marqueeCandidates = {};
     
     const themeConfigs = {
-        'jobs': { name: "Latest Online Jobs", gradient: "linear-gradient(135deg, #2563eb, #1d4ed8)", hoverEcho: "#1d4ed8" },
+        'jobs': { name: "Latest Government Jobs", gradient: "linear-gradient(135deg, #2563eb, #1d4ed8)", hoverEcho: "#2563eb" },
         'admit': { name: "Latest Admit Cards", gradient: "linear-gradient(135deg, #f97316, #ea580c)", hoverEcho: "#ea580c" },
-        'result': { name: "Exam Results", gradient: "linear-gradient(135deg, #10b981, #059669)", hoverEcho: "#059669" },
-        'yojna': { name: "Sarkari Yojna Updates", gradient: "linear-gradient(135deg, #8b5cf6, #7c3aed)", hoverEcho: "#7c3aed" },
+        'result': { name: "Sarkari Exam Results", gradient: "linear-gradient(135deg, #10b981, #059669)", hoverEcho: "#10b981" },
+        'yojna': { name: "Sarkari Yojna Updates", gradient: "linear-gradient(135deg, #8b5cf6, #7c3aed)", hoverEcho: "#8b5cf6" },
         'scholarship': { name: "Scholarship Schemes", gradient: "linear-gradient(135deg, #ef4444, #dc2626)", hoverEcho: "#dc2626" }
     };
 
@@ -347,7 +371,6 @@
     // Live Date Setup
     document.getElementById('current-date').innerText = new Date().toLocaleDateString('en-US', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' });
 
-    // --- Global Marquee Multi-Fetch (Index Sync) ---
     function updateGlobalMarquee() {
         const categories = Object.values(marqueeCandidates);
         if (categories.length > 0) {
@@ -370,11 +393,9 @@
         });
     }
 
-    // Sync Background data for Live Search & Top Bar Ticker
     const allCols = ['jobs', 'admit', 'result', 'yojna', 'scholarship'];
     allCols.forEach(col => { if(col !== COLLECTION_NAME) syncSearchAndMarquee(col); });
 
-    // Load Primary Page Content
     function loadAllPosts() {
         const q = query(collection(db, COLLECTION_NAME), orderBy("timestamp", "desc"));
         onSnapshot(q, (snapshot) => {
@@ -395,19 +416,23 @@
                 searchData.push({ id: doc.id, title: data.title, cat: COLLECTION_NAME });
 
                 const li = document.createElement('li');
+                const newTag = index < 2 ? `<span class="new-badge">NEW</span>` : '';
+
                 li.innerHTML = `
                     <a href="post.html?col=${COLLECTION_NAME}&id=${doc.id}">
-                        <span class="post-title">${data.title}</span>
+                        <span class="post-title">${data.title} ${newTag}</span>
                         <span class="date"><i class="far fa-calendar-alt" style="font-size:12px;"></i> ${date}</span>
                     </a>
                 `;
+                
+                li.style.transition = "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)";
                 
                 li.addEventListener('mouseenter', () => {
                     li.style.borderLeft = `4px solid ${currentTheme.hoverEcho}`;
                     li.querySelector('a').style.color = currentTheme.hoverEcho;
                 });
                 li.addEventListener('mouseleave', () => {
-                    li.style.borderLeft = 'none';
+                    li.style.borderLeft = '4px solid transparent';
                     li.querySelector('a').style.color = '#475569';
                 });
 
@@ -417,7 +442,6 @@
     }
     loadAllPosts();
 
-    // --- Live Search Box Functionality ---
     const searchInput = document.getElementById('live-search');
     const resultsDiv = document.getElementById('search-results');
     searchInput.addEventListener('input', (e) => {
