@@ -174,19 +174,26 @@
         
         .footer-bottom { text-align: center; margin-top: 50px; padding-top: 22px; border-top: 1px solid #1e293b; font-size: 13px; color: #64748b; }
 
-        /* --- Responsive Viewports Style --- */
-        @media (max-width: 1200px) { .grid-container { grid-template-columns: repeat(2, 1fr); gap: 20px; } }
-        @media (max-width: 992px) {
-            .header-container { flex-direction: column; gap: 12px; padding: 5px 15px; }
-            .logo-box { justify-content: center; }
-            .search-wrapper { max-width: 100%; width: 100%; }
-            .header-menu { flex-wrap: wrap; justify-content: center; gap: 12px; padding-bottom: 5px; }
+        /* --- Responsive Viewports Style (100% Fixed Mobile Header) --- */
+        @media (max-width: 1200px) { 
+            .grid-container { grid-template-columns: repeat(2, 1fr); gap: 20px; } 
         }
-        @media (max-width: 600px) { 
+        @media (max-width: 768px) {
+            .header-main { padding: 10px 0; }
+            .header-container { flex-direction: column; align-items: center; gap: 12px; padding: 0 15px; }
+            .logo-box { justify-content: center; width: 100%; }
+            .logo-text { font-size: 1.4rem; }
+            .logo-img { height: 38px; margin-right: 8px; }
+            .search-wrapper { max-width: 100%; width: 100%; }
+            .search-box input { padding: 10px 45px 10px 18px; font-size: 13px; }
+            .search-box button { height: 32px; width: 32px; top: 4px; right: 4px; }
+            .header-menu { flex-wrap: wrap; justify-content: center; gap: 10px; width: 100%; padding-top: 4px; }
+            .header-menu a { font-size: 0.82rem; padding: 4px 8px; background: #f1f5f9; border-radius: 20px; font-weight: 700; border: 1px solid #e2e8f0; }
             .grid-container { grid-template-columns: 1fr; gap: 18px; } 
             .main-content { padding: 15px 12px; }
-            .header-menu a { font-size: 0.8rem; padding: 2px 4px; }
-            .adsense-text-container { padding: 22px 18px; }
+            .adsense-text-container { padding: 22px 18px; margin-top: 25px; }
+            .adsense-text-container h2 { font-size: 1.15rem; }
+            .adsense-text-container p { font-size: 0.92rem; }
             .footer-container { grid-template-columns: 1fr; gap: 35px; text-align: center; }
             .footer-sec h3 { border-left: none; border-bottom: 2px solid var(--accent); display: inline-block; padding-left: 0; padding-bottom: 4px; }
             .social-box { justify-content: center; }
@@ -297,7 +304,7 @@
     <div class="footer-bottom">
         <p>© <span id="current-year"></span> Student Help Club | Admin: Vishal</p>
     </div>
-</footer>
+</div>
 
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
@@ -321,7 +328,7 @@
     // Dynamic Future-Proof Calendar Setup
     const d = new Date();
     document.getElementById('current-date').innerText = d.toLocaleDateString('en-US', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' });
-    document.getElementById('current-year').innerText = d.getFullYear(); // Keeps copyright year hamesha up-to-date automatically
+    document.getElementById('current-year').innerText = d.getFullYear();
 
     // Streamlined Marquee Engine
     function updateGlobalMarquee() {
