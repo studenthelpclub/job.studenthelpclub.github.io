@@ -41,6 +41,7 @@
             --radius: 12px;
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             --header-gradient: linear-gradient(135deg, #10b981, #059669); /* Results Premium Green Theme */
+            --theme-green: #10b981;
         }
         
         body { 
@@ -61,7 +62,7 @@
         .top-links a:hover { color: #fff; }
         .top-links a.ws-link:hover { color: #22c55e; }
 
-        /* --- Main Nav Header with Live Search (Index.html Copy Fix) --- */
+        /* --- Main Nav Header with Search & Menu (100% Index Sync) --- */
         .header-main { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); padding: 14px 0; box-shadow: 0 4px 20px -2px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; transition: var(--transition); }
         .header-container { max-width: 1200px; margin: auto; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; gap: 20px; }
         
@@ -72,7 +73,7 @@
         .logo-text span { color: var(--accent); }
 
         /* Search Section Wrapper */
-        .search-wrapper { flex-grow: 1; max-width: 460px; position: relative; }
+        .search-wrapper { flex-grow: 1; max-width: 400px; position: relative; }
         .search-box { display: flex; position: relative; }
         .search-box input { 
             width: 100%; 
@@ -106,7 +107,6 @@
             align-items: center;
             justify-content: center;
         }
-        .search-box button:hover { background: var(--primary-light); transform: scale(1.05); }
 
         #search-results { 
             position: absolute; 
@@ -125,6 +125,11 @@
         }
         #search-results::-webkit-scrollbar { width: 6px; }
         #search-results::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+
+        /* Navigation Links Menu with Active Page Highlight Fix */
+        .header-menu { display: flex; gap: 20px; align-items: center; }
+        .header-menu a { text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 0.88rem; text-transform: uppercase; transition: var(--transition); letter-spacing: 0.3px; }
+        .header-menu a:hover, .header-menu a.active-page { color: var(--theme-green); }
 
         /* Ticker Marquee Style (Index.html Copy Fix) */
         .ticker-wrap { background: #fefce8; color: #713f12; padding: 10px 0; border-bottom: 1px solid #fef08a; font-weight: 600; font-size: 13.5px; text-align: center; }
@@ -151,8 +156,8 @@
             transition: var(--transition);
         }
         .btn-home:hover { 
-            color: #10b981; 
-            border-color: #10b981;
+            color: var(--theme-green); 
+            border-color: var(--theme-green);
             transform: translateX(-3px);
         }
 
@@ -179,7 +184,7 @@
         }
 
         .post-list { list-style: none; padding: 0; margin: 0; }
-        .post-list li { border-bottom: 1px solid #f1f5f9; transition: var(--transition); border-left: 0 solid transparent; }
+        .post-list li { border-bottom: 1px solid #f1f5f9; transition: var(--transition); border-left: 4px solid transparent; }
         .post-list li:last-child { border-bottom: none; }
         
         .post-list li a { 
@@ -201,8 +206,8 @@
             flex-grow: 1;
         }
         
-        .post-list li:hover { background: #f8fafc; }
-        .post-list li:hover a { padding-left: 28px; }
+        .post-list li:hover { background: #f8fafc; border-left-color: var(--theme-green); }
+        .post-list li:hover a { padding-left: 28px; color: var(--theme-green); }
         
         .date { 
             color: #94a3b8; 
@@ -217,7 +222,7 @@
             gap: 5px;
         }
 
-        /* --- New Badge Style & Blinking Animation (FIXED) --- */
+        /* --- New Badge Style & Blinking Animation --- */
         .new-badge {
             background: #ef4444; 
             color: white; 
@@ -255,11 +260,14 @@
         .footer-bottom { text-align: center; margin-top: 50px; padding-top: 22px; border-top: 1px solid #1e293b; font-size: 13px; color: #64748b; }
 
         /* --- Responsive Styles --- */
-        @media (max-width: 768px) { 
-            .header-container { flex-direction: column; align-items: stretch; gap: 14px; padding: 5px 15px; }
+        @media (max-width: 992px) {
+            .header-container { flex-direction: column; gap: 12px; padding: 5px 15px; }
             .logo-box { justify-content: center; }
-            .logo-text { font-size: 1.3rem; }
-            .search-wrapper { max-width: 100%; }
+            .search-wrapper { max-width: 100%; width: 100%; }
+            .header-menu { flex-wrap: wrap; justify-content: center; gap: 12px; padding-bottom: 5px; }
+        }
+        @media (max-width: 768px) { 
+            .header-menu a { font-size: 0.8rem; padding: 2px 4px; }
             .main-content { padding: 20px 12px; }
             .page-header-box { padding: 18px; margin-bottom: 20px; }
             h1 { font-size: 1.25rem; }
@@ -296,6 +304,13 @@
                 <button aria-label="Search"><i class="fas fa-search"></i></button>
             </div>
             <div id="search-results"></div>
+        </div>
+        <div class="header-menu">
+            <a href="index.html">Home</a>
+            <a href="jobs.html">Jobs</a>
+            <a href="admit-cards.html">Admit Card</a>
+            <a href="results.html" class="active-page">Results</a>
+            <a href="scholarship.html">Scholarship</a>
         </div>
     </div>
 </div>
@@ -354,11 +369,11 @@
         'jobs': { name: "Latest Government Jobs", gradient: "linear-gradient(135deg, #2563eb, #1d4ed8)", hoverEcho: "#2563eb" },
         'admit': { name: "Latest Admit Cards", gradient: "linear-gradient(135deg, #f97316, #ea580c)", hoverEcho: "#ea580c" },
         'result': { name: "Sarkari Exam Results", gradient: "linear-gradient(135deg, #10b981, #059669)", hoverEcho: "#10b981" },
-        'yojna': { name: "Sarkari Yojna Updates", gradient: "linear-gradient(135deg, #8b5cf6, #7c3aed)", hoverEcho: "#7c3aed" },
+        'yojna': { name: "Sarkari Yojna Updates", gradient: "linear-gradient(135deg, #8b5cf6, #7c3aed)", hoverEcho: "#8b5cf6" },
         'scholarship': { name: "Scholarship Schemes", gradient: "linear-gradient(135deg, #ef4444, #dc2626)", hoverEcho: "#dc2626" }
     };
 
-    const currentTheme = themeConfigs[COLLECTION_NAME] || { name: "Latest Updates", gradient: "linear-gradient(135deg, #1e293b, #0f172a)", hoverEcho: "#2563eb" };
+    const currentTheme = themeConfigs[COLLECTION_NAME] || { name: "Latest Updates", gradient: "linear-gradient(135deg, #1e293b, #0f172a)", hoverEcho: "#10b981" };
 
     document.getElementById('page-title').innerText = currentTheme.name;
     document.getElementById('header-theme-box').style.setProperty('--header-gradient', currentTheme.gradient);
@@ -389,7 +404,7 @@
         });
     }
 
-    // Load data from all other categories for multi-search sync
+    // Sync all categories for search and marquee live streaming
     const allCols = ['jobs', 'admit', 'result', 'yojna', 'scholarship'];
     allCols.forEach(col => { if(col !== COLLECTION_NAME) syncSearchAndMarquee(col); });
 
@@ -414,8 +429,6 @@
                 searchData.push({ id: doc.id, title: data.title, cat: COLLECTION_NAME });
 
                 const li = document.createElement('li');
-                
-                // Top 2 results posts ke liye blinking new badge append hoga
                 const newTag = index < 2 ? `<span class="new-badge">NEW</span>` : '';
 
                 li.innerHTML = `
@@ -427,7 +440,6 @@
                 
                 li.style.transition = "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)";
                 
-                // Hover Effects Dynamic Fix to match Results Theme Green
                 li.addEventListener('mouseenter', () => {
                     li.style.borderLeft = `4px solid ${currentTheme.hoverEcho}`;
                     li.querySelector('a').style.color = currentTheme.hoverEcho;
