@@ -12,16 +12,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Latest Sarkari Exam Results 2026 | Check Board & Govt Results - Student Help Club</title>
-    <meta name="description" content="Check latest Government Exam Results, Board Results, Entrance Exam Cut-Off, and Merit Lists instantly on Student Help Club (SHC). Fastest Sarkari Result updates.">
-    <meta name="keywords" content="Sarkari Result 2026, Latest Exam Results, Board Result, Check Merit List, Recruitment Cut Off, Student Help Club, SHC Results">
+    <title>Latest Scholarships 2026 | National & State Schemes - Student Help Club</title>
+    <meta name="description" content="Find and apply for the latest National Scholarships, State Scholarship Schemes, Pre-Matric, Post-Matric, and Minority fellowships first on Student Help Club (SHC).">
+    <meta name="keywords" content="Latest Scholarship 2026, National Scholarship Portal, NSP Updates, State Scholarship, Fellowship Schemes, Online Form, Student Help Club, SHC Scholarship">
     <meta name="author" content="Vishal - Student Help Club">
     <meta name="robots" content="index, follow">
     
-    <meta property="og:title" content="Latest Exam Results & Merit Lists - Student Help Club">
-    <meta property="og:description" content="Get fastest access and live servers to check all central and state government exam results on SHC.">
+    <meta property="og:title" content="Latest Scholarship Schemes & Updates - Student Help Club">
+    <meta property="og:description" content="Get instant updates and direct links for all central and state government scholarships on SHC.">
     <meta property="og:image" content="shc-logo.jpg">
-    <meta property="og:url" content="https://www.studenthelpclub.in/results.html">
+    <meta property="og:url" content="https://www.studenthelpclub.in/scholarship.html">
 
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,7 +40,8 @@
             --text-main: #334155;
             --radius: 12px;
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            --header-gradient: linear-gradient(135deg, #10b981, #059669); /* Results Premium Green Theme */
+            --header-gradient: linear-gradient(135deg, #ef4444, #dc2626); /* Scholarship Premium Red Theme */
+            --theme-red: #ef4444;
         }
         
         body { 
@@ -54,14 +55,14 @@
             min-height: 100vh;
         }
 
-        /* --- Top Bar (Index.html Copy Fix) --- */
+        /* --- Top Bar --- */
         .top-bar { background: var(--nav-bg); color: #cbd5e1; padding: 8px 0; font-size: 13px; border-bottom: 1px solid rgba(255,255,255,0.1); }
         .top-container { max-width: 1200px; margin: auto; display: flex; justify-content: space-between; padding: 0 20px; align-items: center; }
         .top-links a { color: #cbd5e1; text-decoration: none; margin-left: 20px; transition: var(--transition); display: inline-flex; align-items: center; gap: 6px; }
         .top-links a:hover { color: #fff; }
         .top-links a.ws-link:hover { color: #22c55e; }
 
-        /* --- Main Nav Header with Search & Menu (100% Index Sync) --- */
+        /* --- Main Nav Header --- */
         .header-main { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); padding: 14px 0; box-shadow: 0 4px 20px -2px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; transition: var(--transition); }
         .header-container { max-width: 1200px; margin: auto; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; gap: 20px; }
         
@@ -71,7 +72,6 @@
         .logo-text { font-size: 1.6rem; font-weight: 800; color: var(--primary); text-transform: uppercase; letter-spacing: -0.5px; margin: 0; }
         .logo-text span { color: var(--accent); }
 
-        /* Search Section Wrapper */
         .search-wrapper { flex-grow: 1; max-width: 400px; position: relative; }
         .search-box { display: flex; position: relative; }
         .search-box input { 
@@ -125,19 +125,16 @@
         #search-results::-webkit-scrollbar { width: 6px; }
         #search-results::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
 
-        /* Navigation Links Menu */
         .header-menu { display: flex; gap: 20px; align-items: center; }
         .header-menu a { text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 0.88rem; text-transform: uppercase; transition: var(--transition); letter-spacing: 0.3px; }
-        .header-menu a:hover { color: #10b981; } /* Changes to green on hover */
+        .header-menu a:hover, .header-menu a.active-page { color: var(--theme-red); }
 
-        /* Ticker Marquee Style (Index.html Copy Fix) */
         .ticker-wrap { background: #fefce8; color: #713f12; padding: 10px 0; border-bottom: 1px solid #fef08a; font-weight: 600; font-size: 13.5px; text-align: center; }
 
         /* --- Main Content Area --- */
         .main-content { flex: 1; padding: 40px 20px; }
         .container { max-width: 850px; margin: 0 auto; }
         
-        /* Back Home Link Button */
         .btn-home { 
             display: inline-flex; 
             align-items: center; 
@@ -155,25 +152,23 @@
             transition: var(--transition);
         }
         .btn-home:hover { 
-            color: #10b981; 
-            border-color: #10b981;
+            color: var(--theme-red); 
+            border-color: var(--theme-red);
             transform: translateX(-3px);
         }
 
-        /* Dynamic Page Header Block */
         .page-header-box {
             background: var(--header-gradient); 
             padding: 22px;
             border-radius: var(--radius);
             color: white;
-            box-shadow: 0 10px 20px -5px rgba(16, 185, 129, 0.15);
+            box-shadow: 0 10px 20px -5px rgba(239, 68, 68, 0.15);
             margin-bottom: 30px;
             text-align: center;
             transition: var(--transition);
         }
         h1 { margin: 0; font-size: 1.6rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
 
-        /* --- List Wrapper Box --- */
         .list-wrapper {
             background: var(--white);
             border-radius: var(--radius);
@@ -183,7 +178,7 @@
         }
 
         .post-list { list-style: none; padding: 0; margin: 0; }
-        .post-list li { border-bottom: 1px solid #f1f5f9; transition: var(--transition); border-left: 0 solid transparent; }
+        .post-list li { border-bottom: 1px solid #f1f5f9; transition: var(--transition); border-left: 4px solid transparent; }
         .post-list li:last-child { border-bottom: none; }
         
         .post-list li a { 
@@ -205,8 +200,8 @@
             flex-grow: 1;
         }
         
-        .post-list li:hover { background: #f8fafc; }
-        .post-list li:hover a { padding-left: 28px; }
+        .post-list li:hover { background: #f8fafc; border-left-color: var(--theme-red); }
+        .post-list li:hover a { padding-left: 28px; color: var(--theme-red); }
         
         .date { 
             color: #94a3b8; 
@@ -221,7 +216,6 @@
             gap: 5px;
         }
 
-        /* --- New Badge Style & Blinking Animation --- */
         .new-badge {
             background: #ef4444; 
             color: white; 
@@ -240,7 +234,6 @@
             100% { opacity: 1; }
         }
 
-        /* --- Footer (Index.html Copy 100% Fix) --- */
         footer { background: #0f172a; color: #94a3b8; padding: 50px 20px 25px; margin-top: auto; border-top: 4px solid var(--primary-light); text-align: left; }
         .footer-container { max-width: 1200px; margin: auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 50px; }
         .footer-sec h3 { color: #fff; font-size: 1.05rem; margin-bottom: 20px; border-left: 3px solid var(--accent); padding-left: 12px; text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px; }
@@ -258,7 +251,6 @@
         
         .footer-bottom { text-align: center; margin-top: 50px; padding-top: 22px; border-top: 1px solid #1e293b; font-size: 13px; color: #64748b; }
 
-        /* --- Responsive Styles --- */
         @media (max-width: 992px) {
             .header-container { flex-direction: column; gap: 12px; padding: 5px 15px; }
             .logo-box { justify-content: center; }
@@ -286,7 +278,7 @@
         <span><i class="fas fa-calendar-alt"></i> <span id="current-date"></span></span>
         <div class="top-links">
             <a href="https://t.me/studenthelpclub" target="_blank"><i class="fab fa-telegram"></i> Telegram</a>
-            <a href="https://whatsapp.com/channel/0029VbCJ2xI7IUYa1zMB6n1f" target="_blank" class="ws-link" style="color: #25D366;"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="https://whatsapp.com/channel/0029VbCJ2xI7IUYa1zMB6n1f" class="ws-link" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
         </div>
     </div>
 </div>
@@ -309,7 +301,7 @@
             <a href="jobs.html">Jobs</a>
             <a href="admit-cards.html">Admit Card</a>
             <a href="results.html">Results</a>
-            <a href="scholarship.html">Scholarship</a>
+            <a href="scholarship.html" class="active-page">Scholarship</a>
         </div>
     </div>
 </div>
@@ -359,8 +351,7 @@
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
 
-    // --- CONFIGURATION & DYNAMIC THEME SYSTEM ---
-    const COLLECTION_NAME = "result"; 
+    const COLLECTION_NAME = "scholarship"; 
     let searchData = [];
     let marqueeCandidates = {};
     
@@ -368,8 +359,8 @@
         'jobs': { name: "Latest Government Jobs", gradient: "linear-gradient(135deg, #2563eb, #1d4ed8)", hoverEcho: "#2563eb" },
         'admit': { name: "Latest Admit Cards", gradient: "linear-gradient(135deg, #f97316, #ea580c)", hoverEcho: "#ea580c" },
         'result': { name: "Sarkari Exam Results", gradient: "linear-gradient(135deg, #10b981, #059669)", hoverEcho: "#10b981" },
-        'yojna': { name: "Sarkari Yojna Updates", gradient: "linear-gradient(135deg, #8b5cf6, #7c3aed)", hoverEcho: "#7c3aed" },
-        'scholarship': { name: "Scholarship Schemes", gradient: "linear-gradient(135deg, #ef4444, #dc2626)", hoverEcho: "#dc2626" }
+        'yojna': { name: "Sarkari Yojna Updates", gradient: "linear-gradient(135deg, #8b5cf6, #7c3aed)", hoverEcho: "#8b5cf6" },
+        'scholarship': { name: "Scholarship Schemes", gradient: "linear-gradient(135deg, #ef4444, #dc2626)", hoverEcho: "#ef4444" }
     };
 
     const currentTheme = themeConfigs[COLLECTION_NAME] || { name: "Latest Updates", gradient: "linear-gradient(135deg, #1e293b, #0f172a)", hoverEcho: "#2563eb" };
@@ -377,10 +368,6 @@
     document.getElementById('page-title').innerText = currentTheme.name;
     document.getElementById('header-theme-box').style.setProperty('--header-gradient', currentTheme.gradient);
 
-    // Live Date Setup
-    document.getElementById('current-date').innerText = new Date().toLocaleDateString('en-US', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' });
-
-    // --- Global Marquee Sync Engine ---
     function updateGlobalMarquee() {
         const categories = Object.values(marqueeCandidates);
         if (categories.length > 0) {
@@ -403,11 +390,9 @@
         });
     }
 
-    // Load data from all other categories for multi-search sync
     const allCols = ['jobs', 'admit', 'result', 'yojna', 'scholarship'];
     allCols.forEach(col => { if(col !== COLLECTION_NAME) syncSearchAndMarquee(col); });
 
-    // Load Primary Category Posts
     function loadAllPosts() {
         const q = query(collection(db, COLLECTION_NAME), orderBy("timestamp", "desc"));
         onSnapshot(q, (snapshot) => {
@@ -428,8 +413,6 @@
                 searchData.push({ id: doc.id, title: data.title, cat: COLLECTION_NAME });
 
                 const li = document.createElement('li');
-                
-                // Top 2 results posts ke liye blinking new badge append hoga
                 const newTag = index < 2 ? `<span class="new-badge">NEW</span>` : '';
 
                 li.innerHTML = `
@@ -441,7 +424,6 @@
                 
                 li.style.transition = "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)";
                 
-                // Hover Effects Dynamic Fix to match Results Theme Green
                 li.addEventListener('mouseenter', () => {
                     li.style.borderLeft = `4px solid ${currentTheme.hoverEcho}`;
                     li.querySelector('a').style.color = currentTheme.hoverEcho;
@@ -457,7 +439,6 @@
     }
     loadAllPosts();
 
-    // --- Search Logic ---
     const searchInput = document.getElementById('live-search');
     const resultsDiv = document.getElementById('search-results');
     searchInput.addEventListener('input', (e) => {
