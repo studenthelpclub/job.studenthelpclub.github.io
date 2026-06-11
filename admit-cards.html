@@ -10,7 +10,7 @@
     </script>
     <meta name="google-site-verification" content="ySBKvgRcffZgkku3SImRkt6T7rm0r_L6OfClnFXGrrc" />
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
     <title>Latest Admit Cards | Sarkari Result & Govt Exam Hall Ticket 2026</title>
     <meta name="description" content="Download Latest Government Exam Admit Cards, Hall Tickets, and Call Letters first on Student Help Club (SHC). Get fastest Sarkari Result exam updates.">
@@ -53,12 +53,14 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
         /* --- Top Bar --- */
         .top-bar { background: var(--nav-bg); color: #cbd5e1; padding: 8px 0; font-size: 13px; border-bottom: 1px solid rgba(255,255,255,0.1); }
         .top-container { max-width: 1200px; margin: auto; display: flex; justify-content: space-between; padding: 0 20px; align-items: center; }
-        .top-links a { color: #cbd5e1; text-decoration: none; margin-left: 20px; transition: var(--transition); display: inline-flex; align-items: center; gap: 6px; }
+        .top-links { display: flex; gap: 20px; }
+        .top-links a { color: #cbd5e1; text-decoration: none; transition: var(--transition); display: inline-flex; align-items: center; gap: 6px; }
         .top-links a:hover { color: #fff; }
         .top-links a.ws-link:hover { color: #22c55e; }
 
@@ -84,6 +86,7 @@
             font-weight: 500;
             transition: var(--transition);
             background: #f8fafc;
+            box-sizing: border-box;
         }
         .search-box input:focus { 
             border-color: var(--primary-light); 
@@ -121,6 +124,7 @@
             overflow-y: auto; 
             border: 1px solid #e2e8f0;
             padding: 8px 0;
+            box-sizing: border-box;
         }
         #search-results::-webkit-scrollbar { width: 6px; }
         #search-results::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
@@ -129,7 +133,7 @@
         .header-menu a { text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 0.88rem; text-transform: uppercase; transition: var(--transition); letter-spacing: 0.3px; }
         .header-menu a:hover, .header-menu a.active-page { color: var(--theme-orange); }
 
-        .ticker-wrap { background: #fefce8; color: #713f12; padding: 10px 0; border-bottom: 1px solid #fef08a; font-weight: 600; font-size: 13.5px; text-align: center; }
+        .ticker-wrap { background: #fefce8; color: #713f12; padding: 10px 0; border-bottom: 1px solid #fef08a; font-weight: 600; font-size: 13.5px; text-align: center; overflow: hidden; white-space: nowrap; }
 
         /* --- Main Content Area --- */
         .main-content { flex: 1; padding: 40px 20px; }
@@ -198,6 +202,7 @@
             overflow: hidden;
             text-overflow: ellipsis;
             flex-grow: 1;
+            line-height: 1.4;
         }
         
         .post-list li:hover { background: #f8fafc; border-left-color: var(--theme-orange); }
@@ -226,6 +231,7 @@
             display: inline-block; 
             flex-shrink: 0;
             margin-left: 8px;
+            vertical-align: middle;
             animation: blink 1.2s infinite linear;
         }
         @keyframes blink {
@@ -234,12 +240,13 @@
             100% { opacity: 1; }
         }
 
+        /* --- Footer --- */
         footer { background: #0f172a; color: #94a3b8; padding: 50px 20px 25px; margin-top: auto; border-top: 4px solid var(--primary-light); text-align: left; }
         .footer-container { max-width: 1200px; margin: auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 50px; }
         .footer-sec h3 { color: #fff; font-size: 1.05rem; margin-bottom: 20px; border-left: 3px solid var(--accent); padding-left: 12px; text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px; }
         .footer-sec ul { list-style: none; padding: 0; margin: 0; }
         .footer-sec ul li { margin-bottom: 12px; }
-        .footer-sec ul li a { color: #94a3b8; text-decoration: none; font-size: 0.92rem; transition: var(--transition); }
+        .footer-sec ul li a { color: #94a3b8; text-decoration: none; font-size: 0.92rem; transition: var(--transition); display: inline-block; }
         .footer-sec ul li a:hover { color: #fff; padding-left: 6px; }
         
         .social-box { display: flex; gap: 14px; margin-top: 15px; }
@@ -251,23 +258,41 @@
         
         .footer-bottom { text-align: center; margin-top: 50px; padding-top: 22px; border-top: 1px solid #1e293b; font-size: 13px; color: #64748b; }
 
+        /* =========================================
+           ENHANCED MOBILE RESPONSIVENESS
+           ========================================= */
+           
         @media (max-width: 992px) {
-            .header-container { flex-direction: column; gap: 12px; padding: 5px 15px; }
+            .header-container { flex-direction: column; gap: 15px; padding: 15px; }
             .logo-box { justify-content: center; }
             .search-wrapper { max-width: 100%; width: 100%; }
-            .header-menu { flex-wrap: wrap; justify-content: center; gap: 12px; padding-bottom: 5px; }
+            .header-menu { flex-wrap: wrap; justify-content: center; gap: 10px 15px; padding-bottom: 5px; }
         }
+        
         @media (max-width: 768px) { 
-            .header-menu a { font-size: 0.8rem; padding: 2px 4px; }
-            .main-content { padding: 20px 12px; }
-            .page-header-box { padding: 18px; margin-bottom: 20px; }
-            h1 { font-size: 1.25rem; }
-            .post-list li a { padding: 14px 16px; font-size: 0.9rem; flex-direction: column; align-items: flex-start; gap: 8px; }
-            .post-list li a .post-title { white-space: normal; text-overflow: unset; overflow: visible; }
-            .date { font-size: 0.78rem; padding: 2px 8px; }
+            .top-container { flex-direction: column; gap: 10px; justify-content: center; text-align: center; padding: 10px; }
+            .top-links { justify-content: center; gap: 15px; }
+            
+            .header-menu a { font-size: 0.8rem; padding: 6px 12px; background: #f1f5f9; border-radius: 6px; }
+            .header-menu a.active-page { background: #fff1e6; color: var(--theme-orange); }
+            
+            .main-content { padding: 20px 15px; }
+            .page-header-box { padding: 15px; margin-bottom: 20px; }
+            h1 { font-size: 1.35rem; }
+            
+            .post-list li a { padding: 14px 16px; font-size: 0.95rem; flex-direction: column; align-items: flex-start; gap: 10px; }
+            .post-list li a .post-title { white-space: normal; text-overflow: unset; overflow: visible; display: block; width: 100%; }
+            .date { font-size: 0.78rem; padding: 4px 8px; width: fit-content; }
+            
             .footer-container { grid-template-columns: 1fr; gap: 35px; text-align: center; }
-            .footer-sec h3 { border-left: none; border-bottom: 2px solid var(--accent); display: inline-block; padding-left: 0; padding-bottom: 4px; }
+            .footer-sec h3 { border-left: none; border-bottom: 2px solid var(--accent); display: inline-block; padding-left: 0; padding-bottom: 6px; }
             .social-box { justify-content: center; }
+        }
+        
+        @media (max-width: 480px) {
+            .logo-text { font-size: 1.3rem; }
+            .logo-img { height: 35px; }
+            .btn-home { width: 100%; justify-content: center; box-sizing: border-box; }
         }
     </style>
     <script>(function(s){s.dataset.zone='11130314',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
