@@ -40,7 +40,7 @@
             --text-main: #334155;
             --radius: 12px;
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            --header-gradient: linear-gradient(135deg, #2563eb, #1d4ed8); /* Jobs Default Blue Theme */
+            --header-gradient: linear-gradient(135deg, #2563eb, #1d4ed8);
         }
         
         body { 
@@ -54,14 +54,14 @@
             min-height: 100vh;
         }
 
-        /* --- Top Bar (Index.html Copy Fix) --- */
+        /* --- Top Bar --- */
         .top-bar { background: var(--nav-bg); color: #cbd5e1; padding: 8px 0; font-size: 13px; border-bottom: 1px solid rgba(255,255,255,0.1); }
         .top-container { max-width: 1200px; margin: auto; display: flex; justify-content: space-between; padding: 0 20px; align-items: center; }
         .top-links a { color: #cbd5e1; text-decoration: none; margin-left: 20px; transition: var(--transition); display: inline-flex; align-items: center; gap: 6px; }
         .top-links a:hover { color: #fff; }
         .top-links a.ws-link:hover { color: #22c55e; }
 
-        /* --- Main Nav Header with Live Search (Index.html Copy Fix) --- */
+        /* --- Main Nav Header with Live Search --- */
         .header-main { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); padding: 14px 0; box-shadow: 0 4px 20px -2px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; transition: var(--transition); }
         .header-container { max-width: 1200px; margin: auto; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; gap: 20px; }
         
@@ -84,6 +84,7 @@
             font-weight: 500;
             transition: var(--transition);
             background: #f8fafc;
+            box-sizing: border-box; /* Ensures padding doesn't break width */
         }
         .search-box input:focus { 
             border-color: var(--primary-light); 
@@ -122,11 +123,12 @@
             overflow-y: auto; 
             border: 1px solid #e2e8f0;
             padding: 8px 0;
+            box-sizing: border-box;
         }
         #search-results::-webkit-scrollbar { width: 6px; }
         #search-results::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
 
-        /* Ticker Marquee Style (Index.html Copy Fix) */
+        /* Ticker Marquee Style */
         .ticker-wrap { background: #fefce8; color: #713f12; padding: 10px 0; border-bottom: 1px solid #fef08a; font-weight: 600; font-size: 13.5px; text-align: center; }
 
         /* --- Main Content Area --- */
@@ -236,7 +238,7 @@
             100% { opacity: 1; }
         }
 
-        /* --- Footer (Index.html Copy 100% Fix) --- */
+        /* --- Footer --- */
         footer { background: #0f172a; color: #94a3b8; padding: 50px 20px 25px; margin-top: auto; border-top: 4px solid var(--primary-light); }
         .footer-container { max-width: 1200px; margin: auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 50px; text-align: left; }
         .footer-sec h3 { color: #fff; font-size: 1.05rem; margin-bottom: 20px; border-left: 3px solid var(--accent); padding-left: 12px; text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px; }
@@ -254,25 +256,58 @@
         
         .footer-bottom { text-align: center; margin-top: 50px; padding-top: 22px; border-top: 1px solid #1e293b; font-size: 13px; color: #64748b; }
 
-        /* --- Responsive Styles --- */
+        /* =========================================
+           UPDATED ENHANCED RESPONSIVE STYLES 
+           ========================================= */
+
+        /* Tablets & Standard Mobile (max-width: 768px) */
         @media (max-width: 768px) { 
-            .header-container { flex-direction: column; align-items: stretch; gap: 14px; padding: 5px 15px; }
+            /* Top Bar Mobile Optimization */
+            .top-container { flex-direction: column; gap: 10px; text-align: center; justify-content: center; padding: 10px 15px; }
+            .top-links { margin-left: 0; display: flex; justify-content: center; gap: 20px; width: 100%; }
+            .top-links a { margin-left: 0; }
+
+            /* Header & Search */
+            .header-container { flex-direction: column; align-items: stretch; gap: 16px; padding: 10px 15px; }
             .logo-box { justify-content: center; }
-            .logo-text { font-size: 1.3rem; }
-            .search-wrapper { max-width: 100%; }
-            .main-content { padding: 20px 12px; }
+            .logo-text { font-size: 1.4rem; }
+            .search-wrapper { max-width: 100%; width: 100%; }
+            #search-results { max-height: 250px; } /* Reduce height for mobile scrolling */
+
+            /* Main Content Adjustments */
+            .main-content { padding: 20px 15px; }
             .page-header-box { padding: 18px; margin-bottom: 20px; }
             h1 { font-size: 1.25rem; }
-            .post-list li a { padding: 14px 16px; font-size: 0.9rem; flex-direction: column; align-items: flex-start; gap: 8px; }
-            .post-list li a .post-title { white-space: normal; text-overflow: unset; overflow: visible; }
-            .date { font-size: 0.78rem; padding: 2px 8px; }
+            
+            /* Lists Adjustments */
+            .post-list li a { padding: 14px 16px; font-size: 0.9rem; flex-direction: column; align-items: flex-start; gap: 10px; }
+            .post-list li a .post-title { white-space: normal; text-overflow: unset; overflow: visible; line-height: 1.4; width: 100%; }
+            .date { font-size: 0.78rem; padding: 4px 8px; width: fit-content; }
+            
+            /* Footer Adjustments */
             .footer-container { grid-template-columns: 1fr; gap: 35px; text-align: center; }
-            .footer-sec h3 { border-left: none; border-bottom: 2px solid var(--accent); display: inline-block; padding-left: 0; padding-bottom: 4px; }
+            .footer-sec h3 { border-left: none; border-bottom: 2px solid var(--accent); display: inline-block; padding-left: 0; padding-bottom: 6px; }
             .social-box { justify-content: center; }
+        }
+
+        /* Extra Small Mobile Devices (max-width: 480px) */
+        @media (max-width: 480px) {
+            .logo-img { height: 38px; }
+            .logo-text { font-size: 1.2rem; }
+            .ticker-wrap { font-size: 12px; padding: 8px 0; }
+            
+            .btn-home { font-size: 0.85rem; padding: 8px 14px; margin-bottom: 15px; }
+            .page-header-box { padding: 15px; border-radius: 8px; }
+            h1 { font-size: 1.1rem; }
+            
+            .post-list li a { padding: 12px; font-size: 0.85rem; }
+            .new-badge { font-size: 8px; padding: 2px 4px; }
+            
+            .social-box a { width: 36px; height: 36px; font-size: 0.9rem; }
         }
     </style>
     <script>(function(s){s.dataset.zone='11130314',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
-<script>(function(s){s.dataset.zone='11130315',s.src='https://n6wxm.com/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+    <script>(function(s){s.dataset.zone='11130315',s.src='https://n6wxm.com/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
 </head>
 <body>
 
@@ -347,7 +382,6 @@
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
 
-    // --- CONFIGURATION & DYNAMIC THEME SYSTEM ---
     const COLLECTION_NAME = "jobs"; 
     let searchData = [];
     let marqueeCandidates = {};
@@ -365,10 +399,8 @@
     document.getElementById('page-title').innerText = currentTheme.name;
     document.getElementById('header-theme-box').style.setProperty('--header-gradient', currentTheme.gradient);
 
-    // Live Date Setup
     document.getElementById('current-date').innerText = new Date().toLocaleDateString('en-US', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' });
 
-    // --- Global Marquee Sync Engine ---
     function updateGlobalMarquee() {
         const categories = Object.values(marqueeCandidates);
         if (categories.length > 0) {
@@ -391,11 +423,9 @@
         });
     }
 
-    // Load data from all other categories for multi-search sync
     const allCols = ['jobs', 'admit', 'result', 'yojna', 'scholarship'];
     allCols.forEach(col => { if(col !== COLLECTION_NAME) syncSearchAndMarquee(col); });
 
-    // Load Primary Category Posts
     function loadAllPosts() {
         const q = query(collection(db, COLLECTION_NAME), orderBy("timestamp", "desc"));
         onSnapshot(q, (snapshot) => {
@@ -416,8 +446,6 @@
                 searchData.push({ id: doc.id, title: data.title, cat: COLLECTION_NAME });
 
                 const li = document.createElement('li');
-                
-                // Top 2 posts ke liye blinking new badge append hoga
                 const newTag = index < 2 ? `<span class="new-badge">NEW</span>` : '';
 
                 li.innerHTML = `
@@ -444,7 +472,6 @@
     }
     loadAllPosts();
 
-    // --- Search Logic ---
     const searchInput = document.getElementById('live-search');
     const resultsDiv = document.getElementById('search-results');
     searchInput.addEventListener('input', (e) => {
