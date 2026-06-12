@@ -13,6 +13,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests; block-all-mixed-content">
+    
     <title>Student Help Club | Latest Government Jobs, Sarkari Result & Admit Cards</title>
     <meta name="description" content="Find the latest Central and State Government Jobs, Sarkari Results, Admit Cards, Scholarships, and Free Job Alerts instantly on Student Help Club (SHC).">
     <meta name="keywords" content="Student Help Club, Sarkari Result, Latest Jobs, Admit Card, Government Schemes, Free Job Alert, Study Material, Recruitment Updates">
@@ -21,22 +23,19 @@
     
     <meta property="og:title" content="Student Help Club - India's Trusted Educational & Job Portal">
     <meta property="og:description" content="Get instant notifications for all new government jobs, exam dates, admit cards, and results on SHC.">
-    <meta property="og:image" content="shc-logo.jpg">
+    <meta property="og:image" content="https://jobs.studenthelpclub.in/shc-logo.jpg">
     <meta property="og:url" content="https://jobs.studenthelpclub.in">
 
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     
-    <!-- Preload Critical Fonts for PageSpeed -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" as="style">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Fix Render-Blocking CSS (Font Awesome) -->
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
     
-    <!-- Schema Markup for SEO & Search Action -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -103,7 +102,6 @@
         
         .logo-box { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; transition: var(--transition); }
         .logo-box:hover { opacity: 0.9; }
-        /* Added explicit width and height to fix PageSpeed Insights Issue */
         .logo-img { height: 44px; width: 44px; margin-right: 12px; border-radius: 8px; object-fit: cover; }
         .logo-text { font-size: 1.6rem; font-weight: 800; color: var(--primary); text-transform: uppercase; letter-spacing: -0.5px; margin: 0; }
         .logo-text span { color: var(--accent); }
@@ -133,8 +131,11 @@
         .header-menu a { text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 0.88rem; text-transform: uppercase; transition: var(--transition); letter-spacing: 0.3px; padding: 5px; }
         .header-menu a:hover { color: var(--accent); }
 
-        /* Ticker Marquee Style */
-        .ticker-wrap { background: #fefce8; color: #713f12; padding: 10px 0; border-bottom: 1px solid #fef08a; font-weight: 600; font-size: 13.5px; text-align: center; overflow: hidden; white-space: nowrap; }
+        /* Pure CSS Ticker (Replaces old marquee tag for better accessibility/speed) */
+        .ticker-wrap { background: #fefce8; color: #713f12; padding: 10px 0; border-bottom: 1px solid #fef08a; font-weight: 600; font-size: 13.5px; overflow: hidden; position: relative; white-space: nowrap; display: flex; align-items: center;}
+        .ticker-content { display: inline-block; padding-left: 100%; animation: ticker-scroll 18s linear infinite; }
+        .ticker-content:hover { animation-play-state: paused; }
+        @keyframes ticker-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
 
         /* --- Main Layout Content Grid --- */
         .main-content { flex: 1; padding: 30px 20px; }
@@ -181,8 +182,9 @@
            ========================================= */
         .seo-container { max-width: 1200px; margin: 40px auto 10px auto; display: flex; flex-direction: column; gap: 30px; background: var(--white); padding: 30px; border-radius: var(--radius); border: 1px solid #e2e8f0; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);}
         
+        /* Contrast improved for accessibility */
         .green-banner {
-            background: linear-gradient(to right, #10b981, #34d399, #10b981);
+            background: linear-gradient(to right, #047857, #059669, #047857);
             color: #ffffff;
             text-align: center;
             padding: 10px 20px;
@@ -282,40 +284,36 @@
         }
     </style>
     
-    <!-- Scripts updated with async for speed optimization -->
-    <script async>(function(s){s.dataset.zone='11130314',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
-    <script async>(function(s){s.dataset.zone='11130315',s.src='https://n6wxm.com/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
 </head>
 <body>
 
-<!-- Semantic HTML: Header Wrapper added -->
 <header>
     <div class="top-bar">
         <div class="top-container">
-            <span><i class="fas fa-calendar-alt"></i> <span id="current-date"></span></span>
+            <span><i class="fas fa-calendar-alt" aria-hidden="true"></i> <span id="current-date"></span></span>
             <div class="top-links">
-                <a href="https://t.me/studenthelpclub" target="_blank"><i class="fab fa-telegram"></i> Telegram</a>
-                <a href="https://whatsapp.com/channel/0029VbCJ2xI7IUYa1zMB6n1f" class="ws-link" style="color: #25D366;" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <a href="https://t.me/studenthelpclub" target="_blank" aria-label="Join our Telegram"><i class="fab fa-telegram" aria-hidden="true"></i> Telegram</a>
+                <a href="https://whatsapp.com/channel/0029VbCJ2xI7IUYa1zMB6n1f" class="ws-link" style="color: #25D366;" target="_blank" aria-label="Join our WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp</a>
             </div>
         </div>
     </div>
 
     <div class="header-main">
         <div class="header-container">
-            <a href="index.html" class="logo-box">
-                <!-- Fetchpriority added for LCP optimization -->
+            <a href="index.html" class="logo-box" aria-label="Homepage">
                 <img src="shc-logo.jpg" alt="Student Help Club Logo" width="44" height="44" fetchpriority="high" class="logo-img">
                 <h1 class="logo-text">Student Help <span>Club</span></h1>
             </a>
             <div class="search-wrapper">
-                <!-- Semantic HTML: Form added for search functionality -->
-                <form class="search-box" role="search" action="javascript:void(0);">
-                    <input type="text" id="live-search" placeholder="Search Results, Jobs..." aria-label="Search jobs and results">
-                    <button type="button" aria-label="Submit Search"><i class="fas fa-search"></i></button>
-                </form>
+                <search>
+                    <form class="search-box" action="/search" method="get" onsubmit="return false;" role="search">
+                        <input type="search" id="live-search" name="q" placeholder="Search Results, Jobs..." aria-label="Search jobs and results">
+                        <button type="submit" aria-label="Submit Search"><i class="fas fa-search" aria-hidden="true"></i></button>
+                    </form>
+                </search>
                 <div id="search-results"></div>
             </div>
-            <!-- Semantic HTML: Nav added -->
+            
             <nav class="header-menu" aria-label="Main Navigation">
                 <a href="index.html">Home</a>
                 <a href="jobs.html">Jobs</a>
@@ -327,17 +325,16 @@
     </div>
 </header>
 
-<div class="ticker-wrap">
-    <marquee id="top-ticker" scrollamount="6" onmouseover="this.stop();" onmouseout="this.start();">Loading latest updates...</marquee>
+<div class="ticker-wrap" aria-label="Latest Updates Ticker">
+    <div class="ticker-content" id="top-ticker">Loading latest updates...</div>
 </div>
 
-<!-- Semantic HTML: Main tag added -->
 <main class="main-content">
     <div class="grid-container">
         
         <div class="category-card jobs-card">
             <div class="card-header theme-jobs">
-                <span><i class="fas fa-briefcase"></i> Latest Jobs</span>
+                <span><i class="fas fa-briefcase" aria-hidden="true"></i> Latest Jobs</span>
                 <a href="jobs.html">View All</a>
             </div>
             <ul class="post-stack" id="stack-jobs"></ul>
@@ -345,7 +342,7 @@
 
         <div class="category-card admit-card">
             <div class="card-header theme-admit">
-                <span><i class="fas fa-id-card"></i> Admit Card</span>
+                <span><i class="fas fa-id-card" aria-hidden="true"></i> Admit Card</span>
                 <a href="admit-cards.html">View All</a>
             </div>
             <ul class="post-stack" id="stack-admit"></ul>
@@ -353,7 +350,7 @@
 
         <div class="category-card results-card">
             <div class="card-header theme-results">
-                <span><i class="fas fa-graduation-cap"></i> Results</span>
+                <span><i class="fas fa-graduation-cap" aria-hidden="true"></i> Results</span>
                 <a href="results.html">View All</a>
             </div>
             <ul class="post-stack" id="stack-result"></ul>
@@ -361,7 +358,7 @@
 
         <div class="category-card scholarship-card">
             <div class="card-header theme-scholarship">
-                <span><i class="fas fa-hand-holding-usd"></i> Scholarship</span>
+                <span><i class="fas fa-hand-holding-usd" aria-hidden="true"></i> Scholarship</span>
                 <a href="scholarship.html">View All</a>
             </div>
             <ul class="post-stack" id="stack-scholarship"></ul>
@@ -369,7 +366,7 @@
 
         <div class="category-card yojna-card">
             <div class="card-header theme-yojna">
-                <span><i class="fas fa-landmark"></i> Sarkari Yojna</span>
+                <span><i class="fas fa-landmark" aria-hidden="true"></i> Sarkari Yojna</span>
                 <a href="yojna.html">View All</a>
             </div>
             <ul class="post-stack" id="stack-yojna"></ul>
@@ -495,25 +492,29 @@
     </section>
 </main>
 
-<!-- Semantic HTML: Footer Tag Update -->
 <footer class="site-footer">
     <div class="footer-container">
         <div class="footer-sec"><h3>Important Pages</h3><ul><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact Us</a></li><li><a href="privacy-policy.html">Privacy Policy</a></li><li><a href="disclaimer.html">Disclaimer</a></li></ul></div>
         <div class="footer-sec"><h3>Resources</h3><ul><li><a href="https://tools.studenthelpclub.in" target="_blank">Tools for Students</a></li><li><a href="about.html" target="_blank">Study Material Support</a></li></ul></div>
-        <div class="footer-sec"><h3>Connect</h3><div class="social-box"><a href="https://t.me/studenthelpclub" class="tg-f" aria-label="Telegram" target="_blank"><i class="fab fa-telegram-plane"></i></a><a href="https://youtube.com/@vishalhelpclub" class="yt-f" aria-label="YouTube" target="_blank"><i class="fab fa-youtube"></i></a><a href="https://whatsapp.com/channel/0029VbCJ2xI7IUYa1zMB6n1f" class="wa-f" aria-label="WhatsApp" target="_blank"><i class="fab fa-whatsapp"></i></a></div></div>
+        <div class="footer-sec"><h3>Connect</h3><div class="social-box"><a href="https://t.me/studenthelpclub" class="tg-f" aria-label="Visit Telegram Page" target="_blank"><i class="fab fa-telegram-plane" aria-hidden="true"></i></a><a href="https://youtube.com/@vishalhelpclub" class="yt-f" aria-label="Visit YouTube Channel" target="_blank"><i class="fab fa-youtube" aria-hidden="true"></i></a><a href="https://whatsapp.com/channel/0029VbCJ2xI7IUYa1zMB6n1f" class="wa-f" aria-label="Join WhatsApp Channel" target="_blank"><i class="fab fa-whatsapp" aria-hidden="true"></i></a></div></div>
     </div>
     <div class="footer-bottom">
         <p>© <span id="current-year"></span> Student Help Club | Admin: Vishal</p>
     </div>
 </footer>
 
-<!-- Cookie Consent Banner -->
 <div id="cookieConsent" class="cookie-consent">
     <p>We use cookies to improve your experience on our site. <a href="privacy-policy.html">Read our Privacy Policy</a>.</p>
     <button id="acceptCookie">Accept</button>
 </div>
 
-<!-- Scripts -->
+<script>
+  setTimeout(() => {
+    (function(s){s.dataset.zone='11130314',s.src='https://nap5k.com/tag.min.js'})(document.body.appendChild(document.createElement('script')));
+    (function(s){s.dataset.zone='11130315',s.src='https://n6wxm.com/vignette.min.js'})(document.body.appendChild(document.createElement('script')));
+  }, 2500); // 2.5 seconds delay so it doesn't block LCP
+</script>
+
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
     import { getFirestore, collection, query, orderBy, limit, onSnapshot } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
@@ -533,12 +534,10 @@
     let searchData = [];
     let marqueeCandidates = {};
 
-    // Dynamic Future-Proof Calendar Setup
     const d = new Date();
     document.getElementById('current-date').innerText = d.toLocaleDateString('en-US', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' });
     document.getElementById('current-year').innerText = d.getFullYear();
 
-    // Streamlined Marquee Engine
     function updateGlobalMarquee() {
         const categories = Object.values(marqueeCandidates);
         if (categories.length > 0) {
@@ -547,7 +546,6 @@
         }
     }
 
-    // Consolidated Realtime Stream Listener Engine
     function streamCategory(colId, elementId) {
         const q = query(collection(db, colId), orderBy("timestamp", "desc"), limit(12));
         onSnapshot(q, (snapshot) => {
@@ -562,15 +560,12 @@
 
             snapshot.docs.forEach((doc, index) => {
                 const data = doc.data();
-                
-                // Realtime Sync with Search Engine and Marquee arrays
                 if (index === 0 && data.timestamp) {
                     marqueeCandidates[colId] = { id: doc.id, title: data.title, cat: colId, time: data.timestamp.toMillis() };
                     updateGlobalMarquee();
                 }
                 searchData.push({ id: doc.id, title: data.title, cat: colId });
 
-                // Render lists with blinking NEW tag exclusively on the top 2 elements
                 if (index < 8) {
                     const li = document.createElement('li');
                     const newTag = index < 2 ? `<span class="new-badge">NEW</span>` : '';
@@ -581,7 +576,6 @@
         });
     }
 
-    // Execute Streaming listeners safely
     const targetCols = [
         { col: 'jobs', el: 'stack-jobs' },
         { col: 'admit', el: 'stack-admit' },
@@ -591,7 +585,6 @@
     ];
     targetCols.forEach(item => streamCategory(item.col, item.el));
 
-    // Live Search Box Controller Box
     const searchInput = document.getElementById('live-search');
     const resultsDiv = document.getElementById('search-results');
     searchInput.addEventListener('input', (e) => {
@@ -611,7 +604,6 @@
     });
     document.addEventListener('click', (e) => { if(!searchInput.contains(e.target)) resultsDiv.style.display = 'none'; });
 
-    // Cookie Consent Logic
     document.addEventListener("DOMContentLoaded", function() {
         const consentBanner = document.getElementById("cookieConsent");
         if (!localStorage.getItem("shc_cookie_consent")) {
