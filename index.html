@@ -8,6 +8,7 @@
       gtag('js', new Date());
       gtag('config', 'G-7RK3WFVY3Q');
     </script>
+    
     <meta name="google-site-verification" content="ySBKvgRcffZgkku3SImRkt6T7rm0r_L6OfClnFXGrrc" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -24,11 +25,45 @@
     <meta property="og:url" content="https://jobs.studenthelpclub.in">
 
     <link rel="icon" type="image/x-icon" href="favicon.ico">
+    
+    <!-- Preload Critical Fonts for PageSpeed -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" as="style">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
+    <!-- Fix Render-Blocking CSS (Font Awesome) -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
+    
+    <!-- Schema Markup for SEO & Search Action -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Student Help Club",
+      "url": "https://jobs.studenthelpclub.in/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://jobs.studenthelpclub.in/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Student Help Club",
+      "url": "https://jobs.studenthelpclub.in/",
+      "logo": "https://jobs.studenthelpclub.in/shc-logo.jpg",
+      "founder": {
+        "@type": "Person",
+        "name": "Vishal"
+      }
+    }
+    </script>
+
     <style>
         :root { 
             --primary: #0f172a; 
@@ -68,12 +103,13 @@
         
         .logo-box { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; transition: var(--transition); }
         .logo-box:hover { opacity: 0.9; }
-        .logo-img { height: 44px; width: auto; margin-right: 12px; border-radius: 8px; object-fit: cover; }
+        /* Added explicit width and height to fix PageSpeed Insights Issue */
+        .logo-img { height: 44px; width: 44px; margin-right: 12px; border-radius: 8px; object-fit: cover; }
         .logo-text { font-size: 1.6rem; font-weight: 800; color: var(--primary); text-transform: uppercase; letter-spacing: -0.5px; margin: 0; }
         .logo-text span { color: var(--accent); }
 
         .search-wrapper { flex-grow: 1; max-width: 400px; position: relative; }
-        .search-box { display: flex; position: relative; }
+        .search-box { display: flex; position: relative; width: 100%; margin: 0; }
         .search-box input { 
             width: 100%; padding: 12px 50px 12px 20px; border-radius: 30px; border: 2px solid #e2e8f0; 
             outline: none; font-size: 14px; font-weight: 500; transition: var(--transition); background: #f8fafc; box-sizing: border-box;
@@ -94,7 +130,7 @@
         #search-results::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
 
         .header-menu { display: flex; gap: 20px; align-items: center; }
-        .header-menu a { text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 0.88rem; text-transform: uppercase; transition: var(--transition); letter-spacing: 0.3px; }
+        .header-menu a { text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 0.88rem; text-transform: uppercase; transition: var(--transition); letter-spacing: 0.3px; padding: 5px; }
         .header-menu a:hover { color: var(--accent); }
 
         /* Ticker Marquee Style */
@@ -145,7 +181,6 @@
            ========================================= */
         .seo-container { max-width: 1200px; margin: 40px auto 10px auto; display: flex; flex-direction: column; gap: 30px; background: var(--white); padding: 30px; border-radius: var(--radius); border: 1px solid #e2e8f0; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);}
         
-        /* Green Banner Style matching the image */
         .green-banner {
             background: linear-gradient(to right, #10b981, #34d399, #10b981);
             color: #ffffff;
@@ -164,40 +199,50 @@
         .seo-body ul { margin: 0 0 15px 0; padding-left: 20px; list-style-type: disc; }
         .seo-body ul li { margin-bottom: 6px; }
         
-        /* Job List Style (Roman Numerals exactly as in image) */
         .job-list { list-style-type: lower-roman; padding-left: 20px; margin-bottom: 15px; }
         .job-list li { margin-bottom: 10px; line-height: 1.6; }
         
-        /* FAQ Style */
         .faq-item { margin-bottom: 20px; }
         .faq-q { font-weight: 500; color: #1e293b; margin-bottom: 5px; }
         .faq-a { color: #475569; }
 
-        /* SEO Keyword Highlighting */
         .seo-hl { font-weight: 600; color: #2563eb; text-decoration: none; }
         .seo-sub-title { color: #1e293b; font-size: 1.05rem; font-weight: 600; margin-top: 20px; margin-bottom: 8px; }
 
-        /* Disclaimer Box */
         .disclaimer-box { background-color: #f8fafc; border-top: 1px solid #e2e8f0; padding: 15px; font-size: 0.85rem; color: #475569; text-align: justify; line-height: 1.6; margin-top: 20px; }
         .disclaimer-box span { color: #ef4444; font-weight: 600; }
 
         /* --- Footer --- */
-        footer { background: #0f172a; color: #94a3b8; padding: 50px 20px 25px; margin-top: auto; border-top: 4px solid var(--primary-light); text-align: left; }
+        .site-footer { background: #0f172a; color: #94a3b8; padding: 50px 20px 25px; margin-top: auto; border-top: 4px solid var(--primary-light); text-align: left; }
         .footer-container { max-width: 1200px; margin: auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 50px; }
         .footer-sec h3 { color: #fff; font-size: 1.05rem; margin-bottom: 20px; border-left: 3px solid var(--accent); padding-left: 12px; text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px; }
         .footer-sec ul { list-style: none; padding: 0; margin: 0; }
         .footer-sec ul li { margin-bottom: 12px; }
-        .footer-sec ul li a { color: #94a3b8; text-decoration: none; font-size: 0.92rem; transition: var(--transition); display: inline-block;}
+        .footer-sec ul li a { color: #94a3b8; text-decoration: none; font-size: 0.92rem; transition: var(--transition); display: inline-block; padding: 5px 0;}
         .footer-sec ul li a:hover { color: #fff; padding-left: 6px; }
         
         .social-box { display: flex; gap: 14px; margin-top: 15px; }
-        .social-box a { color: white; background: #1e293b; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: var(--transition); text-decoration: none; }
+        .social-box a { color: white; background: #1e293b; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: var(--transition); text-decoration: none; }
         .social-box a:hover { transform: translateY(-4px); }
         .social-box a.tg-f:hover { background: #0088cc; }
         .social-box a.yt-f:hover { background: #ff0000; }
         .social-box a.wa-f:hover { background: #25D366; }
         
         .footer-bottom { text-align: center; margin-top: 50px; padding-top: 22px; border-top: 1px solid #1e293b; font-size: 13px; color: #64748b; }
+
+        /* Cookie Consent Bar */
+        .cookie-consent {
+            position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff; padding: 15px 20px;
+            display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 15px; z-index: 9999;
+            transform: translateY(100%); transition: transform 0.4s ease-in-out; text-align: center; box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
+        }
+        .cookie-consent.show { transform: translateY(0); }
+        .cookie-consent p { margin: 0; font-size: 0.85rem; line-height: 1.4; }
+        .cookie-consent a { color: #60a5fa; text-decoration: underline; }
+        .cookie-consent button {
+            background: #10b981; color: white; border: none; padding: 8px 20px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: background 0.3s;
+        }
+        .cookie-consent button:hover { background: #059669; }
 
         /* =========================================
            ENHANCED MOBILE RESPONSIVENESS
@@ -208,22 +253,22 @@
         
         @media (max-width: 992px) {
             .header-container { flex-direction: column; gap: 15px; padding: 15px; }
-            .logo-box { justify-content: center; }
+            .logo-box { justify-content: center; width: 100%; }
             .search-wrapper { max-width: 100%; width: 100%; }
-            .header-menu { flex-wrap: wrap; justify-content: center; gap: 10px 15px; padding-bottom: 5px; }
+            .header-menu { flex-wrap: wrap; justify-content: center; gap: 10px 15px; padding-bottom: 5px; width: 100%;}
         }
 
         @media (max-width: 768px) {
             .top-container { flex-direction: column; gap: 10px; justify-content: center; text-align: center; padding: 10px; }
             .top-links { justify-content: center; gap: 15px; }
             
-            .header-menu a { font-size: 0.8rem; padding: 6px 12px; background: #f1f5f9; border-radius: 6px; border: none;}
+            .header-menu a { font-size: 0.8rem; padding: 8px 12px; background: #f1f5f9; border-radius: 6px; border: none; display: inline-block; min-width: 70px; text-align: center;}
             
             .grid-container { grid-template-columns: 1fr; gap: 18px; } 
-            .main-content { padding: 20px 15px; }
+            .main-content { padding: 15px 10px; }
             
             .seo-container { padding: 20px 15px; }
-            .green-banner { width: 100%; clip-path: none; padding: 8px 15px; font-size: 1.05rem; }
+            .green-banner { width: 100%; clip-path: none; padding: 8px 15px; font-size: 1.05rem; box-sizing: border-box; }
             .seo-body p { text-align: left; }
 
             .footer-container { grid-template-columns: 1fr; gap: 35px; text-align: center; }
@@ -233,52 +278,61 @@
         
         @media (max-width: 480px) {
             .logo-text { font-size: 1.3rem; }
-            .logo-img { height: 35px; }
+            .logo-img { height: 35px; width: 35px; }
         }
     </style>
-    <script>(function(s){s.dataset.zone='11130314',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
-<script>(function(s){s.dataset.zone='11130315',s.src='https://n6wxm.com/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+    
+    <!-- Scripts updated with async for speed optimization -->
+    <script async>(function(s){s.dataset.zone='11130314',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+    <script async>(function(s){s.dataset.zone='11130315',s.src='https://n6wxm.com/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
 </head>
 <body>
 
-<div class="top-bar">
-    <div class="top-container">
-        <span><i class="fas fa-calendar-alt"></i> <span id="current-date"></span></span>
-        <div class="top-links">
-            <a href="https://t.me/studenthelpclub" target="_blank"><i class="fab fa-telegram"></i> Telegram</a>
-            <a href="https://whatsapp.com/channel/0029VbCJ2xI7IUYa1zMB6n1f" class="ws-link" style="color: #25D366;" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-        </div>
-    </div>
-</div>
-
-<div class="header-main">
-    <div class="header-container">
-        <a href="index.html" class="logo-box">
-            <img src="shc-logo.jpg" alt="Student Help Club Logo" class="logo-img">
-            <h1 class="logo-text">Student Help <span>Club</span></h1>
-        </a>
-        <div class="search-wrapper">
-            <div class="search-box">
-                <input type="text" id="live-search" placeholder="Search Results, Jobs...">
-                <button aria-label="Search"><i class="fas fa-search"></i></button>
+<!-- Semantic HTML: Header Wrapper added -->
+<header>
+    <div class="top-bar">
+        <div class="top-container">
+            <span><i class="fas fa-calendar-alt"></i> <span id="current-date"></span></span>
+            <div class="top-links">
+                <a href="https://t.me/studenthelpclub" target="_blank"><i class="fab fa-telegram"></i> Telegram</a>
+                <a href="https://whatsapp.com/channel/0029VbCJ2xI7IUYa1zMB6n1f" class="ws-link" style="color: #25D366;" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
             </div>
-            <div id="search-results"></div>
-        </div>
-        <div class="header-menu">
-            <a href="index.html">Home</a>
-            <a href="jobs.html">Jobs</a>
-            <a href="admit-cards.html">Admit Card</a>
-            <a href="results.html">Results</a>
-            <a href="scholarship.html">Scholarship</a>
         </div>
     </div>
-</div>
+
+    <div class="header-main">
+        <div class="header-container">
+            <a href="index.html" class="logo-box">
+                <!-- Fetchpriority added for LCP optimization -->
+                <img src="shc-logo.jpg" alt="Student Help Club Logo" width="44" height="44" fetchpriority="high" class="logo-img">
+                <h1 class="logo-text">Student Help <span>Club</span></h1>
+            </a>
+            <div class="search-wrapper">
+                <!-- Semantic HTML: Form added for search functionality -->
+                <form class="search-box" role="search" action="javascript:void(0);">
+                    <input type="text" id="live-search" placeholder="Search Results, Jobs..." aria-label="Search jobs and results">
+                    <button type="button" aria-label="Submit Search"><i class="fas fa-search"></i></button>
+                </form>
+                <div id="search-results"></div>
+            </div>
+            <!-- Semantic HTML: Nav added -->
+            <nav class="header-menu" aria-label="Main Navigation">
+                <a href="index.html">Home</a>
+                <a href="jobs.html">Jobs</a>
+                <a href="admit-cards.html">Admit Card</a>
+                <a href="results.html">Results</a>
+                <a href="scholarship.html">Scholarship</a>
+            </nav>
+        </div>
+    </div>
+</header>
 
 <div class="ticker-wrap">
     <marquee id="top-ticker" scrollamount="6" onmouseover="this.stop();" onmouseout="this.start();">Loading latest updates...</marquee>
 </div>
 
-<div class="main-content">
+<!-- Semantic HTML: Main tag added -->
+<main class="main-content">
     <div class="grid-container">
         
         <div class="category-card jobs-card">
@@ -323,7 +377,7 @@
 
     </div>
 
-    <div class="seo-container">
+    <section class="seo-container" aria-label="About Student Help Club">
         
         <div class="green-banner">About Student Help Club</div>
         <div class="seo-body">
@@ -438,20 +492,28 @@
             <span>Disclaimer:</span> This website will not be responsible at all in case of minor or major mistakes or inaccuracy. I hereby declare that all the information provided by this website is true and accurate according to the recruitment notification or advertisement or information brochure etc. But sometimes might be happened mistakes by website owner by any means just as typing error or eye deception or other or from recruiter side. Our effort and intention is to provide correct details as much as possible, before taking any action please look into the recruitment notification or advertisement or portal. "I Hope You Will Understand Our Word".
         </div>
         
-    </div>
-</div>
+    </section>
+</main>
 
-<footer>
+<!-- Semantic HTML: Footer Tag Update -->
+<footer class="site-footer">
     <div class="footer-container">
         <div class="footer-sec"><h3>Important Pages</h3><ul><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact Us</a></li><li><a href="privacy-policy.html">Privacy Policy</a></li><li><a href="disclaimer.html">Disclaimer</a></li></ul></div>
         <div class="footer-sec"><h3>Resources</h3><ul><li><a href="https://tools.studenthelpclub.in" target="_blank">Tools for Students</a></li><li><a href="about.html" target="_blank">Study Material Support</a></li></ul></div>
-        <div class="footer-sec"><h3>Connect</h3><div class="social-box"><a href="https://t.me/studenthelpclub" class="tg-f" target="_blank"><i class="fab fa-telegram-plane"></i></a><a href="https://youtube.com/@vishalhelpclub" class="yt-f" target="_blank"><i class="fab fa-youtube"></i></a><a href="https://whatsapp.com/channel/0029VbCJ2xI7IUYa1zMB6n1f" class="wa-f" target="_blank"><i class="fab fa-whatsapp"></i></a></div></div>
+        <div class="footer-sec"><h3>Connect</h3><div class="social-box"><a href="https://t.me/studenthelpclub" class="tg-f" aria-label="Telegram" target="_blank"><i class="fab fa-telegram-plane"></i></a><a href="https://youtube.com/@vishalhelpclub" class="yt-f" aria-label="YouTube" target="_blank"><i class="fab fa-youtube"></i></a><a href="https://whatsapp.com/channel/0029VbCJ2xI7IUYa1zMB6n1f" class="wa-f" aria-label="WhatsApp" target="_blank"><i class="fab fa-whatsapp"></i></a></div></div>
     </div>
     <div class="footer-bottom">
         <p>© <span id="current-year"></span> Student Help Club | Admin: Vishal</p>
     </div>
 </footer>
 
+<!-- Cookie Consent Banner -->
+<div id="cookieConsent" class="cookie-consent">
+    <p>We use cookies to improve your experience on our site. <a href="privacy-policy.html">Read our Privacy Policy</a>.</p>
+    <button id="acceptCookie">Accept</button>
+</div>
+
+<!-- Scripts -->
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
     import { getFirestore, collection, query, orderBy, limit, onSnapshot } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
@@ -548,6 +610,18 @@
         }
     });
     document.addEventListener('click', (e) => { if(!searchInput.contains(e.target)) resultsDiv.style.display = 'none'; });
+
+    // Cookie Consent Logic
+    document.addEventListener("DOMContentLoaded", function() {
+        const consentBanner = document.getElementById("cookieConsent");
+        if (!localStorage.getItem("shc_cookie_consent")) {
+            setTimeout(() => { consentBanner.classList.add("show"); }, 1500);
+        }
+        document.getElementById("acceptCookie").addEventListener("click", function() {
+            localStorage.setItem("shc_cookie_consent", "true");
+            consentBanner.classList.remove("show");
+        });
+    });
 </script>
 </body>
 </html>
