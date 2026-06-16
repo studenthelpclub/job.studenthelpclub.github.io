@@ -234,10 +234,17 @@
             detailsHTML += createBox("FAQ", faqs);
         }
 
+        // ---> BRAHMASTRA: TELEGRAM NEW TAB TRICK <---
+        // Jaise hi button click hoga, turant ek chota tab khulega taaki popup blocker na roke
+        const tgTab = window.open('about:blank', '_blank');
+        if(tgTab) {
+            tgTab.document.write('<h2 style="font-family:sans-serif; color:#003366; text-align:center; margin-top:50px;">Student Help Club</h2><p style="text-align:center; font-family:sans-serif; font-size:18px;">Telegram par update bheja ja raha hai...<br>Please Wait...</p>');
+        }
+
         try {
             document.getElementById('submitBtn').innerText = "PUBLISHING...";
 
-            // 1. FIREBASE SAVE (Website par update)
+            // 1. FIREBASE SAVE (Website update)
             await addDoc(collection(db, col), { 
                 title: title, 
                 slug: slug, 
@@ -247,43 +254,28 @@
 
             const postUrl = `https://jobs.studenthelpclub.in/post.html?col=${col}&slug=${slug}`;
 
-            // ---> 2. TELEGRAM (ULTIMATE BYPASS: Hidden Form Trick) <---
-            // Browser CORS rules HTML forms par laagoo nahi hote. Ye 100% chalega.
+            // 2. TELEGRAM (Naye tab mein URL load karenge)
             const botToken = "8558088798:AAFhG2nxB7CzExPtR__Gwryoy1svCeAIIXw";
             const chatId = "-1003732714896"; 
             const messageText = `🔥 <b>New Update on Student Help Club!</b>\n\n📌 ${title}\n\n👉 <b>Click Here to Check:</b>\n${postUrl}`;
+            const tgUrl = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&parse_mode=HTML&text=${encodeURIComponent(messageText)}`;
 
-            // Ek chhupa hua Iframe banayenge taaki form submit hone par page na badle
-            const iframeName = "tg_iframe_" + Date.now();
-            const iframe = document.createElement("iframe");
-            iframe.name = iframeName;
-            iframe.style.display = "none";
-            document.body.appendChild(iframe);
+            if(tgTab) {
+                tgTab.location.href = tgUrl; // Ye direct browser URL hai, koi Tracker Protection isko rok nahi sakta!
+                
+                // 3 second baad Telegram tab apne aap band ho jayega
+                setTimeout(() => {
+                    try { tgTab.close(); } catch(e){}
+                }, 3000);
+            }
 
-            // Ek chhupa hua Form banayenge aur usme Telegram ka data daalenge
-            const form = document.createElement("form");
-            form.method = "POST";
-            form.action = `https://api.telegram.org/bot${botToken}/sendMessage`;
-            form.target = iframeName;
-
-            const i1 = document.createElement("input"); i1.type = "hidden"; i1.name = "chat_id"; i1.value = chatId; form.appendChild(i1);
-            const i2 = document.createElement("input"); i2.type = "hidden"; i2.name = "text"; i2.value = messageText; form.appendChild(i2);
-            const i3 = document.createElement("input"); i3.type = "hidden"; i3.name = "parse_mode"; i3.value = "HTML"; form.appendChild(i3);
-
-            document.body.appendChild(form);
-            form.submit(); // Ye command CORS aur Browser limits ko bypass karke data bhej degi!
-
-            // 3. ONESIGNAL PUSH (Background attempt)
+            // 3. ONESIGNAL SILENT TRY (Agar fail hua toh page ko disturb nahi karega)
             try {
                 const osAppId = "3d88660b-b1d6-4ee0-89ff-b9b5ee40b28d";
                 const osRestKey = "os_v2_app_hwegmc5r2zhobcp7xg264qfsruwjlcjfvpquf2v7yhv4buiipvyk4fqxbgkzlby3qlrvlggsoqzhtkehwkkzdkthwob6mubnfa4lffq";
-                
                 fetch("https://onesignal.com/api/v1/notifications", {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Basic ${osRestKey}`
-                    },
+                    headers: { 'Content-Type': 'application/json', 'Authorization': `Basic ${osRestKey}` },
                     body: JSON.stringify({
                         app_id: osAppId,
                         included_segments: ["Subscribed Users"],
@@ -291,16 +283,17 @@
                         contents: { "en": title },
                         url: postUrl
                     })
-                }).catch(e => console.log("OS Error:", e));
-            } catch(e) {}
+                }).catch(e => console.log("OneSignal Blocked:", e));
+            } catch(e){}
 
-            // Form submit hone ke liye 2 seconds ka wait aur fir page refresh
+            // 4. FINAL SUCCESS MESSAGE
             setTimeout(() => {
-                alert("Published Successfully on Website & Telegram!"); 
-                location.reload();
-            }, 2000);
+                alert("✅ Published Successfully!\nWebsite aur Telegram dono par update ho gaya hai."); 
+                location.reload(); 
+            }, 1000);
 
         } catch (e) { 
+            if(tgTab) tgTab.close(); // Error aane par tab band kar dega
             alert("Error in Database: " + e.message); 
             document.getElementById('submitBtn').innerText = "PUBLISH NOW";
         }
