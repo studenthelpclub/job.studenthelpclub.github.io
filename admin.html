@@ -237,7 +237,7 @@
         try {
             document.getElementById('submitBtn').innerText = "PUBLISHING...";
 
-            // 1. FIREBASE SAVE
+            // 1. FIREBASE SAVE (Website update)
             await addDoc(collection(db, col), { 
                 title: title, 
                 slug: slug, 
@@ -245,25 +245,31 @@
                 timestamp: serverTimestamp() 
             });
 
-            // ---> TELEGRAM & ONESIGNAL SMART LOGIC START <---
             const postUrl = `https://jobs.studenthelpclub.in/post.html?col=${col}&slug=${slug}`;
-            
-            // 2. Telegram Send (Using no-cors to 100% bypass browser blocks)
+
+            // 2. TELEGRAM MESSAGE (Direct POST - Requires AdBlocker/Shields OFF)
             const botToken = "8558088798:AAFhG2nxB7CzExPtR__Gwryoy1svCeAIIXw";
             const chatId = "-1003732714896"; 
-            const messageText = `🔥 <b>New Update on Student Help Club!</b>\n\n📌 ${title}\n\n👉 <b>Click Here to Check:</b>\n${postUrl}`;
-            const tgUrl = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&parse_mode=HTML&text=${encodeURIComponent(messageText)}`;
             
-            // Fire and forget Telegram
-            const sendTelegram = fetch(tgUrl, { mode: 'no-cors' }).catch(e => console.log("TG Silent Error:", e));
+            const tgPromise = fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ 
+                    chat_id: chatId, 
+                    text: `🔥 <b>New Update on Student Help Club!</b>\n\n📌 ${title}\n\n👉 <b>Click Here to Check:</b>\n${postUrl}`,
+                    parse_mode: 'HTML' 
+                })
+            }).catch(e => console.error("Telegram Error (Turn off AdBlocker):", e));
 
-            // 3. OneSignal Send (Using direct approach, agar block hoga toh page ko nahi rokega)
+            // 3. ONESIGNAL PUSH (Using Correct Proxy)
             const osAppId = "3d88660b-b1d6-4ee0-89ff-b9b5ee40b28d";
             const osRestKey = "os_v2_app_hwegmc5r2zhobcp7xg264qfsruwjlcjfvpquf2v7yhv4buiipvyk4fqxbgkzlby3qlrvlggsoqzhtkehwkkzdkthwob6mubnfa4lffq";
-            const osProxy = "https://corsproxy.org/?" + encodeURIComponent("https://onesignal.com/api/v1/notifications");
             
-            // Fire and forget OneSignal
-            const sendOneSignal = fetch(osProxy, {
+            // Yahan correct proxy link lagaya hai: corsproxy.io
+            const targetUrl = encodeURIComponent("https://onesignal.com/api/v1/notifications");
+            const proxyUrl = `https://corsproxy.io/?${targetUrl}`;
+
+            const osPromise = fetch(proxyUrl, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -276,21 +282,15 @@
                     contents: { "en": title },
                     url: postUrl
                 })
-            }).catch(e => console.log("OS Silent Error:", e));
+            }).catch(e => console.error("OneSignal Error:", e));
 
-            // 4. ANTI-FREEZE TIMER: Browser sirf 2.5 seconds wait karega, uske baad automatically page refresh kar dega taaki button kabhi stuck na ho!
-            await Promise.race([
-                Promise.all([sendTelegram, sendOneSignal]),
-                new Promise(resolve => setTimeout(resolve, 2500))
-            ]);
+            // Dono kaam hone ka wait karega
+            await Promise.all([tgPromise, osPromise]);
 
-            alert("Published Successfully!"); 
+            alert("Sab Kuch Publish Ho Gaya!"); 
             location.reload(); 
-            // ---> TELEGRAM & ONESIGNAL SMART LOGIC END <---
-
         } catch (e) { 
             alert("Error in Database: " + e.message); 
-            console.error(e); 
             document.getElementById('submitBtn').innerText = "PUBLISH NOW";
         }
     });
