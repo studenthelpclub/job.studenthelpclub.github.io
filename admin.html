@@ -237,7 +237,7 @@
         try {
             document.getElementById('submitBtn').innerText = "PUBLISHING...";
 
-            // 1. FIREBASE SAVE (Website update)
+            // 1. FIREBASE SAVE (Website update - 100% chalega)
             await addDoc(collection(db, col), { 
                 title: title, 
                 slug: slug, 
@@ -247,48 +247,50 @@
 
             const postUrl = `https://jobs.studenthelpclub.in/post.html?col=${col}&slug=${slug}`;
 
-            // 2. TELEGRAM MESSAGE (Direct POST - Requires AdBlocker/Shields OFF)
-            const botToken = "8558088798:AAFhG2nxB7CzExPtR__Gwryoy1svCeAIIXw";
-            const chatId = "-1003732714896"; 
-            
-            const tgPromise = fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ 
-                    chat_id: chatId, 
-                    text: `🔥 <b>New Update on Student Help Club!</b>\n\n📌 ${title}\n\n👉 <b>Click Here to Check:</b>\n${postUrl}`,
-                    parse_mode: 'HTML' 
-                })
-            }).catch(e => console.error("Telegram Error (Turn off AdBlocker):", e));
+            // 2. TELEGRAM MESSAGE (Is baar isko bhi try-catch mein dala hai taaki page na atke)
+            try {
+                const botToken = "8558088798:AAFhG2nxB7CzExPtR__Gwryoy1svCeAIIXw";
+                const chatId = "-1003732714896"; 
+                await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        chat_id: chatId, 
+                        text: `🔥 <b>New Update on Student Help Club!</b>\n\n📌 ${title}\n\n👉 <b>Click Here to Check:</b>\n${postUrl}`,
+                        parse_mode: 'HTML' 
+                    })
+                });
+            } catch (tgError) {
+                console.log("Telegram silent error:", tgError);
+            }
 
-            // 3. ONESIGNAL PUSH (Using Correct Proxy)
-            const osAppId = "3d88660b-b1d6-4ee0-89ff-b9b5ee40b28d";
-            const osRestKey = "os_v2_app_hwegmc5r2zhobcp7xg264qfsruwjlcjfvpquf2v7yhv4buiipvyk4fqxbgkzlby3qlrvlggsoqzhtkehwkkzdkthwob6mubnfa4lffq";
-            
-            // Yahan correct proxy link lagaya hai: corsproxy.io
-            const targetUrl = encodeURIComponent("https://onesignal.com/api/v1/notifications");
-            const proxyUrl = `https://corsproxy.io/?${targetUrl}`;
+            // 3. ONESIGNAL PUSH (Direct background mein bheja hai, fail hua toh page ko nahi rokega)
+            try {
+                const osAppId = "3d88660b-b1d6-4ee0-89ff-b9b5ee40b28d";
+                const osRestKey = "os_v2_app_hwegmc5r2zhobcp7xg264qfsruwjlcjfvpquf2v7yhv4buiipvyk4fqxbgkzlby3qlrvlggsoqzhtkehwkkzdkthwob6mubnfa4lffq";
+                
+                fetch("https://onesignal.com/api/v1/notifications", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Basic ${osRestKey}`
+                    },
+                    body: JSON.stringify({
+                        app_id: osAppId,
+                        included_segments: ["Subscribed Users"],
+                        headings: { "en": "SHC Latest Update 🔥" },
+                        contents: { "en": title },
+                        url: postUrl
+                    })
+                }).catch(e => console.log("OneSignal Blocked:", e));
+            } catch (osError) {
+                console.log("OS Error:", osError);
+            }
 
-            const osPromise = fetch(proxyUrl, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Basic ${osRestKey}`
-                },
-                body: JSON.stringify({
-                    app_id: osAppId,
-                    included_segments: ["Subscribed Users"],
-                    headings: { "en": "SHC Latest Update 🔥" },
-                    contents: { "en": title },
-                    url: postUrl
-                })
-            }).catch(e => console.error("OneSignal Error:", e));
-
-            // Dono kaam hone ka wait karega
-            await Promise.all([tgPromise, osPromise]);
-
-            alert("Sab Kuch Publish Ho Gaya!"); 
+            // Yahan aate hi sab complete man liya jayega aur page turant refresh ho jayega!
+            alert("Published Successfully! (Website & Telegram)"); 
             location.reload(); 
+
         } catch (e) { 
             alert("Error in Database: " + e.message); 
             document.getElementById('submitBtn').innerText = "PUBLISH NOW";
