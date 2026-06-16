@@ -170,7 +170,7 @@
         const title = document.getElementById('main_title').value;
         if(!title) return alert("Title required!");
 
-        // ---> NAYA CODE: Title se SEO friendly 'slug' generate karne ke liye <---
+        // Slug Generation
         const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
 
         const makeList = (str) => (!str || str.trim() === "") ? null : str.split(',').filter(i => i.trim() !== "").map(i => `<li>${i.trim()}</li>`).join('');
@@ -241,16 +241,56 @@
             detailsHTML += createBox("FAQ", faqs);
         }
 
-        // ---> NAYA CODE: Database me 'slug' ko bhi push kar rahe hain <---
         try {
+            // FIREBASE SAVE
             await addDoc(collection(db, col), { 
                 title: title, 
                 slug: slug, 
                 details: detailsHTML, 
                 timestamp: serverTimestamp() 
             });
-            alert("Published Successfully!"); location.reload();
-        } catch (e) { alert("Error!"); }
+
+            // ---> TELEGRAM & ONESIGNAL NOTIFICATION LOGIC START <---
+            const postUrl = `https://jobs.studenthelpclub.in/post.html?col=${col}&slug=${slug}`;
+            
+            // 1. Send Telegram Message
+            const botToken = "8558088798:AAFhG2nxB7CzExPtR__Gwryoy1svCeAIIXw";
+            const chatId = "@studenthelpclub";
+            fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ 
+                    chat_id: chatId, 
+                    text: `🔥 <b>New Update on Student Help Club!</b>\n\n📌 ${title}\n\n👉 <b>Click Here to Check:</b>\n${postUrl}`,
+                    parse_mode: 'HTML' 
+                })
+            }).catch(err => console.log("Telegram Error", err));
+
+            // 2. Send OneSignal Web Push
+            const osAppId = "3d88660b-b1d6-4ee0-89ff-b9b5ee40b28d";
+            const osRestKey = "os_v2_app_hwegmc5r2zhobcp7xg264qfsruwjlcjfvpquf2v7yhv4buiipvyk4fqxbgkzlby3qlrvlggsoqzhtkehwkkzdkthwob6mubnfa4lffq";
+            fetch("https://onesignal.com/api/v1/notifications", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Basic ${osRestKey}`
+                },
+                body: JSON.stringify({
+                    app_id: osAppId,
+                    included_segments: ["Subscribed Users"],
+                    headings: { "en": "SHC Latest Update 🔥" },
+                    contents: { "en": title },
+                    url: postUrl
+                })
+            }).catch(err => console.log("OneSignal Error", err));
+            // ---> TELEGRAM & ONESIGNAL NOTIFICATION LOGIC END <---
+
+            alert("Published & Notifications Sent Successfully!"); 
+            location.reload();
+        } catch (e) { 
+            alert("Error in Database!"); 
+            console.error(e); 
+        }
     });
 </script>
 </body>
