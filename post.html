@@ -335,8 +335,9 @@
 </footer>
 
 <script type="module">
+    // NAYA CODE: 'where' aur 'getDocs' ko import kiya gaya hai query filter karne ke liye
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-    import { getFirestore, collection, query, orderBy, limit, onSnapshot, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+    import { getFirestore, collection, query, orderBy, limit, onSnapshot, doc, getDoc, where, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
     const firebaseConfig = {
         apiKey: "AIzaSyAv_ExAgpnZnfFuc-OjDLppmavG2Z79pnw",
@@ -358,7 +359,7 @@
         const categories = Object.values(marqueeCandidates);
         if (categories.length > 0) {
             const latest = categories.sort((a, b) => b.time - a.time)[0];
-            document.getElementById('top-ticker').innerHTML = `🔥 <span style="color:#ef4444; font-weight:800;">LATEST:</span> ${latest.title} <a href="post.html?col=${latest.cat}&id=${latest.id}" style="color:#2563eb; text-decoration:none; font-weight:700; margin-left:5px;"> [Check Now]</a>`;
+            document.getElementById('top-ticker').innerHTML = `🔥 <span style="color:#ef4444; font-weight:800;">LATEST:</span> ${latest.title} <a href="post.html?col=${latest.cat}&slug=${latest.slug}" style="color:#2563eb; text-decoration:none; font-weight:700; margin-left:5px;"> [Check Now]</a>`;
         }
     }
 
@@ -367,11 +368,12 @@
         onSnapshot(q, (snapshot) => {
             snapshot.docs.forEach((doc, index) => {
                 const data = doc.data();
+                const finalSlug = data.slug || doc.id; // Fallback to ID
                 if (index === 0 && data.timestamp) {
-                    marqueeCandidates[col] = { id: doc.id, title: data.title, cat: col, time: data.timestamp.toMillis() };
+                    marqueeCandidates[col] = { slug: finalSlug, title: data.title, cat: col, time: data.timestamp.toMillis() };
                     updateGlobalMarquee();
                 }
-                searchData.push({ id: doc.id, title: data.title, cat: col });
+                searchData.push({ slug: finalSlug, title: data.title, cat: col });
             });
         });
     }
@@ -379,43 +381,73 @@
     const allCols = ['jobs', 'admit', 'result', 'yojna', 'scholarship'];
     allCols.forEach(col => syncSearchAndMarquee(col));
 
+    // NAYA CODE: URL Params se slug aur id nikalna
     const urlParams = new URLSearchParams(window.location.search);
-    const postId = urlParams.get('id');
+    const postSlug = urlParams.get('slug'); // Naya system
+    const postId = urlParams.get('id');     // Purana system (Fallback ke liye)
     const colName = urlParams.get('col') || 'jobs'; 
 
-    if (postId) {
-        getDoc(doc(db, colName, postId)).then((docSnap) => {
-            if (docSnap.exists()) {
-                const data = docSnap.data();
-                document.getElementById('post-title').innerText = data.title;
-                
-                if(data.timestamp) {
-                    document.getElementById('post-date').innerText = data.timestamp.toDate().toLocaleDateString('hi-IN', {day: '2-digit', month: 'short', year: 'numeric'});
-                }
+    // Function to render post data on screen
+    const displayPost = (data) => {
+        document.getElementById('post-title').innerText = data.title;
+        
+        if(data.timestamp) {
+            document.getElementById('post-date').innerText = data.timestamp.toDate().toLocaleDateString('hi-IN', {day: '2-digit', month: 'short', year: 'numeric'});
+        }
 
-                let bodyContent = data.details || "";
-                bodyContent = bodyContent.replace('display:flex; gap:10px; flex-wrap:wrap;', 'display:flex; flex-direction:column; gap:25px;');
+        let bodyContent = data.details || "";
+        bodyContent = bodyContent.replace('display:flex; gap:10px; flex-wrap:wrap;', 'display:flex; flex-direction:column; gap:25px;');
+        bodyContent = bodyContent.replace(/<table/g, '<div class="table-wrapper"><table');
+        bodyContent = bodyContent.replace(/<\/table>/g, '</table></div>');
 
-                bodyContent = bodyContent.replace(/<table/g, '<div class="table-wrapper"><table');
-                bodyContent = bodyContent.replace(/<\/table>/g, '</table></div>');
+        if (bodyContent.includes("Important Links")) {
+            const toolLinks = `
+                <tr><td><b>Age Calculator (Umar Nikale)</b></td><td><a href="https://tools.studenthelpclub.in/age-calculator.html" target="_blank">Click Here</a></td></tr>
+                <tr><td><b>Image Resizer (KB Kam Kare)</b></td><td><a href="https://tools.studenthelpclub.in/image-resize.html" target="_blank">Click Here</a></td></tr>
+            `;
+            if (bodyContent.includes("Join Telegram")) {
+                bodyContent = bodyContent.replace('<tr><td>Join Telegram', toolLinks + '<tr><td>Join Telegram');
+            } else {
+                bodyContent = bodyContent.replace("</table>", toolLinks + "</table>");
+            }
+        }
 
-                if (bodyContent.includes("Important Links")) {
-                    const toolLinks = `
-                        <tr><td><b>Age Calculator (Umar Nikale)</b></td><td><a href="https://tools.studenthelpclub.in/age-calculator.html" target="_blank">Click Here</a></td></tr>
-                        <tr><td><b>Image Resizer (KB Kam Kare)</b></td><td><a href="https://tools.studenthelpclub.in/image-resize.html" target="_blank">Click Here</a></td></tr>
-                    `;
-                    
-                    if (bodyContent.includes("Join Telegram")) {
-                        bodyContent = bodyContent.replace('<tr><td>Join Telegram', toolLinks + '<tr><td>Join Telegram');
-                    } else {
-                        bodyContent = bodyContent.replace("</table>", toolLinks + "</table>");
-                    }
-                }
+        document.getElementById('dynamic-body').innerHTML = bodyContent;
+        document.getElementById('loader').style.display = 'none';
+        document.getElementById('main-content').style.display = 'block';
+    };
 
-                document.getElementById('dynamic-body').innerHTML = bodyContent;
+    // NAYA LOGIC: Database Query check karegi pehle 'slug', agar wo nahi mila to 'id'
+    if (postSlug) {
+        // Query to find Document where slug == postSlug
+        const q = query(collection(db, colName), where("slug", "==", postSlug), limit(1));
+        getDocs(q).then((querySnapshot) => {
+            if (!querySnapshot.empty) {
+                // Slug mil gaya, data show karo
+                const docSnap = querySnapshot.docs[0];
+                displayPost(docSnap.data());
+            } else {
+                // Agar slug galti se galat hua
+                document.getElementById('post-title').innerText = "Post Not Found";
                 document.getElementById('loader').style.display = 'none';
                 document.getElementById('main-content').style.display = 'block';
             }
+        }).catch(err => {
+            console.error("Error loading post:", err);
+        });
+
+    } else if (postId) {
+        // Puraana system (Agar kisi ne purane ID wale link par click kiya)
+        getDoc(doc(db, colName, postId)).then((docSnap) => {
+            if (docSnap.exists()) {
+                displayPost(docSnap.data());
+            } else {
+                document.getElementById('post-title').innerText = "Post Not Found";
+                document.getElementById('loader').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+            }
+        }).catch(err => {
+            console.error("Error loading post:", err);
         });
     }
 
@@ -425,12 +457,15 @@
         const val = e.target.value.toLowerCase();
         resultsDiv.innerHTML = '';
         if (val.length < 2) { resultsDiv.style.display = 'none'; return; }
-        const filtered = searchData.filter((v, i, a) => a.findIndex(t => (t.id === v.id)) === i)
+        
+        // Search Filter Updated for Slug
+        const filtered = searchData.filter((v, i, a) => a.findIndex(t => (t.slug === v.slug)) === i)
                          .filter(item => item.title.toLowerCase().includes(val));
+                         
         if (filtered.length > 0) {
             resultsDiv.style.display = 'block';
             filtered.slice(0, 10).forEach(item => {
-                resultsDiv.innerHTML += `<a href="post.html?col=${item.cat}&id=${item.id}" style="padding:12px 20px; display:block; border-bottom:1px solid #f1f5f9; text-decoration:none; color:#334155; font-size:14px; font-weight:500; transition: background 0.2s;" onmouseover="this.style.background='#f8fafc'" onmouseout="this.style.background='transparent'"><span style="background:#e2e8f0; color:#475569; padding:2px 6px; border-radius:4px; font-size:11px; font-weight:700; margin-right:8px; text-transform:uppercase;">${item.cat}</span>${item.title}</a>`;
+                resultsDiv.innerHTML += `<a href="post.html?col=${item.cat}&slug=${item.slug}" style="padding:12px 20px; display:block; border-bottom:1px solid #f1f5f9; text-decoration:none; color:#334155; font-size:14px; font-weight:500; transition: background 0.2s;" onmouseover="this.style.background='#f8fafc'" onmouseout="this.style.background='transparent'"><span style="background:#e2e8f0; color:#475569; padding:2px 6px; border-radius:4px; font-size:11px; font-weight:700; margin-right:8px; text-transform:uppercase;">${item.cat}</span>${item.title}</a>`;
             });
         }
     });
