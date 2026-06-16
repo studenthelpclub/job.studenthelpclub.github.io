@@ -234,13 +234,6 @@
             detailsHTML += createBox("FAQ", faqs);
         }
 
-        // ---> BRAHMASTRA: TELEGRAM NEW TAB TRICK <---
-        // Jaise hi button click hoga, turant ek chota tab khulega taaki popup blocker na roke
-        const tgTab = window.open('about:blank', '_blank');
-        if(tgTab) {
-            tgTab.document.write('<h2 style="font-family:sans-serif; color:#003366; text-align:center; margin-top:50px;">Student Help Club</h2><p style="text-align:center; font-family:sans-serif; font-size:18px;">Telegram par update bheja ja raha hai...<br>Please Wait...</p>');
-        }
-
         try {
             document.getElementById('submitBtn').innerText = "PUBLISHING...";
 
@@ -254,22 +247,26 @@
 
             const postUrl = `https://jobs.studenthelpclub.in/post.html?col=${col}&slug=${slug}`;
 
-            // 2. TELEGRAM (Naye tab mein URL load karenge)
-            const botToken = "8558088798:AAFhG2nxB7CzExPtR__Gwryoy1svCeAIIXw";
-            const chatId = "-1003732714896"; 
-            const messageText = `🔥 <b>New Update on Student Help Club!</b>\n\n📌 ${title}\n\n👉 <b>Click Here to Check:</b>\n${postUrl}`;
-            const tgUrl = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&parse_mode=HTML&text=${encodeURIComponent(messageText)}`;
-
-            if(tgTab) {
-                tgTab.location.href = tgUrl; // Ye direct browser URL hai, koi Tracker Protection isko rok nahi sakta!
+            // ---> 2. TELEGRAM BICHOLIYA (PROXY) TRICK <---
+            try {
+                const botToken = "8558088798:AAFhG2nxB7CzExPtR__Gwryoy1svCeAIIXw";
+                const chatId = "-1003732714896"; 
+                const messageText = `🔥 <b>New Update on Student Help Club!</b>\n\n📌 ${title}\n\n👉 <b>Click Here to Check:</b>\n${postUrl}`;
                 
-                // 3 second baad Telegram tab apne aap band ho jayega
-                setTimeout(() => {
-                    try { tgTab.close(); } catch(e){}
-                }, 3000);
+                // Asli Telegram URL jisko internet block kar deta hai
+                const tgUrl = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&parse_mode=HTML&text=${encodeURIComponent(messageText)}`;
+                
+                // Proxy URL jo block nahi hota (Ye Proxy aage Telegram ko pass kar dega)
+                const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(tgUrl)}`;
+                
+                // Fetch Request
+                await fetch(proxyUrl);
+                
+            } catch(e) {
+                console.log("Telegram Proxy Error:", e);
             }
 
-            // 3. ONESIGNAL SILENT TRY (Agar fail hua toh page ko disturb nahi karega)
+            // 3. ONESIGNAL SILENT TRY
             try {
                 const osAppId = "3d88660b-b1d6-4ee0-89ff-b9b5ee40b28d";
                 const osRestKey = "os_v2_app_hwegmc5r2zhobcp7xg264qfsruwjlcjfvpquf2v7yhv4buiipvyk4fqxbgkzlby3qlrvlggsoqzhtkehwkkzdkthwob6mubnfa4lffq";
@@ -283,17 +280,14 @@
                         contents: { "en": title },
                         url: postUrl
                     })
-                }).catch(e => console.log("OneSignal Blocked:", e));
+                }).catch(e => console.log("OneSignal Blocked"));
             } catch(e){}
 
             // 4. FINAL SUCCESS MESSAGE
-            setTimeout(() => {
-                alert("✅ Published Successfully!\nWebsite aur Telegram dono par update ho gaya hai."); 
-                location.reload(); 
-            }, 1000);
+            alert("✅ Published Successfully!"); 
+            location.reload(); 
 
         } catch (e) { 
-            if(tgTab) tgTab.close(); // Error aane par tab band kar dega
             alert("Error in Database: " + e.message); 
             document.getElementById('submitBtn').innerText = "PUBLISH NOW";
         }
