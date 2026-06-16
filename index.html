@@ -586,7 +586,7 @@
             const categories = Object.values(marqueeCandidates);
             if (categories.length > 0) {
                 const latest = categories.sort((a, b) => b.time - a.time)[0];
-                document.getElementById('top-ticker').innerHTML = `🔥 <span style="color:#ef4444; font-weight:800;">LATEST:</span> ${latest.title} <a href="post.html?col=${latest.cat}&id=${latest.id}" style="color:#2563eb; text-decoration:none; font-weight:700; margin-left:5px;"> [Check Now]</a>`;
+                document.getElementById('top-ticker').innerHTML = `🔥 <span style="color:#ef4444; font-weight:800;">LATEST:</span> ${latest.title} <a href="post.html?col=${latest.cat}&slug=${latest.slug}" style="color:#2563eb; text-decoration:none; font-weight:700; margin-left:5px;"> [Check Now]</a>`;
             }
         }
 
@@ -604,17 +604,18 @@
 
                 snapshot.docs.forEach((doc, index) => {
                     const data = doc.data();
+                    const finalSlug = data.slug || doc.id; // Naya code: Slug nahi to ID use karo
                     
                     if (index === 0 && data.timestamp) {
-                        marqueeCandidates[colId] = { id: doc.id, title: data.title, cat: colId, time: data.timestamp.toMillis() };
+                        marqueeCandidates[colId] = { slug: finalSlug, title: data.title, cat: colId, time: data.timestamp.toMillis() };
                         updateGlobalMarquee();
                     }
-                    searchData.push({ id: doc.id, title: data.title, cat: colId });
+                    searchData.push({ slug: finalSlug, title: data.title, cat: colId });
 
                     if (index < 8) {
                         const li = document.createElement('li');
                         const newTag = index < 2 ? `<span class="new-badge">NEW</span>` : '';
-                        li.innerHTML = `<a href="post.html?col=${colId}&id=${doc.id}">${data.title} ${newTag}</a>`;
+                        li.innerHTML = `<a href="post.html?col=${colId}&slug=${finalSlug}">${data.title} ${newTag}</a>`;
                         listEl.appendChild(li);
                     }
                 });
@@ -638,13 +639,14 @@
             resultsDiv.innerHTML = '';
             if (val.length < 2) { resultsDiv.style.display = 'none'; return; }
             
-            const filtered = searchData.filter((v, i, a) => a.findIndex(t => (t.id === v.id)) === i)
+            // Unique results handle by title instead of id now
+            const filtered = searchData.filter((v, i, a) => a.findIndex(t => (t.slug === v.slug)) === i)
                              .filter(item => item.title.toLowerCase().includes(val));
                              
             if (filtered.length > 0) {
                 resultsDiv.style.display = 'block';
                 filtered.slice(0, 10).forEach(item => {
-                    resultsDiv.innerHTML += `<a href="post.html?col=${item.cat}&id=${item.id}" style="padding:12px 20px; display:block; border-bottom:1px solid #f1f5f9; text-decoration:none; color:#334155; font-size:14px; font-weight:500; transition: background 0.2s;" onmouseover="this.style.background='#f8fafc'" onmouseout="this.style.background='transparent'"><span style="background:#e2e8f0; color:#475569; padding:2px 6px; border-radius:4px; font-size:11px; font-weight:700; margin-right:8px; text-transform:uppercase;">${item.cat}</span>${item.title}</a>`;
+                    resultsDiv.innerHTML += `<a href="post.html?col=${item.cat}&slug=${item.slug}" style="padding:12px 20px; display:block; border-bottom:1px solid #f1f5f9; text-decoration:none; color:#334155; font-size:14px; font-weight:500; transition: background 0.2s;" onmouseover="this.style.background='#f8fafc'" onmouseout="this.style.background='transparent'"><span style="background:#e2e8f0; color:#475569; padding:2px 6px; border-radius:4px; font-size:11px; font-weight:700; margin-right:8px; text-transform:uppercase;">${item.cat}</span>${item.title}</a>`;
                 });
             }
         });
