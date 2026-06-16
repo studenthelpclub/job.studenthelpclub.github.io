@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-7RK3WFVY3Q"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7RK3WFVY3Q"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -171,6 +170,9 @@
         const title = document.getElementById('main_title').value;
         if(!title) return alert("Title required!");
 
+        // ---> NAYA CODE: Title se SEO friendly 'slug' generate karne ke liye <---
+        const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+
         const makeList = (str) => (!str || str.trim() === "") ? null : str.split(',').filter(i => i.trim() !== "").map(i => `<li>${i.trim()}</li>`).join('');
         const createBox = (t, c) => c ? `<div class="info-box"><div class="box-title">${t}</div><div class="box-content">${c}</div></div>` : "";
         
@@ -239,8 +241,14 @@
             detailsHTML += createBox("FAQ", faqs);
         }
 
+        // ---> NAYA CODE: Database me 'slug' ko bhi push kar rahe hain <---
         try {
-            await addDoc(collection(db, col), { title, details: detailsHTML, timestamp: serverTimestamp() });
+            await addDoc(collection(db, col), { 
+                title: title, 
+                slug: slug, 
+                details: detailsHTML, 
+                timestamp: serverTimestamp() 
+            });
             alert("Published Successfully!"); location.reload();
         } catch (e) { alert("Error!"); }
     });
