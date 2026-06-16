@@ -245,53 +245,51 @@
                 timestamp: serverTimestamp() 
             });
 
+            // ---> TELEGRAM & ONESIGNAL SMART LOGIC START <---
             const postUrl = `https://jobs.studenthelpclub.in/post.html?col=${col}&slug=${slug}`;
             
-            // 2. TELEGRAM (Naya CORS-Free "GET" Method)
-            try {
-                const botToken = "8558088798:AAFhG2nxB7CzExPtR__Gwryoy1svCeAIIXw";
-                const chatId = "-1003732714896"; 
-                const messageText = `🔥 <b>New Update on Student Help Club!</b>\n\n📌 ${title}\n\n👉 <b>Click Here to Check:</b>\n${postUrl}`;
-                
-                const tgUrl = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&parse_mode=HTML&text=${encodeURIComponent(messageText)}`;
-                
-                await fetch(tgUrl); 
-                console.log("Telegram Done!");
-            } catch (err) {
-                console.error("Telegram fail:", err);
-            }
+            // 2. Telegram Send (Using no-cors to 100% bypass browser blocks)
+            const botToken = "8558088798:AAFhG2nxB7CzExPtR__Gwryoy1svCeAIIXw";
+            const chatId = "-1003732714896"; 
+            const messageText = `🔥 <b>New Update on Student Help Club!</b>\n\n📌 ${title}\n\n👉 <b>Click Here to Check:</b>\n${postUrl}`;
+            const tgUrl = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&parse_mode=HTML&text=${encodeURIComponent(messageText)}`;
+            
+            // Fire and forget Telegram
+            const sendTelegram = fetch(tgUrl, { mode: 'no-cors' }).catch(e => console.log("TG Silent Error:", e));
 
-            // 3. ONESIGNAL (CORS Proxy lagaya gaya hai)
-            try {
-                const osAppId = "3d88660b-b1d6-4ee0-89ff-b9b5ee40b28d";
-                const osRestKey = "os_v2_app_hwegmc5r2zhobcp7xg264qfsruwjlcjfvpquf2v7yhv4buiipvyk4fqxbgkzlby3qlrvlggsoqzhtkehwkkzdkthwob6mubnfa4lffq";
-                
-                const proxyUrl = "https://corsproxy.io/?";
-                const targetUrl = encodeURIComponent("https://onesignal.com/api/v1/notifications");
+            // 3. OneSignal Send (Using direct approach, agar block hoga toh page ko nahi rokega)
+            const osAppId = "3d88660b-b1d6-4ee0-89ff-b9b5ee40b28d";
+            const osRestKey = "os_v2_app_hwegmc5r2zhobcp7xg264qfsruwjlcjfvpquf2v7yhv4buiipvyk4fqxbgkzlby3qlrvlggsoqzhtkehwkkzdkthwob6mubnfa4lffq";
+            const osProxy = "https://corsproxy.org/?" + encodeURIComponent("https://onesignal.com/api/v1/notifications");
+            
+            // Fire and forget OneSignal
+            const sendOneSignal = fetch(osProxy, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Basic ${osRestKey}`
+                },
+                body: JSON.stringify({
+                    app_id: osAppId,
+                    included_segments: ["Subscribed Users"],
+                    headings: { "en": "SHC Latest Update 🔥" },
+                    contents: { "en": title },
+                    url: postUrl
+                })
+            }).catch(e => console.log("OS Silent Error:", e));
 
-                await fetch(proxyUrl + targetUrl, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Basic ${osRestKey}`
-                    },
-                    body: JSON.stringify({
-                        app_id: osAppId,
-                        included_segments: ["Subscribed Users"],
-                        headings: { "en": "SHC Latest Update 🔥" },
-                        contents: { "en": title },
-                        url: postUrl
-                    })
-                });
-                console.log("OneSignal Done!");
-            } catch (err) {
-                console.error("OneSignal fail:", err);
-            }
+            // 4. ANTI-FREEZE TIMER: Browser sirf 2.5 seconds wait karega, uske baad automatically page refresh kar dega taaki button kabhi stuck na ho!
+            await Promise.race([
+                Promise.all([sendTelegram, sendOneSignal]),
+                new Promise(resolve => setTimeout(resolve, 2500))
+            ]);
 
             alert("Published Successfully!"); 
             location.reload(); 
+            // ---> TELEGRAM & ONESIGNAL SMART LOGIC END <---
+
         } catch (e) { 
-            alert("Error in Database!"); 
+            alert("Error in Database: " + e.message); 
             console.error(e); 
             document.getElementById('submitBtn').innerText = "PUBLISH NOW";
         }
