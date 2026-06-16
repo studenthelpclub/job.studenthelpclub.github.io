@@ -254,9 +254,9 @@
             // ---> TELEGRAM & ONESIGNAL NOTIFICATION LOGIC START <---
             const postUrl = `https://jobs.studenthelpclub.in/post.html?col=${col}&slug=${slug}`;
             
-            // 1. Send Telegram Message
+            // 1. Send Telegram Message (Using correct -100 ID)
             const botToken = "8558088798:AAFhG2nxB7CzExPtR__Gwryoy1svCeAIIXw";
-            const chatId = "@studenthelpclub";
+            const chatId = "-1003732714896"; 
             
             try {
                 await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
