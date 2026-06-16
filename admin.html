@@ -254,12 +254,12 @@
             // ---> TELEGRAM & ONESIGNAL NOTIFICATION LOGIC START <---
             const postUrl = `https://jobs.studenthelpclub.in/post.html?col=${col}&slug=${slug}`;
             
-            // 1. Send Telegram Message (Using correct -100 ID)
+            // 1. Send Telegram Message 
             const botToken = "8558088798:AAFhG2nxB7CzExPtR__Gwryoy1svCeAIIXw";
             const chatId = "-1003732714896"; 
             
             try {
-                await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                const tgRes = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ 
@@ -268,9 +268,14 @@
                         parse_mode: 'HTML' 
                     })
                 });
-                console.log("Telegram message bheja gaya");
+                const tgData = await tgRes.json();
+                
+                // ERROR DETECTOR (Agar Telegram mana karega toh ye pop-up aayega)
+                if (!tgData.ok) {
+                    alert("Telegram Error: " + tgData.description);
+                }
             } catch (err) {
-                console.error("Telegram Error:", err);
+                alert("Telegram Network Error: " + err.message);
             }
 
             // 2. Send OneSignal Web Push
@@ -278,7 +283,7 @@
             const osRestKey = "os_v2_app_hwegmc5r2zhobcp7xg264qfsruwjlcjfvpquf2v7yhv4buiipvyk4fqxbgkzlby3qlrvlggsoqzhtkehwkkzdkthwob6mubnfa4lffq";
             
             try {
-                await fetch("https://onesignal.com/api/v1/notifications", {
+                const osRes = await fetch("https://onesignal.com/api/v1/notifications", {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -292,9 +297,14 @@
                         url: postUrl
                     })
                 });
-                console.log("OneSignal notification bheji gayi");
+                const osData = await osRes.json();
+                
+                // ERROR DETECTOR (Agar OneSignal mana karega toh ye pop-up aayega)
+                if(osData.errors) {
+                    alert("OneSignal Error: " + JSON.stringify(osData.errors));
+                }
             } catch (err) {
-                console.error("OneSignal Error:", err);
+                alert("OneSignal Network Error: " + err.message);
             }
             // ---> TELEGRAM & ONESIGNAL NOTIFICATION LOGIC END <---
 
