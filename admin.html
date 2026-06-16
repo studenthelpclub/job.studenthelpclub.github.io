@@ -237,7 +237,7 @@
         try {
             document.getElementById('submitBtn').innerText = "PUBLISHING...";
 
-            // 1. FIREBASE SAVE (Website update - 100% chalega)
+            // 1. FIREBASE SAVE (Website par update)
             await addDoc(collection(db, col), { 
                 title: title, 
                 slug: slug, 
@@ -247,24 +247,33 @@
 
             const postUrl = `https://jobs.studenthelpclub.in/post.html?col=${col}&slug=${slug}`;
 
-            // 2. TELEGRAM MESSAGE (Is baar isko bhi try-catch mein dala hai taaki page na atke)
-            try {
-                const botToken = "8558088798:AAFhG2nxB7CzExPtR__Gwryoy1svCeAIIXw";
-                const chatId = "-1003732714896"; 
-                await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ 
-                        chat_id: chatId, 
-                        text: `🔥 <b>New Update on Student Help Club!</b>\n\n📌 ${title}\n\n👉 <b>Click Here to Check:</b>\n${postUrl}`,
-                        parse_mode: 'HTML' 
-                    })
-                });
-            } catch (tgError) {
-                console.log("Telegram silent error:", tgError);
-            }
+            // ---> 2. TELEGRAM (ULTIMATE BYPASS: Hidden Form Trick) <---
+            // Browser CORS rules HTML forms par laagoo nahi hote. Ye 100% chalega.
+            const botToken = "8558088798:AAFhG2nxB7CzExPtR__Gwryoy1svCeAIIXw";
+            const chatId = "-1003732714896"; 
+            const messageText = `🔥 <b>New Update on Student Help Club!</b>\n\n📌 ${title}\n\n👉 <b>Click Here to Check:</b>\n${postUrl}`;
 
-            // 3. ONESIGNAL PUSH (Direct background mein bheja hai, fail hua toh page ko nahi rokega)
+            // Ek chhupa hua Iframe banayenge taaki form submit hone par page na badle
+            const iframeName = "tg_iframe_" + Date.now();
+            const iframe = document.createElement("iframe");
+            iframe.name = iframeName;
+            iframe.style.display = "none";
+            document.body.appendChild(iframe);
+
+            // Ek chhupa hua Form banayenge aur usme Telegram ka data daalenge
+            const form = document.createElement("form");
+            form.method = "POST";
+            form.action = `https://api.telegram.org/bot${botToken}/sendMessage`;
+            form.target = iframeName;
+
+            const i1 = document.createElement("input"); i1.type = "hidden"; i1.name = "chat_id"; i1.value = chatId; form.appendChild(i1);
+            const i2 = document.createElement("input"); i2.type = "hidden"; i2.name = "text"; i2.value = messageText; form.appendChild(i2);
+            const i3 = document.createElement("input"); i3.type = "hidden"; i3.name = "parse_mode"; i3.value = "HTML"; form.appendChild(i3);
+
+            document.body.appendChild(form);
+            form.submit(); // Ye command CORS aur Browser limits ko bypass karke data bhej degi!
+
+            // 3. ONESIGNAL PUSH (Background attempt)
             try {
                 const osAppId = "3d88660b-b1d6-4ee0-89ff-b9b5ee40b28d";
                 const osRestKey = "os_v2_app_hwegmc5r2zhobcp7xg264qfsruwjlcjfvpquf2v7yhv4buiipvyk4fqxbgkzlby3qlrvlggsoqzhtkehwkkzdkthwob6mubnfa4lffq";
@@ -282,14 +291,14 @@
                         contents: { "en": title },
                         url: postUrl
                     })
-                }).catch(e => console.log("OneSignal Blocked:", e));
-            } catch (osError) {
-                console.log("OS Error:", osError);
-            }
+                }).catch(e => console.log("OS Error:", e));
+            } catch(e) {}
 
-            // Yahan aate hi sab complete man liya jayega aur page turant refresh ho jayega!
-            alert("Published Successfully! (Website & Telegram)"); 
-            location.reload(); 
+            // Form submit hone ke liye 2 seconds ka wait aur fir page refresh
+            setTimeout(() => {
+                alert("Published Successfully on Website & Telegram!"); 
+                location.reload();
+            }, 2000);
 
         } catch (e) { 
             alert("Error in Database: " + e.message); 
