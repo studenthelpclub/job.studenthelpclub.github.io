@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-7RK3WFVY3Q"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-7RK3WFVY3Q');
-</script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-7RK3WFVY3Q');
+    </script>
     <meta name="google-site-verification" content="ySBKvgRcffZgkku3SImRkt6T7rm0r_L6OfClnFXGrrc" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -256,37 +257,49 @@
             // 1. Send Telegram Message
             const botToken = "8558088798:AAFhG2nxB7CzExPtR__Gwryoy1svCeAIIXw";
             const chatId = "@studenthelpclub";
-            fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ 
-                    chat_id: chatId, 
-                    text: `🔥 <b>New Update on Student Help Club!</b>\n\n📌 ${title}\n\n👉 <b>Click Here to Check:</b>\n${postUrl}`,
-                    parse_mode: 'HTML' 
-                })
-            }).catch(err => console.log("Telegram Error", err));
+            
+            try {
+                await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        chat_id: chatId, 
+                        text: `🔥 <b>New Update on Student Help Club!</b>\n\n📌 ${title}\n\n👉 <b>Click Here to Check:</b>\n${postUrl}`,
+                        parse_mode: 'HTML' 
+                    })
+                });
+                console.log("Telegram message bheja gaya");
+            } catch (err) {
+                console.error("Telegram Error:", err);
+            }
 
             // 2. Send OneSignal Web Push
             const osAppId = "3d88660b-b1d6-4ee0-89ff-b9b5ee40b28d";
             const osRestKey = "os_v2_app_hwegmc5r2zhobcp7xg264qfsruwjlcjfvpquf2v7yhv4buiipvyk4fqxbgkzlby3qlrvlggsoqzhtkehwkkzdkthwob6mubnfa4lffq";
-            fetch("https://onesignal.com/api/v1/notifications", {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Basic ${osRestKey}`
-                },
-                body: JSON.stringify({
-                    app_id: osAppId,
-                    included_segments: ["Subscribed Users"],
-                    headings: { "en": "SHC Latest Update 🔥" },
-                    contents: { "en": title },
-                    url: postUrl
-                })
-            }).catch(err => console.log("OneSignal Error", err));
+            
+            try {
+                await fetch("https://onesignal.com/api/v1/notifications", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Basic ${osRestKey}`
+                    },
+                    body: JSON.stringify({
+                        app_id: osAppId,
+                        included_segments: ["Subscribed Users"],
+                        headings: { "en": "SHC Latest Update 🔥" },
+                        contents: { "en": title },
+                        url: postUrl
+                    })
+                });
+                console.log("OneSignal notification bheji gayi");
+            } catch (err) {
+                console.error("OneSignal Error:", err);
+            }
             // ---> TELEGRAM & ONESIGNAL NOTIFICATION LOGIC END <---
 
             alert("Published & Notifications Sent Successfully!"); 
-            location.reload();
+            location.reload(); 
         } catch (e) { 
             alert("Error in Database!"); 
             console.error(e); 
