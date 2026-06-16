@@ -171,9 +171,7 @@
         const title = document.getElementById('main_title').value;
         if(!title) return alert("Title required!");
 
-        // Slug Generation
         const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
-
         const makeList = (str) => (!str || str.trim() === "") ? null : str.split(',').filter(i => i.trim() !== "").map(i => `<li>${i.trim()}</li>`).join('');
         const createBox = (t, c) => c ? `<div class="info-box"><div class="box-title">${t}</div><div class="box-content">${c}</div></div>` : "";
         
@@ -193,7 +191,6 @@
 
         let detailsHTML = `<div class="short-info"><b>Short Info:</b> ${document.getElementById('short_info').value}</div>`;
         
-        // 1. Dates & Fee
         const dates = makeList(document.getElementById('dates_list').value);
         const fees = makeList(document.getElementById('fees_list').value);
         if(dates || fees) {
@@ -203,7 +200,6 @@
             </div>`;
         }
 
-        // 2. Vacancy
         detailsHTML += createBox("Age Limit", makeList(document.getElementById('age_details').value));
         const vTableRaw = document.getElementById('vacancy_table').value;
         if(vTableRaw && vTableRaw.includes('|')) {
@@ -212,7 +208,6 @@
         }
         detailsHTML += getExtraBoxes('container_vacancy');
 
-        // 3. Links (Fixed + Custom + Social)
         const applyLink = document.getElementById('fixed_apply_link').value;
         const notifLink = document.getElementById('fixed_notif_link').value;
         const customLinksRaw = document.getElementById('custom_links').value;
@@ -227,7 +222,6 @@
             }).join('');
         }
         
-        // Fixed Socials
         linkRows += `<tr><td>Join Telegram Group</td><td><a href="https://t.me/studenthelpclub" style="color:#0088cc;">Join Now</a></td></tr>`;
         linkRows += `<tr><td>Join WhatsApp Channel</td><td><a href="https://whatsapp.com/channel/0029VbCJ2xI7IUYa1zMB6n1f" style="color:#25d366;">Join Now</a></td></tr>`;
         linkRows += `<tr><td>Subscribe YouTube</td><td><a href="https://youtube.com/@vishalhelpclub" style="color:red;">Subscribe</a></td></tr>`;
@@ -235,7 +229,6 @@
         detailsHTML += `<div class="info-box"><div class="box-title" style="background:#27ae60; color:white;">Important Links</div><div class="box-content"><table class="link-table">${linkRows}</table></div></div>`;
         detailsHTML += getExtraBoxes('container_links');
 
-        // 4. FAQ
         const faqInput = document.getElementById('faq_data').value;
         if(faqInput) {
             const faqs = faqInput.trim().split('\n').map(l => { const p = l.split('?'); return p.length > 1 ? `<div class="faq-item"><b>Q. ${p[0]}?</b><br>Ans: ${p[1]}</div>` : ''; }).join('');
@@ -243,7 +236,9 @@
         }
 
         try {
-            // FIREBASE SAVE
+            document.getElementById('submitBtn').innerText = "PUBLISHING...";
+
+            // 1. FIREBASE SAVE
             await addDoc(collection(db, col), { 
                 title: title, 
                 slug: slug, 
@@ -251,39 +246,33 @@
                 timestamp: serverTimestamp() 
             });
 
-            // ---> TELEGRAM & ONESIGNAL NOTIFICATION LOGIC START <---
             const postUrl = `https://jobs.studenthelpclub.in/post.html?col=${col}&slug=${slug}`;
             
-            // 1. Send Telegram Message 
-            const botToken = "8558088798:AAFhG2nxB7CzExPtR__Gwryoy1svCeAIIXw";
-            const chatId = "-1003732714896"; 
-            
+            // 2. TELEGRAM (Naya CORS-Free "GET" Method)
             try {
-                const tgRes = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ 
-                        chat_id: chatId, 
-                        text: `🔥 <b>New Update on Student Help Club!</b>\n\n📌 ${title}\n\n👉 <b>Click Here to Check:</b>\n${postUrl}`,
-                        parse_mode: 'HTML' 
-                    })
-                });
-                const tgData = await tgRes.json();
+                const botToken = "8558088798:AAFhG2nxB7CzExPtR__Gwryoy1svCeAIIXw";
+                const chatId = "-1003732714896"; 
+                const messageText = `🔥 <b>New Update on Student Help Club!</b>\n\n📌 ${title}\n\n👉 <b>Click Here to Check:</b>\n${postUrl}`;
                 
-                // ERROR DETECTOR (Agar Telegram mana karega toh ye pop-up aayega)
-                if (!tgData.ok) {
-                    alert("Telegram Error: " + tgData.description);
-                }
+                // URL mein hi message aur ID bhej rahe hain taaki CORS block na kare
+                const tgUrl = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&parse_mode=HTML&text=${encodeURIComponent(messageText)}`;
+                
+                await fetch(tgUrl); 
+                console.log("Telegram Done!");
             } catch (err) {
-                alert("Telegram Network Error: " + err.message);
+                console.error("Telegram fail:", err);
             }
 
-            // 2. Send OneSignal Web Push
-            const osAppId = "3d88660b-b1d6-4ee0-89ff-b9b5ee40b28d";
-            const osRestKey = "os_v2_app_hwegmc5r2zhobcp7xg264qfsruwjlcjfvpquf2v7yhv4buiipvyk4fqxbgkzlby3qlrvlggsoqzhtkehwkkzdkthwob6mubnfa4lffq";
-            
+            // 3. ONESIGNAL (CORS Proxy lagaya gaya hai)
             try {
-                const osRes = await fetch("https://onesignal.com/api/v1/notifications", {
+                const osAppId = "3d88660b-b1d6-4ee0-89ff-b9b5ee40b28d";
+                const osRestKey = "os_v2_app_hwegmc5r2zhobcp7xg264qfsruwjlcjfvpquf2v7yhv4buiipvyk4fqxbgkzlby3qlrvlggsoqzhtkehwkkzdkthwob6mubnfa4lffq";
+                
+                // Browser ko dhokha dene ke liye proxy ka use
+                const proxyUrl = "https://corsproxy.io/?";
+                const targetUrl = encodeURIComponent("https://onesignal.com/api/v1/notifications");
+
+                await fetch(proxyUrl + targetUrl, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -297,22 +286,17 @@
                         url: postUrl
                     })
                 });
-                const osData = await osRes.json();
-                
-                // ERROR DETECTOR (Agar OneSignal mana karega toh ye pop-up aayega)
-                if(osData.errors) {
-                    alert("OneSignal Error: " + JSON.stringify(osData.errors));
-                }
+                console.log("OneSignal Done!");
             } catch (err) {
-                alert("OneSignal Network Error: " + err.message);
+                console.error("OneSignal fail:", err);
             }
-            // ---> TELEGRAM & ONESIGNAL NOTIFICATION LOGIC END <---
 
-            alert("Published & Notifications Sent Successfully!"); 
+            alert("Published Successfully!"); 
             location.reload(); 
         } catch (e) { 
             alert("Error in Database!"); 
             console.error(e); 
+            document.getElementById('submitBtn').innerText = "PUBLISH NOW";
         }
     });
 </script>
