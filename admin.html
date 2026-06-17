@@ -237,7 +237,7 @@
         try {
             document.getElementById('submitBtn').innerText = "PUBLISHING...";
 
-            // 1. FIREBASE SAVE (Website update)
+            // Sirf Firebase mein save ho raha hai
             await addDoc(collection(db, col), { 
                 title: title, 
                 slug: slug, 
@@ -245,46 +245,7 @@
                 timestamp: serverTimestamp() 
             });
 
-            const postUrl = `https://jobs.studenthelpclub.in/post.html?col=${col}&slug=${slug}`;
-
-            // ---> 2. TELEGRAM BICHOLIYA (PROXY) TRICK <---
-            try {
-                const botToken = "8558088798:AAFhG2nxB7CzExPtR__Gwryoy1svCeAIIXw";
-                const chatId = "-1003732714896"; 
-                const messageText = `🔥 <b>New Update on Student Help Club!</b>\n\n📌 ${title}\n\n👉 <b>Click Here to Check:</b>\n${postUrl}`;
-                
-                // Asli Telegram URL jisko internet block kar deta hai
-                const tgUrl = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&parse_mode=HTML&text=${encodeURIComponent(messageText)}`;
-                
-                // Proxy URL jo block nahi hota (Ye Proxy aage Telegram ko pass kar dega)
-                const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(tgUrl)}`;
-                
-                // Fetch Request
-                await fetch(proxyUrl);
-                
-            } catch(e) {
-                console.log("Telegram Proxy Error:", e);
-            }
-
-            // 3. ONESIGNAL SILENT TRY
-            try {
-                const osAppId = "3d88660b-b1d6-4ee0-89ff-b9b5ee40b28d";
-                const osRestKey = "os_v2_app_hwegmc5r2zhobcp7xg264qfsruwjlcjfvpquf2v7yhv4buiipvyk4fqxbgkzlby3qlrvlggsoqzhtkehwkkzdkthwob6mubnfa4lffq";
-                fetch("https://onesignal.com/api/v1/notifications", {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json', 'Authorization': `Basic ${osRestKey}` },
-                    body: JSON.stringify({
-                        app_id: osAppId,
-                        included_segments: ["Subscribed Users"],
-                        headings: { "en": "SHC Latest Update 🔥" },
-                        contents: { "en": title },
-                        url: postUrl
-                    })
-                }).catch(e => console.log("OneSignal Blocked"));
-            } catch(e){}
-
-            // 4. FINAL SUCCESS MESSAGE
-            alert("✅ Published Successfully!"); 
+            alert("Website Par Publish Ho Gaya!"); 
             location.reload(); 
 
         } catch (e) { 
