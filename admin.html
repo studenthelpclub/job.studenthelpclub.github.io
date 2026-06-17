@@ -2,12 +2,12 @@
 <html lang="hi">
 <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-7RK3WFVY3Q"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-7RK3WFVY3Q');
-</script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-7RK3WFVY3Q');
+    </script>
     <meta name="google-site-verification" content="ySBKvgRcffZgkku3SImRkt6T7rm0r_L6OfClnFXGrrc" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -170,9 +170,7 @@
         const title = document.getElementById('main_title').value;
         if(!title) return alert("Title required!");
 
-        // ---> NAYA CODE: Title se SEO friendly 'slug' generate karne ke liye <---
         const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
-
         const makeList = (str) => (!str || str.trim() === "") ? null : str.split(',').filter(i => i.trim() !== "").map(i => `<li>${i.trim()}</li>`).join('');
         const createBox = (t, c) => c ? `<div class="info-box"><div class="box-title">${t}</div><div class="box-content">${c}</div></div>` : "";
         
@@ -192,7 +190,6 @@
 
         let detailsHTML = `<div class="short-info"><b>Short Info:</b> ${document.getElementById('short_info').value}</div>`;
         
-        // 1. Dates & Fee
         const dates = makeList(document.getElementById('dates_list').value);
         const fees = makeList(document.getElementById('fees_list').value);
         if(dates || fees) {
@@ -202,7 +199,6 @@
             </div>`;
         }
 
-        // 2. Vacancy
         detailsHTML += createBox("Age Limit", makeList(document.getElementById('age_details').value));
         const vTableRaw = document.getElementById('vacancy_table').value;
         if(vTableRaw && vTableRaw.includes('|')) {
@@ -211,7 +207,6 @@
         }
         detailsHTML += getExtraBoxes('container_vacancy');
 
-        // 3. Links (Fixed + Custom + Social)
         const applyLink = document.getElementById('fixed_apply_link').value;
         const notifLink = document.getElementById('fixed_notif_link').value;
         const customLinksRaw = document.getElementById('custom_links').value;
@@ -226,7 +221,6 @@
             }).join('');
         }
         
-        // Fixed Socials
         linkRows += `<tr><td>Join Telegram Group</td><td><a href="https://t.me/studenthelpclub" style="color:#0088cc;">Join Now</a></td></tr>`;
         linkRows += `<tr><td>Join WhatsApp Channel</td><td><a href="https://whatsapp.com/channel/0029VbCJ2xI7IUYa1zMB6n1f" style="color:#25d366;">Join Now</a></td></tr>`;
         linkRows += `<tr><td>Subscribe YouTube</td><td><a href="https://youtube.com/@vishalhelpclub" style="color:red;">Subscribe</a></td></tr>`;
@@ -234,23 +228,44 @@
         detailsHTML += `<div class="info-box"><div class="box-title" style="background:#27ae60; color:white;">Important Links</div><div class="box-content"><table class="link-table">${linkRows}</table></div></div>`;
         detailsHTML += getExtraBoxes('container_links');
 
-        // 4. FAQ
         const faqInput = document.getElementById('faq_data').value;
         if(faqInput) {
             const faqs = faqInput.trim().split('\n').map(l => { const p = l.split('?'); return p.length > 1 ? `<div class="faq-item"><b>Q. ${p[0]}?</b><br>Ans: ${p[1]}</div>` : ''; }).join('');
             detailsHTML += createBox("FAQ", faqs);
         }
 
-        // ---> NAYA CODE: Database me 'slug' ko bhi push kar rahe hain <---
         try {
+            document.getElementById('submitBtn').innerText = "PUBLISHING...";
+
+            // 1. FIREBASE SAVE (Website update)
             await addDoc(collection(db, col), { 
                 title: title, 
                 slug: slug, 
                 details: detailsHTML, 
                 timestamp: serverTimestamp() 
             });
-            alert("Published Successfully!"); location.reload();
-        } catch (e) { alert("Error!"); }
+
+            const postUrl = `https://jobs.studenthelpclub.in/post.html?col=${col}&slug=${slug}`;
+
+            // ---> 2. GOOGLE SERVER TRIGGER (GET METHOD) <---
+            const googleServerUrl = "https://script.google.com/macros/s/AKfycbyo025_xgev4ItpdWA6VaycY4nBPLXvPro97qjhJd4U0kFSv5CmqPks64hz96mCxIsk/exec";
+            
+            // URL ke aage data laga kar bhejna (Isko browser kabhi nahi rokta)
+            const finalUrl = googleServerUrl + "?title=" + encodeURIComponent(title) + "&url=" + encodeURIComponent(postUrl);
+            
+            // GET request with no-cors (Browser shanti se bhej dega)
+            fetch(finalUrl, { mode: 'no-cors' }).catch(err => console.log("Bg Trigger:", err));
+
+            // Thik 1 second baad screen refresh hogi
+            setTimeout(() => {
+                alert("✅ Published Successfully! (Check Telegram Channel)"); 
+                location.reload(); 
+            }, 1500);
+
+        } catch (e) { 
+            alert("Error in Database: " + e.message); 
+            document.getElementById('submitBtn').innerText = "PUBLISH NOW";
+        }
     });
 </script>
 </body>
