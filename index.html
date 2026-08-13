@@ -1,6 +1,17 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
+    <!-- ONESIGNAL PUSH NOTIFICATIONS -->
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+    <script>
+      window.OneSignalDeferred = window.OneSignalDeferred || [];
+      OneSignalDeferred.push(async function(OneSignal) {
+        await OneSignal.init({
+          appId: "3d88660b-b1d6-4ee0-89ff-b9b5ee40b28d",
+        });
+      });
+    </script> 
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="google-site-verification" content="ySBKvgRcffZgkku3SImRkt6T7rm0r_L6OfClnFXGrrc" />
@@ -10,7 +21,7 @@
     <title>Student Help Club | Latest Government Jobs, Sarkari Result & Admit Cards</title>
     <meta name="description" content="Find the latest Central and State Government Jobs, Sarkari Results, Admit Cards, Scholarships, and Free Job Alerts instantly on Student Help Club (SHC).">
     <meta name="keywords" content="Student Help Club, Sarkari Result, Latest Jobs, Admit Card, Government Schemes, Free Job Alert, Study Material, Recruitment Updates">
-    <meta name="author" content="Vishal - Student Help Club">
+    <meta name="author" content="Vishal Kumar - Student Help Club">
     <meta name="robots" content="index, follow">
     
     <meta property="og:title" content="Student Help Club - India's Trusted Educational & Job Portal">
@@ -29,6 +40,7 @@
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
     
+    <!-- JSON-LD SCHEMA FOR WEBSITE AND SEARCH -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -51,7 +63,7 @@
       "logo": "https://jobs.studenthelpclub.in/shc-logo.jpg",
       "founder": {
         "@type": "Person",
-        "name": "Vishal"
+        "name": "Vishal Kumar"
       }
     }
     </script>
@@ -184,6 +196,7 @@
         }
 
         .seo-body { color: #334155; line-height: 1.7; font-size: 0.95rem; }
+        .seo-body h2 { color: #0f172a; font-size: 1.2rem; margin-top: 25px; margin-bottom: 10px; font-weight: 700;}
         .seo-body p { margin-top: 0; margin-bottom: 12px; text-align: justify; }
         .seo-body ul { margin: 0 0 15px 0; padding-left: 20px; list-style-type: disc; }
         .seo-body ul li { margin-bottom: 6px; }
@@ -192,11 +205,11 @@
         .job-list li { margin-bottom: 10px; line-height: 1.6; }
         
         .faq-item { margin-bottom: 20px; }
-        .faq-q { font-weight: 500; color: #1e293b; margin-bottom: 5px; }
+        .faq-q { font-weight: 700; color: #1e293b; margin-bottom: 5px; font-size: 1rem;}
         .faq-a { color: #475569; }
 
         .seo-hl { font-weight: 600; color: #2563eb; text-decoration: none; }
-        .seo-sub-title { color: #1e293b; font-size: 1.05rem; font-weight: 600; margin-top: 20px; margin-bottom: 8px; }
+        .seo-sub-title { color: #1e293b; font-size: 1.05rem; font-weight: 700; margin-top: 20px; margin-bottom: 8px; }
 
         .disclaimer-box { background-color: #f8fafc; border-top: 1px solid #e2e8f0; padding: 15px; font-size: 0.85rem; color: #475569; text-align: justify; line-height: 1.6; margin-top: 20px; }
         .disclaimer-box span { color: #ef4444; font-weight: 600; }
@@ -278,8 +291,8 @@
         <div class="top-container">
             <span><i class="fas fa-calendar-alt" aria-hidden="true"></i> <span id="current-date"></span></span>
             <div class="top-links">
-                <a href="https://t.me/studenthelpclub" target="_blank" aria-label="Join our Telegram"><i class="fab fa-telegram" aria-hidden="true"></i> Telegram</a>
-                <a href="https://whatsapp.com/channel/0029VbCJ2xI7IUYa1zMB6n1f" class="ws-link" style="color: #25D366;" target="_blank" aria-label="Join our WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp</a>
+                <a href="https://t.me/studenthelpclub" target="_blank" rel="noopener" aria-label="Join our Telegram"><i class="fab fa-telegram" aria-hidden="true"></i> Telegram</a>
+                <a href="https://whatsapp.com/channel/0029VbCJ2xI7IUYa1zMB6n1f" class="ws-link" style="color: #25D366;" target="_blank" rel="noopener" aria-label="Join our WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp</a>
             </div>
         </div>
     </div>
@@ -360,48 +373,48 @@
 
     </div>
 
-    <section class="seo-container" aria-label="About Student Help Club">
+    <article class="seo-container" aria-label="About Student Help Club">
         
-        <div class="green-banner">About Student Help Club</div>
+        <h2 class="green-banner">About Student Help Club</h2>
         <div class="seo-body">
             <p>Student Help Club is a popular job website in India which website address is <a href="https://jobs.studenthelpclub.in" class="seo-hl">https://jobs.studenthelpclub.in</a>. This website was created in 2026 with an aim to provides job updates to millions of job seekers who are wishing to join government job. At present Student Help Club provides job updates of more than 15 (fifteen) important states of India.</p>
             <p><em>"Message from Admin:- Dear user we are strengthening our coverage with quick response to deliver job updates accurately with greater user experience."</em></p>
             <p>It is a very light and fast job website with beautiful design in respect of user experience. We are using simple and commonly used English words for taking care of all kinds of visitors.</p>
         </div>
 
-        <div class="green-banner">Features of Student Help Club</div>
+        <h2 class="green-banner">Features of Student Help Club</h2>
         <div class="seo-body">
             <p>It is a very light and fast website with simple design for all kind of devices. It is a fully responsive website with Mobile first approach with greater user experience. This website also comes with an Android App, you can download in play store using the search term "Student Help Club".</p>
             <p>Here is key features of our website as:</p>
             <ul>
-                <li><span class="seo-hl">Current Job (Sarkari Job)</span></li>
-                <li><span class="seo-hl">Admit Card</span></li>
-                <li><span class="seo-hl">Result (Sarkari Result)</span></li>
+                <li><strong><span class="seo-hl">Current Job (Sarkari Job)</span></strong></li>
+                <li><strong><span class="seo-hl">Admit Card</span></strong></li>
+                <li><strong><span class="seo-hl">Result (Sarkari Result)</span></strong></li>
                 <li>Syllabus</li>
                 <li>Answer Key</li>
                 <li>Admission</li>
-                <li><span class="seo-hl">Exam Date Alert (Sarkari Exam)</span></li>
-                <li><span class="seo-hl">Scholarship</span></li>
+                <li><strong><span class="seo-hl">Exam Date Alert (Sarkari Exam)</span></strong></li>
+                <li><strong><span class="seo-hl">Scholarship</span></strong></li>
                 <li>University Update</li>
                 <li>Blogs and other updates.</li>
             </ul>
         </div>
 
-        <div class="green-banner">Student Help Club Coverage</div>
+        <h2 class="green-banner">Student Help Club Coverage</h2>
         <div class="seo-body">
             <p>We are happy to announce you now extend our coverage in more than 15 (fifteen) important states of our country. This portal is also dedicated for central government job updates. We are also providing almost each and every updates related to central government recruitment. In addition to job updates, you will also get update of <span class="seo-hl">Admit Card</span>, Syllabus Answer Key and <span class="seo-hl">Result</span> of any state and central government recruitment.</p>
             
-            <div class="seo-sub-title">Admission Coverage</div>
+            <h3 class="seo-sub-title">Admission Coverage</h3>
             <p>You will get all kinds of update related to Schools, Colleges and Universities admission update. Almost each and every alert will be available on this website related to state government and central government any kind of admission. You will be notified each and every important date and activity related to admission on our portal, mobile app and all our active social handles.</p>
             
-            <div class="seo-sub-title">Scholarship Coverage</div>
+            <h3 class="seo-sub-title">Scholarship Coverage</h3>
             <p>Those aspirants who want to get higher education and whose family annual income from all sources are under state and central government norms. All eligible minority and SC/ ST aspirants can choose their state government scholarship scheme or central government scholarship scheme. Student Help Club alerts all the <span class="seo-hl">scholarship scheme</span> for the current financial year of states and central government.</p>
             
-            <div class="seo-sub-title">Entrance Test Coverage</div>
+            <h3 class="seo-sub-title">Entrance Test Coverage</h3>
             <p>Those aspirants who are preparing for state and central government entrance test for taking admission in School, College, University, D.El.Ed., B.Ed., Polytechnic, ITI, Engineering, Medical, Agriculture etc. This is the right place for all above students who will get each and every related update as per notification and schedule.</p>
         </div>
 
-        <div class="green-banner">Sarkari Job on Student Help Club</div>
+        <h2 class="green-banner">Sarkari Job on Student Help Club</h2>
         <div class="seo-body">
             <p>You can find almost all state and central government job on this portal. This is a single job point for all those aspirants who are preparing for general competition. Now we are highlighting top government jobs update as follows:</p>
             <ol class="job-list">
@@ -418,56 +431,56 @@
             </ol>
         </div>
 
-        <div class="green-banner">Student Help Club FAQs ?</div>
+        <h2 class="green-banner">Student Help Club FAQs ?</h2>
         <div class="seo-body">
             <div class="faq-item">
-                <div class="faq-q">1. What is Student Help Club?</div>
-                <div class="faq-a">Ans:- This is a very light and fast job website for those aspirants who are preparing for General Competitions. All aspirants can find <span class="seo-hl">Sarkari job</span> of their state and central government recruitment. In addition to job updates, you will get admit card, result, syllabus, admission, university update etc.</div>
+                <h3 class="faq-q">1. What is Student Help Club?</h3>
+                <p class="faq-a">Ans:- This is a very light and fast job website for those aspirants who are preparing for General Competitions. All aspirants can find <span class="seo-hl">Sarkari job</span> of their state and central government recruitment. In addition to job updates, you will get admit card, result, syllabus, admission, university update etc.</p>
             </div>
             
             <div class="faq-item">
-                <div class="faq-q">2. When Student Help Club was established?</div>
-                <div class="faq-a">Ans:- This is a popular job website of India and it was established in 2026 to help the job seekers to find job at a single point.</div>
+                <h3 class="faq-q">2. When Student Help Club was established?</h3>
+                <p class="faq-a">Ans:- This is a popular job website of India and it was established in 2026 to help the job seekers to find job at a single point.</p>
             </div>
 
             <div class="faq-item">
-                <div class="faq-q">3. What is the official website link of Student Help Club?</div>
-                <div class="faq-a">Ans:- The official website link of Student Help Club is <a href="https://jobs.studenthelpclub.in" class="seo-hl">https://jobs.studenthelpclub.in</a></div>
+                <h3 class="faq-q">3. What is the official website link of Student Help Club?</h3>
+                <p class="faq-a">Ans:- The official website link of Student Help Club is <a href="https://jobs.studenthelpclub.in" class="seo-hl">https://jobs.studenthelpclub.in</a></p>
             </div>
 
             <div class="faq-item">
-                <div class="faq-q">4. Does this website take any sensitive user data?</div>
-                <div class="faq-a">Ans:- No, this website does not take any kind of user data.</div>
+                <h3 class="faq-q">4. Does this website take any sensitive user data?</h3>
+                <p class="faq-a">Ans:- No, this website does not take any kind of user data.</p>
             </div>
 
             <div class="faq-item">
-                <div class="faq-q">5. Is it a secure website?</div>
-                <div class="faq-a">Ans:- Yes, this a secure website with modern web server and has latest SSL certificate installed.</div>
+                <h3 class="faq-q">5. Is it a secure website?</h3>
+                <p class="faq-a">Ans:- Yes, this a secure website with modern web server and has latest SSL certificate installed.</p>
             </div>
 
             <div class="faq-item">
-                <div class="faq-q">6. What are the social platforms does Student Help Club use?</div>
-                <div class="faq-a">Ans:- Student Help Club is available on Telegram, Twitter, Facebook, Instagram.</div>
+                <h3 class="faq-q">6. What are the social platforms does Student Help Club use?</h3>
+                <p class="faq-a">Ans:- Student Help Club is available on Telegram, Twitter, Facebook, Instagram.</p>
             </div>
 
             <div class="faq-item">
-                <div class="faq-q">7. Does Student Help Club has Mobile App?</div>
-                <div class="faq-a">Ans:- Yes, you can download our official android mobile app in the Google Play Store through this link: https://play.google.com/store/apps/details?id=club.help.student</div>
+                <h3 class="faq-q">7. Does Student Help Club has Mobile App?</h3>
+                <p class="faq-a">Ans:- Yes, you can download our official android mobile app in the Google Play Store through this link: https://play.google.com/store/apps/details?id=club.help.student</p>
             </div>
 
             <div class="faq-item">
-                <div class="faq-q">8. Does this website cover all India recruitment?</div>
-                <div class="faq-a">Ans:- Yes, but with some limitation; we are covering more than 15 (Fifteen) important states recruitment update and almost all central government recruitment.</div>
+                <h3 class="faq-q">8. Does this website cover all India recruitment?</h3>
+                <p class="faq-a">Ans:- Yes, but with some limitation; we are covering more than 15 (Fifteen) important states recruitment update and almost all central government recruitment.</p>
             </div>
 
             <div class="faq-item">
-                <div class="faq-q">9. What is the key features of this portal?</div>
-                <div class="faq-a">Ans:- It is a very light, fast, secure and user friendly website. Studenthelpclub.in provides state and central government recruitment update in very easy words. This website also comes with latest android mobile app with notification alert.</div>
+                <h3 class="faq-q">9. What is the key features of this portal?</h3>
+                <p class="faq-a">Ans:- It is a very light, fast, secure and user friendly website. Studenthelpclub.in provides state and central government recruitment update in very easy words. This website also comes with latest android mobile app with notification alert.</p>
             </div>
 
             <div class="faq-item">
-                <div class="faq-q">10. How can you contact with Student Help Club?</div>
-                <div class="faq-a">Ans:- You can write your queries at : officialstudenthelpclub@gmail.com</div>
+                <h3 class="faq-q">10. How can you contact with Student Help Club?</h3>
+                <p class="faq-a">Ans:- You can write your queries at : officialstudenthelpclub@gmail.com</p>
             </div>
         </div>
         
@@ -475,7 +488,7 @@
             <span>Disclaimer:</span> This website will not be responsible at all in case of minor or major mistakes or inaccuracy. I hereby declare that all the information provided by this website is true and accurate according to the recruitment notification or advertisement or information brochure etc. But sometimes might be happened mistakes by website owner by any means just as typing error or eye deception or other or from recruiter side. Our effort and intention is to provide correct details as much as possible, before taking any action please look into the recruitment notification or advertisement or portal. "I Hope You Will Understand Our Word".
         </div>
         
-    </section>
+    </article>
 </main>
 
 <footer class="site-footer">
@@ -499,14 +512,14 @@
         <div class="footer-sec">
             <h3>Connect</h3>
             <div class="social-box">
-                <a href="https://t.me/studenthelpclub" class="tg-f" aria-label="Telegram" target="_blank"><i class="fab fa-telegram-plane" aria-hidden="true"></i></a>
-                <a href="https://youtube.com/@vishalhelpclub" class="yt-f" aria-label="YouTube" target="_blank"><i class="fab fa-youtube" aria-hidden="true"></i></a>
-                <a href="https://whatsapp.com/channel/0029VbCJ2xI7IUYa1zMB6n1f" class="wa-f" aria-label="WhatsApp" target="_blank"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+                <a href="https://t.me/studenthelpclub" class="tg-f" aria-label="Telegram" target="_blank" rel="noopener"><i class="fab fa-telegram-plane" aria-hidden="true"></i></a>
+                <a href="https://youtube.com/@vishalhelpclub" class="yt-f" aria-label="YouTube" target="_blank" rel="noopener"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+                <a href="https://whatsapp.com/channel/0029VbCJ2xI7IUYa1zMB6n1f" class="wa-f" aria-label="WhatsApp" target="_blank" rel="noopener"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
             </div>
         </div>
     </div>
     <div class="footer-bottom">
-        <p>© <span id="current-year"></span> Student Help Club | Admin: Vishal</p>
+        <p>© <span id="current-year"></span> Student Help Club | Admin: Vishal Kumar</p>
     </div>
 </footer>
 
@@ -521,8 +534,6 @@
     function loadHeavyScripts() {
         if (scriptsLoaded) return;
         scriptsLoaded = true;
-        
-        
         
         // Load Google Analytics here too
         let gtagScript = document.createElement('script');
