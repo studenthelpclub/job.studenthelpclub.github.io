@@ -1,6 +1,18 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
+    <!-- ONESIGNAL PUSH NOTIFICATIONS -->
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+    <script>
+      window.OneSignalDeferred = window.OneSignalDeferred || [];
+      OneSignalDeferred.push(async function(OneSignal) {
+        await OneSignal.init({
+          appId: "3d88660b-b1d6-4ee0-89ff-b9b5ee40b28d",
+        });
+      });
+    </script> 
+    
+    <!-- GOOGLE ANALYTICS -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-7RK3WFVY3Q"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -8,26 +20,55 @@
       gtag('js', new Date());
       gtag('config', 'G-7RK3WFVY3Q');
     </script>
-    <meta name="google-site-verification" content="ySBKvgRcffZgkku3SImRkt6T7rm0r_L6OfClnFXGrrc" />
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="google-site-verification" content="ySBKvgRcffZgkku3SImRkt6T7rm0r_L6OfClnFXGrrc" />
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests; block-all-mixed-content">
+    
+    <!-- HIGH-IMPACT SEO TITLE & META -->
     <title>Latest Government Jobs 2026 | Sarkari Naukri Updates - Student Help Club</title>
     <meta name="description" content="Find and apply for the latest central and state government jobs, Sarkari Naukri notifications, and online recruitment forms first on Student Help Club (SHC).">
-    <meta name="keywords" content="Latest Jobs 2026, Sarkari Naukri, Government Job Updates, Online Form, Recruitment 2026, Free Job Alert, Student Help Club, SHC Jobs">
-    <meta name="author" content="Vishal - Student Help Club">
+    <meta name="keywords" content="Latest Jobs 2026, Sarkari Naukri, Government Job Updates, Online Form, Recruitment 2026, Free Job Alert, Student Help Club, SHC Jobs, Vishal Kumar">
+    <meta name="author" content="Vishal Kumar - Student Help Club">
     <meta name="robots" content="index, follow">
     
-    <meta property="og:title" content="Latest Government Jobs & Vacancy Updates - Student Help Club">
+    <!-- OPEN GRAPH FOR SOCIAL MEDIA SEO -->
+    <meta property="og:title" content="Latest Government Jobs & Vacancy Updates | Student Help Club">
     <meta property="og:description" content="Get instant notifications for all new government jobs, exam dates, and recruitment notifications on SHC.">
-    <meta property="og:image" content="shc-logo.jpg">
+    <meta property="og:image" content="https://jobs.studenthelpclub.in/shc-logo.jpg">
     <meta property="og:url" content="https://www.studenthelpclub.in/jobs.html">
+    <meta property="og:type" content="website">
 
     <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="canonical" href="https://www.studenthelpclub.in/jobs.html" />
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" as="style">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"></noscript>
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
+
+    <!-- JSON-LD SCHEMA FOR AUTHORITY -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Latest Government Jobs & Vacancy Updates",
+      "description": "Browse the most recent government job listings, recruitment forms, and free job alerts.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Student Help Club",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://jobs.studenthelpclub.in/shc-logo.jpg"
+        }
+      }
+    }
+    </script>
     
     <style>
         :root { 
@@ -84,7 +125,7 @@
             font-weight: 500;
             transition: var(--transition);
             background: #f8fafc;
-            box-sizing: border-box; /* Ensures padding doesn't break width */
+            box-sizing: border-box;
         }
         .search-box input:focus { 
             border-color: var(--primary-light); 
@@ -127,9 +168,13 @@
         }
         #search-results::-webkit-scrollbar { width: 6px; }
         #search-results::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        
+        .header-menu { display: flex; gap: 20px; align-items: center; }
+        .header-menu a { text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 0.88rem; text-transform: uppercase; transition: var(--transition); letter-spacing: 0.3px; padding: 5px; }
+        .header-menu a:hover, .header-menu a.active-page { color: #2563eb; }
 
         /* Ticker Marquee Style */
-        .ticker-wrap { background: #fefce8; color: #713f12; padding: 10px 0; border-bottom: 1px solid #fef08a; font-weight: 600; font-size: 13.5px; text-align: center; }
+        .ticker-wrap { background: #eff6ff; color: #1e3a8a; padding: 10px 0; border-bottom: 1px solid #bfdbfe; font-weight: 600; font-size: 13.5px; text-align: center; }
 
         /* --- Main Content Area --- */
         .main-content { flex: 1; padding: 40px 20px; }
@@ -170,6 +215,22 @@
             transition: var(--transition);
         }
         h1 { margin: 0; font-size: 1.6rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
+        
+        /* ADSENSE SAFE CONTENT BLOCK */
+        .seo-intro-box {
+            background: #fff;
+            padding: 20px 24px;
+            border-radius: var(--radius);
+            border: 1px solid #e2e8f0;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+        .seo-intro-box p {
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #64748b;
+        }
 
         /* --- List Wrapper Box --- */
         .list-wrapper {
@@ -181,7 +242,7 @@
         }
 
         .post-list { list-style: none; padding: 0; margin: 0; }
-        .post-list li { border-bottom: 1px solid #f1f5f9; transition: var(--transition); border-left: 0 solid transparent; }
+        .post-list li { border-bottom: 1px solid #f1f5f9; transition: var(--transition); border-left: 4px solid transparent; }
         .post-list li:last-child { border-bottom: none; }
         
         .post-list li a { 
@@ -201,10 +262,11 @@
             overflow: hidden;
             text-overflow: ellipsis;
             flex-grow: 1;
+            line-height: 1.4;
         }
         
-        .post-list li:hover { background: #f8fafc; }
-        .post-list li:hover a { padding-left: 28px; }
+        .post-list li:hover { background: #eff6ff; border-left-color: #2563eb; }
+        .post-list li:hover a { padding-left: 28px; color: #2563eb; }
         
         .date { 
             color: #94a3b8; 
@@ -239,16 +301,16 @@
         }
 
         /* --- Footer --- */
-        footer { background: #0f172a; color: #94a3b8; padding: 50px 20px 25px; margin-top: auto; border-top: 4px solid var(--primary-light); }
-        .footer-container { max-width: 1200px; margin: auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 50px; text-align: left; }
+        .site-footer { background: #0f172a; color: #94a3b8; padding: 50px 20px 25px; margin-top: auto; border-top: 4px solid var(--primary-light); text-align: left; }
+        .footer-container { max-width: 1200px; margin: auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 50px; }
         .footer-sec h3 { color: #fff; font-size: 1.05rem; margin-bottom: 20px; border-left: 3px solid var(--accent); padding-left: 12px; text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px; }
         .footer-sec ul { list-style: none; padding: 0; margin: 0; }
         .footer-sec ul li { margin-bottom: 12px; }
-        .footer-sec ul li a { color: #94a3b8; text-decoration: none; font-size: 0.92rem; transition: var(--transition); }
+        .footer-sec ul li a { color: #94a3b8; text-decoration: none; font-size: 0.92rem; transition: var(--transition); display: inline-block; padding: 5px 0;}
         .footer-sec ul li a:hover { color: #fff; padding-left: 6px; }
         
         .social-box { display: flex; gap: 14px; margin-top: 15px; }
-        .social-box a { color: white; background: #1e293b; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: var(--transition); text-decoration: none; }
+        .social-box a { color: white; background: #1e293b; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: var(--transition); text-decoration: none; }
         .social-box a:hover { transform: translateY(-4px); }
         .social-box a.tg-f:hover { background: #0088cc; }
         .social-box a.yt-f:hover { background: #ff0000; }
@@ -262,29 +324,27 @@
 
         /* Tablets & Standard Mobile (max-width: 768px) */
         @media (max-width: 768px) { 
-            /* Top Bar Mobile Optimization */
             .top-container { flex-direction: column; gap: 10px; text-align: center; justify-content: center; padding: 10px 15px; }
             .top-links { margin-left: 0; display: flex; justify-content: center; gap: 20px; width: 100%; }
             .top-links a { margin-left: 0; }
 
-            /* Header & Search */
             .header-container { flex-direction: column; align-items: stretch; gap: 16px; padding: 10px 15px; }
             .logo-box { justify-content: center; }
             .logo-text { font-size: 1.4rem; }
             .search-wrapper { max-width: 100%; width: 100%; }
-            #search-results { max-height: 250px; } /* Reduce height for mobile scrolling */
+            
+            .header-menu { flex-wrap: wrap; justify-content: center; gap: 10px 15px; padding-bottom: 5px; width: 100%;}
+            .header-menu a { font-size: 0.8rem; padding: 8px 12px; background: #f1f5f9; border-radius: 6px; border: none; display: inline-block; min-width: 70px; text-align: center;}
+            .header-menu a.active-page { background: #eff6ff; color: #2563eb; }
 
-            /* Main Content Adjustments */
             .main-content { padding: 20px 15px; }
             .page-header-box { padding: 18px; margin-bottom: 20px; }
             h1 { font-size: 1.25rem; }
             
-            /* Lists Adjustments */
             .post-list li a { padding: 14px 16px; font-size: 0.9rem; flex-direction: column; align-items: flex-start; gap: 10px; }
             .post-list li a .post-title { white-space: normal; text-overflow: unset; overflow: visible; line-height: 1.4; width: 100%; }
             .date { font-size: 0.78rem; padding: 4px 8px; width: fit-content; }
             
-            /* Footer Adjustments */
             .footer-container { grid-template-columns: 1fr; gap: 35px; text-align: center; }
             .footer-sec h3 { border-left: none; border-bottom: 2px solid var(--accent); display: inline-block; padding-left: 0; padding-bottom: 6px; }
             .social-box { justify-content: center; }
@@ -294,9 +354,8 @@
         @media (max-width: 480px) {
             .logo-img { height: 38px; }
             .logo-text { font-size: 1.2rem; }
-            .ticker-wrap { font-size: 12px; padding: 8px 0; }
             
-            .btn-home { font-size: 0.85rem; padding: 8px 14px; margin-bottom: 15px; }
+            .btn-home { font-size: 0.85rem; padding: 8px 14px; margin-bottom: 15px; width: 100%; justify-content: center; box-sizing: border-box; }
             .page-header-box { padding: 15px; border-radius: 8px; }
             h1 { font-size: 1.1rem; }
             
@@ -310,60 +369,107 @@
 </head>
 <body>
 
-<div class="top-bar">
-    <div class="top-container">
-        <span><i class="fas fa-calendar-alt"></i> <span id="current-date"></span></span>
-        <div class="top-links">
-            <a href="https://t.me/studenthelpclub" target="_blank"><i class="fab fa-telegram"></i> Telegram</a>
-            <a href="https://whatsapp.com/channel/0029VbCJ2xI7IUYa1zMB6n1f" target="_blank" class="ws-link" style="color: #25D366;"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-        </div>
-    </div>
-</div>
-
-<div class="header-main">
-    <div class="header-container">
-        <a href="index.html" class="logo-box">
-            <img src="shc-logo.jpg" alt="Student Help Club Logo" class="logo-img">
-            <h1 class="logo-text">Student Help <span>Club</span></h1>
-        </a>
-        <div class="search-wrapper">
-            <div class="search-box">
-                <input type="text" id="live-search" placeholder="Search Results, Jobs...">
-                <button aria-label="Search"><i class="fas fa-search"></i></button>
+<header>
+    <div class="top-bar">
+        <div class="top-container">
+            <span><i class="fas fa-calendar-alt" aria-hidden="true"></i> <span id="current-date"></span></span>
+            <div class="top-links">
+                <a href="https://t.me/studenthelpclub" target="_blank" rel="noopener" aria-label="Join our Telegram"><i class="fab fa-telegram" aria-hidden="true"></i> Telegram</a>
+                <a href="https://whatsapp.com/channel/0029VbCJ2xI7IUYa1zMB6n1f" class="ws-link" style="color: #25D366;" target="_blank" rel="noopener" aria-label="Join our WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp</a>
             </div>
-            <div id="search-results"></div>
         </div>
     </div>
-</div>
 
-<div class="ticker-wrap">
+    <div class="header-main">
+        <div class="header-container">
+            <a href="index.html" class="logo-box" aria-label="Homepage">
+                <img src="shc-logo.jpg" alt="Student Help Club Logo" width="44" height="44" fetchpriority="high" class="logo-img">
+                <h2 class="logo-text">Student Help <span>Club</span></h2>
+            </a>
+            <div class="search-wrapper">
+                <search>
+                    <form class="search-box" action="/search" method="get" onsubmit="return false;" role="search">
+                        <input type="search" id="live-search" name="q" placeholder="Search Results, Jobs..." aria-label="Search jobs and results">
+                        <button type="submit" aria-label="Submit Search"><i class="fas fa-search" aria-hidden="true"></i></button>
+                    </form>
+                </search>
+                <div id="search-results"></div>
+            </div>
+            
+            <nav class="header-menu" aria-label="Main Navigation">
+                <a href="index.html">Home</a>
+                <a href="jobs.html" class="active-page">Jobs</a>
+                <a href="admit-cards.html">Admit Card</a>
+                <a href="results.html">Results</a>
+                <a href="scholarship.html">Scholarship</a>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<div class="ticker-wrap" aria-label="Latest Updates Ticker">
     <marquee id="top-ticker" scrollamount="6" onmouseover="this.stop();" onmouseout="this.start();">Loading latest updates...</marquee>
 </div>
 
-<div class="main-content">
+<main class="main-content">
     <div class="container">
-        <a href="index.html" class="btn-home"><i class="fas fa-arrow-left"></i> Back to Home</a>
+        <a href="index.html" class="btn-home"><i class="fas fa-arrow-left" aria-hidden="true"></i> Back to Home</a>
         
-        <div class="page-header-box" id="header-theme-box">
+        <header class="page-header-box" id="header-theme-box">
             <h1 id="page-title">Loading...</h1>
+        </header>
+        
+        <!-- NEW ADSENSE SAFE INTRO PARAGRAPH -->
+        <div class="seo-intro-box">
+            <p><strong>Latest Sarkari Naukri Updates:</strong> Explore all active recruitment notifications, online application forms, and free job alerts for central and state government vacancies. We ensure every job posting is verified through official sources to help you prepare better for your career goals.</p>
         </div>
         
-        <div class="list-wrapper">
+        <section class="list-wrapper" aria-label="Job Postings List">
             <ul class="post-list" id="full-list">
-                <li style="text-align:center; padding:50px; color:#94a3b8;"><i class="fas fa-spinner fa-spin" style="margin-right:8px;"></i> Loading Data...</li>
+                <li style="text-align:center; padding:50px; color:#94a3b8;"><i class="fas fa-spinner fa-spin" style="margin-right:8px;" aria-hidden="true"></i> Loading Data...</li>
+            </ul>
+        </section>
+    </div>
+</main>
+
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-sec">
+            <h3>Important Pages</h3>
+            <ul>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                <li><a href="disclaimer.html">Disclaimer</a></li>
             </ul>
         </div>
+        <div class="footer-sec">
+            <h3>Resources</h3>
+            <ul>
+                <li><a href="https://tools.studenthelpclub.in" target="_blank" rel="noopener">Tools for Students</a></li>
+                <li><a href="about.html" target="_blank" rel="noopener">Study Material Support</a></li>
+            </ul>
+        </div>
+        <div class="footer-sec">
+            <h3>Connect</h3>
+            <div class="social-box">
+                <a href="https://t.me/studenthelpclub" class="tg-f" aria-label="Telegram" target="_blank" rel="noopener"><i class="fab fa-telegram-plane" aria-hidden="true"></i></a>
+                <a href="https://youtube.com/@vishalhelpclub" class="yt-f" aria-label="YouTube" target="_blank" rel="noopener"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+                <a href="https://whatsapp.com/channel/0029VbCJ2xI7IUYa1zMB6n1f" class="wa-f" aria-label="WhatsApp" target="_blank" rel="noopener"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+            </div>
+        </div>
     </div>
-</div>
-
-<footer>
-    <div class="footer-container">
-        <div class="footer-sec"><h3>Important Pages</h3><ul><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact Us</a></li><li><a href="privacy-policy.html">Privacy Policy</a></li><li><a href="disclaimer.html">Disclaimer</a></li></ul></div>
-        <div class="footer-sec"><h3>Resources</h3><ul><li><a href="https://tools.studenthelpclub.in" target="_blank">Tools for Students</a></li><li><a href="https://studenthelpclub.in" target="_blank">IGNOU Assignment PDF</a></li></ul></div>
-        <div class="footer-sec"><h3>Connect</h3><div class="social-box"><a href="https://t.me/studenthelpclub" class="tg-f" target="_blank"><i class="fab fa-telegram-plane"></i></a><a href="https://youtube.com/@vishalhelpclub" class="yt-f" target="_blank"><i class="fab fa-youtube"></i></a><a href="https://whatsapp.com/channel/0029VbCJ2xI7IUYa1zMB6n1f" class="wa-f" target="_blank"><i class="fab fa-whatsapp"></i></a></div></div>
+    <div class="footer-bottom">
+        <p>© <span id="current-year"></span> Student Help Club | Admin: Vishal Kumar</p>
     </div>
-    <div class="footer-bottom"><p>© 2026 Student Help Club | Admin: Vishal</p></div>
 </footer>
+
+<script>
+    // 1. Setup Basic UI Dates
+    const d = new Date();
+    document.getElementById('current-date').innerText = d.toLocaleDateString('en-US', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' });
+    document.getElementById('current-year').innerText = d.getFullYear();
+</script>
 
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
@@ -398,13 +504,11 @@
     document.getElementById('page-title').innerText = currentTheme.name;
     document.getElementById('header-theme-box').style.setProperty('--header-gradient', currentTheme.gradient);
 
-    document.getElementById('current-date').innerText = new Date().toLocaleDateString('en-US', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' });
-
     function updateGlobalMarquee() {
         const categories = Object.values(marqueeCandidates);
         if (categories.length > 0) {
             const latest = categories.sort((a, b) => b.time - a.time)[0];
-            document.getElementById('top-ticker').innerHTML = `🔥 <span style="color:#ef4444; font-weight:800;">LATEST:</span> ${latest.title} <a href="post.html?col=${latest.cat}&slug=${latest.slug}" style="color:#2563eb; text-decoration:none; font-weight:700; margin-left:5px;"> [Check Now]</a>`;
+            document.getElementById('top-ticker').innerHTML = `🔥 <span style="color:#2563eb; font-weight:800;">LATEST ALERT:</span> ${latest.title} <a href="post.html?col=${latest.cat}&slug=${latest.slug}" style="color:#2563eb; text-decoration:underline; font-weight:700; margin-left:5px;"> [Apply Now]</a>`;
         }
     }
 
@@ -413,7 +517,7 @@
         onSnapshot(q, (snapshot) => {
             snapshot.docs.forEach((doc, index) => {
                 const data = doc.data();
-                const finalSlug = data.slug || doc.id; // Fallback: If no slug, use ID
+                const finalSlug = data.slug || doc.id; 
                 
                 if (index === 0 && data.timestamp) {
                     marqueeCandidates[col] = { slug: finalSlug, title: data.title, cat: col, time: data.timestamp.toMillis() };
@@ -433,13 +537,13 @@
             const list = document.getElementById('full-list');
             list.innerHTML = '';
             if (snapshot.empty) {
-                list.innerHTML = "<li style='padding:50px; text-align:center; color:#64748b;'>Abhi koi data available nahi hai.</li>";
+                list.innerHTML = "<li style='padding:50px; text-align:center; color:#64748b; font-weight:500;'>Currently no new updates available.</li>";
                 return;
             }
             snapshot.docs.forEach((doc, index) => {
                 const data = doc.data();
                 const date = data.timestamp ? data.timestamp.toDate().toLocaleDateString('hi-IN', {day: '2-digit', month: 'short', year: 'numeric'}) : "Recent";
-                const finalSlug = data.slug || doc.id; // Fallback: If no slug, use ID
+                const finalSlug = data.slug || doc.id;
                 
                 if (index === 0 && data.timestamp) {
                     marqueeCandidates[COLLECTION_NAME] = { slug: finalSlug, title: data.title, cat: COLLECTION_NAME, time: data.timestamp.toMillis() };
@@ -450,11 +554,10 @@
                 const li = document.createElement('li');
                 const newTag = index < 2 ? `<span class="new-badge">NEW</span>` : '';
 
-                // NAYA CODE: URL mein 'id' ki jagah 'slug' use ho raha hai
                 li.innerHTML = `
-                    <a href="post.html?col=${COLLECTION_NAME}&slug=${finalSlug}">
+                    <a href="post.html?col=${COLLECTION_NAME}&slug=${finalSlug}" aria-label="Apply for ${data.title}">
                         <span class="post-title">${data.title} ${newTag}</span>
-                        <span class="date"><i class="far fa-calendar-alt" style="font-size:12px;"></i> ${date}</span>
+                        <span class="date"><i class="far fa-calendar-alt" style="font-size:12px;" aria-hidden="true"></i> ${date}</span>
                     </a>
                 `;
                 
@@ -482,7 +585,6 @@
         resultsDiv.innerHTML = '';
         if (val.length < 2) { resultsDiv.style.display = 'none'; return; }
         
-        // Search filter updated to use slug
         const filtered = searchData.filter((v, i, a) => a.findIndex(t => (t.slug === v.slug)) === i)
                          .filter(item => item.title.toLowerCase().includes(val));
                          
