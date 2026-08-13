@@ -1,6 +1,18 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
+    <!-- ONESIGNAL PUSH NOTIFICATIONS -->
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+    <script>
+      window.OneSignalDeferred = window.OneSignalDeferred || [];
+      OneSignalDeferred.push(async function(OneSignal) {
+        await OneSignal.init({
+          appId: "3d88660b-b1d6-4ee0-89ff-b9b5ee40b28d",
+        });
+      });
+    </script> 
+    
+    <!-- GOOGLE ANALYTICS -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-7RK3WFVY3Q"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -8,26 +20,55 @@
       gtag('js', new Date());
       gtag('config', 'G-7RK3WFVY3Q');
     </script>
-    <meta name="google-site-verification" content="ySBKvgRcffZgkku3SImRkt6T7rm0r_L6OfClnFXGrrc" />
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Latest Sarkari Exam Results | Check Board & Govt Results - Student Help Club</title>
-    <meta name="description" content="Check latest Government Exam Results, Board Results, Entrance Exam Cut-Off, and Merit Lists instantly on Student Help Club (SHC). Fastest Sarkari Result updates.">
-    <meta name="keywords" content="Sarkari Result, Latest Exam Results, Board Result, Check Merit List, Recruitment Cut Off, Student Help Club, SHC Results">
-    <meta name="author" content="Vishal - Student Help Club">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="google-site-verification" content="ySBKvgRcffZgkku3SImRkt6T7rm0r_L6OfClnFXGrrc" />
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests; block-all-mixed-content">
+    
+    <!-- HIGH-IMPACT SEO TITLE & META -->
+    <title>Latest Sarkari Exam Results 2026 | Check Govt Merit Lists - Student Help Club</title>
+    <meta name="description" content="Check the latest Government Exam Results, Sarkari Result updates, Entrance Exam Cut-Offs, and Merit Lists instantly on Student Help Club (SHC).">
+    <meta name="keywords" content="Sarkari Result, Latest Exam Results, Board Result, Check Merit List, Recruitment Cut Off, Student Help Club, SHC Results, Govt Job Result 2026, Vishal Kumar">
+    <meta name="author" content="Vishal Kumar - Student Help Club">
     <meta name="robots" content="index, follow">
     
-    <meta property="og:title" content="Latest Exam Results & Merit Lists - Student Help Club">
+    <!-- OPEN GRAPH FOR SOCIAL MEDIA SEO -->
+    <meta property="og:title" content="Latest Exam Results & Merit Lists | Student Help Club">
     <meta property="og:description" content="Get fastest access and live servers to check all central and state government exam results on SHC.">
-    <meta property="og:image" content="shc-logo.jpg">
+    <meta property="og:image" content="https://www.studenthelpclub.in/shc-logo.jpg">
     <meta property="og:url" content="https://www.studenthelpclub.in/results.html">
+    <meta property="og:type" content="website">
 
+    <link rel="canonical" href="https://www.studenthelpclub.in/results.html" />
     <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <!-- JSON-LD SCHEMA FOR COLLECTION PAGE -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Latest Sarkari Exam Results",
+      "description": "Check the most recent government exam results, cut-off scores, and merit lists.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Student Help Club",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.studenthelpclub.in/shc-logo.jpg"
+        }
+      }
+    }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" as="style">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"></noscript>
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
     
     <style>
         :root { 
@@ -73,7 +114,7 @@
         .logo-text span { color: var(--accent); }
 
         .search-wrapper { flex-grow: 1; max-width: 400px; position: relative; }
-        .search-box { display: flex; position: relative; }
+        .search-box { display: flex; position: relative; width: 100%; margin: 0; }
         .search-box input { 
             width: 100%; 
             padding: 12px 50px 12px 20px; 
@@ -84,7 +125,7 @@
             font-weight: 500;
             transition: var(--transition);
             background: #f8fafc;
-            box-sizing: border-box; /* Precents padding overflow */
+            box-sizing: border-box;
         }
         .search-box input:focus { 
             border-color: var(--primary-light); 
@@ -100,6 +141,7 @@
             cursor: pointer; transition: var(--transition);
             display: flex; align-items: center; justify-content: center;
         }
+        .search-box button:hover { background: var(--primary-light); transform: scale(1.05); }
 
         #search-results { 
             position: absolute; top: 55px; left: 0; width: 100%; 
@@ -113,10 +155,10 @@
         #search-results::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
 
         .header-menu { display: flex; gap: 20px; align-items: center; }
-        .header-menu a { text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 0.88rem; text-transform: uppercase; transition: var(--transition); letter-spacing: 0.3px; }
+        .header-menu a { text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 0.88rem; text-transform: uppercase; transition: var(--transition); letter-spacing: 0.3px; padding: 5px; }
         .header-menu a:hover, .header-menu a.active-page { color: var(--theme-green); }
 
-        .ticker-wrap { background: #fefce8; color: #713f12; padding: 10px 0; border-bottom: 1px solid #fef08a; font-weight: 600; font-size: 13.5px; text-align: center; }
+        .ticker-wrap { background: #f0fdf4; color: #065f46; padding: 10px 0; border-bottom: 1px solid #bbf7d0; font-weight: 600; font-size: 13.5px; text-align: center; }
 
         /* --- Main Content Area --- */
         .main-content { flex: 1; padding: 40px 20px; }
@@ -157,9 +199,9 @@
             padding: 16px 24px; font-weight: 500; font-size: 0.95rem;
             transition: var(--transition); gap: 15px;
         }
-        .post-list li a .post-title { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex-grow: 1; }
+        .post-list li a .post-title { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex-grow: 1; line-height: 1.4; }
         
-        .post-list li:hover { background: #f8fafc; border-left-color: var(--theme-green); }
+        .post-list li:hover { background: #f0fdf4; border-left-color: var(--theme-green); }
         .post-list li:hover a { padding-left: 28px; color: var(--theme-green); }
         
         .date { 
@@ -187,7 +229,7 @@
         .footer-sec h3 { color: #fff; font-size: 1.05rem; margin-bottom: 20px; border-left: 3px solid var(--accent); padding-left: 12px; text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px; }
         .footer-sec ul { list-style: none; padding: 0; margin: 0; }
         .footer-sec ul li { margin-bottom: 12px; }
-        .footer-sec ul li a { color: #94a3b8; text-decoration: none; font-size: 0.92rem; transition: var(--transition); }
+        .footer-sec ul li a { color: #94a3b8; text-decoration: none; font-size: 0.92rem; transition: var(--transition); display: inline-block; padding: 5px 0;}
         .footer-sec ul li a:hover { color: #fff; padding-left: 6px; }
         
         .social-box { display: flex; gap: 14px; margin-top: 15px; }
@@ -203,25 +245,21 @@
            UPDATED ENHANCED RESPONSIVE STYLES 
            ========================================= */
 
-        /* Tablets & Standard Mobile (max-width: 768px) */
         @media (max-width: 768px) {
-            /* Top Bar */
             .top-container { flex-direction: column; gap: 10px; text-align: center; justify-content: center; padding: 10px 15px; }
             .top-links { margin-left: 0; display: flex; justify-content: center; gap: 20px; width: 100%; }
             .top-links a { margin-left: 0; }
 
-            /* Header & Search */
             .header-container { flex-direction: column; align-items: stretch; gap: 16px; padding: 10px 15px; }
             .logo-box { justify-content: center; }
             .logo-text { font-size: 1.4rem; }
             .search-wrapper { max-width: 100%; width: 100%; }
             #search-results { max-height: 250px; }
             
-            /* Header Menu Links (Pill Style) */
             .header-menu { flex-wrap: wrap; justify-content: center; gap: 12px; }
             .header-menu a { font-size: 0.85rem; padding: 6px 12px; background: #f1f5f9; border-radius: 20px; border: 1px solid #e2e8f0; }
+            .header-menu a.active-page { background: #f0fdf4; color: var(--theme-green); }
 
-            /* Main Content Lists */
             .main-content { padding: 20px 15px; }
             .page-header-box { padding: 18px; margin-bottom: 20px; }
             h1 { font-size: 1.25rem; }
@@ -230,24 +268,21 @@
             .post-list li a .post-title { white-space: normal; text-overflow: unset; overflow: visible; line-height: 1.4; width: 100%; }
             .date { font-size: 0.78rem; padding: 4px 8px; width: fit-content; }
             
-            /* AdSense Block Optimization */
             .adsense-text-container { padding: 20px 15px; margin-top: 25px; }
             .adsense-text-container h2 { font-size: 1.15rem; }
             .adsense-text-container p { font-size: 0.9rem; line-height: 1.5; }
 
-            /* Footer Adjustments */
             .footer-container { grid-template-columns: 1fr; gap: 35px; text-align: center; }
             .footer-sec h3 { border-left: none; border-bottom: 2px solid var(--accent); display: inline-block; padding-left: 0; padding-bottom: 6px; }
             .social-box { justify-content: center; }
         }
 
-        /* Extra Small Mobile Devices (max-width: 480px) */
         @media (max-width: 480px) {
             .logo-img { height: 38px; }
             .logo-text { font-size: 1.2rem; }
             .ticker-wrap { font-size: 12px; padding: 8px 0; }
             
-            .btn-home { font-size: 0.85rem; padding: 8px 14px; margin-bottom: 15px; }
+            .btn-home { font-size: 0.85rem; padding: 8px 14px; margin-bottom: 15px; width: 100%; justify-content: center; box-sizing: border-box; }
             .page-header-box { padding: 15px; border-radius: 8px; }
             h1 { font-size: 1.1rem; }
             
@@ -260,79 +295,111 @@
             .social-box a { width: 36px; height: 36px; font-size: 0.9rem; }
         }
     </style>
-  
 </head>
 <body>
 
-<div class="top-bar">
-    <div class="top-container">
-        <span><i class="fas fa-calendar-alt"></i> <span id="current-date"></span></span>
-        <div class="top-links">
-            <a href="https://t.me/studenthelpclub" target="_blank"><i class="fab fa-telegram"></i> Telegram</a>
-            <a href="https://whatsapp.com/channel/0029VbCJ2xI7IUYa1zMB6n1f" class="ws-link" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-        </div>
-    </div>
-</div>
-
-<div class="header-main">
-    <div class="header-container">
-        <a href="index.html" class="logo-box">
-            <img src="shc-logo.jpg" alt="Student Help Club Logo" class="logo-img">
-            <h1 class="logo-text">Student Help <span>Club</span></h1>
-        </a>
-        <div class="search-wrapper">
-            <div class="search-box">
-                <input type="text" id="live-search" placeholder="Search Results, Jobs...">
-                <button aria-label="Search"><i class="fas fa-search"></i></button>
+<header>
+    <div class="top-bar">
+        <div class="top-container">
+            <span><i class="fas fa-calendar-alt" aria-hidden="true"></i> <span id="current-date"></span></span>
+            <div class="top-links">
+                <a href="https://t.me/studenthelpclub" target="_blank" rel="noopener" aria-label="Join our Telegram"><i class="fab fa-telegram" aria-hidden="true"></i> Telegram</a>
+                <a href="https://whatsapp.com/channel/0029VbCJ2xI7IUYa1zMB6n1f" class="ws-link" target="_blank" rel="noopener" aria-label="Join our WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp</a>
             </div>
-            <div id="search-results"></div>
-        </div>
-        <div class="header-menu">
-            <a href="index.html">Home</a>
-            <a href="jobs.html">Jobs</a>
-            <a href="admit-cards.html">Admit Card</a>
-            <a href="results.html" class="active-page">Results</a>
-            <a href="scholarship.html">Scholarship</a>
         </div>
     </div>
-</div>
 
-<div class="ticker-wrap">
+    <div class="header-main">
+        <div class="header-container">
+            <a href="index.html" class="logo-box" aria-label="Homepage">
+                <img src="shc-logo.jpg" alt="Student Help Club Logo" width="44" height="44" class="logo-img">
+                <h2 class="logo-text">Student Help <span>Club</span></h2>
+            </a>
+            <div class="search-wrapper">
+                <search>
+                    <form class="search-box" action="/search" method="get" onsubmit="return false;" role="search">
+                        <input type="search" id="live-search" name="q" aria-label="Search Exam Results" placeholder="Search Results, Jobs...">
+                        <button type="submit" aria-label="Submit Search"><i class="fas fa-search" aria-hidden="true"></i></button>
+                    </form>
+                </search>
+                <div id="search-results"></div>
+            </div>
+            <nav class="header-menu" aria-label="Main Navigation">
+                <a href="index.html">Home</a>
+                <a href="jobs.html">Jobs</a>
+                <a href="admit-cards.html">Admit Card</a>
+                <a href="results.html" class="active-page">Results</a>
+                <a href="scholarship.html">Scholarship</a>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<div class="ticker-wrap" aria-label="Latest Results Ticker">
     <marquee id="top-ticker" scrollamount="6" onmouseover="this.stop();" onmouseout="this.start();">Loading latest updates...</marquee>
 </div>
 
-<div class="main-content">
+<main class="main-content">
     <div class="container">
-        <a href="index.html" class="btn-home"><i class="fas fa-arrow-left"></i> Back to Home</a>
+        <a href="index.html" class="btn-home"><i class="fas fa-arrow-left" aria-hidden="true"></i> Back to Home</a>
         
-        <div class="page-header-box" id="header-theme-box">
+        <header class="page-header-box" id="header-theme-box">
             <h1 id="page-title">Loading...</h1>
-        </div>
+        </header>
         
-        <div class="list-wrapper">
+        <section class="list-wrapper" aria-label="Exam Results List">
             <ul class="post-list" id="full-list">
-                <li style="text-align:center; padding:50px; color:#94a3b8;"><i class="fas fa-spinner fa-spin" style="margin-right:8px;"></i> Loading Data...</li>
+                <li style="text-align:center; padding:50px; color:#94a3b8;"><i class="fas fa-spinner fa-spin" style="margin-right:8px;" aria-hidden="true"></i> Loading Data...</li>
+            </ul>
+        </section>
+
+        <!-- SEO AND ADSENSE CONTENT SECTION -->
+        <section class="adsense-text-container" aria-label="About Sarkari Exam Results">
+            <h2>Sarkari Exam Results, Cut-Off Scores & Recruitment Merit Lists</h2>
+            <p>Welcome to the verification center of <b>Student Help Club (SHC)</b>. For every applicant participating in state evaluations or union recruitment exams, checking the final score sheet safely is the concluding milestone. Our streamlined portal features responsive tracking pipelines to pull official score sheets, board scorecard thresholds, and category-wise evaluation cut-offs seamlessly. Stay updated with immediate notifications for all primary examination outcomes directly on this platform.</p>
+            <p>We aggregate direct lookups for key national and state evaluation boards including Staff Selection Commissions (SSC), Union Public Service Commission (UPSC), major public sector banking groups (IBPS), Indian Railways recruitment divisions, and regional civil evaluation panels. By hosting zero-lag paths directly to verified score archives and counseling timetables, we help candidates accurately navigate post-examination cell loops smoothly without any technical delays.</p>
+        </section>
+    </div>
+</main>
+
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-sec">
+            <h3>Important Pages</h3>
+            <ul>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                <li><a href="disclaimer.html">Disclaimer</a></li>
             </ul>
         </div>
-
-        <div class="adsense-text-container">
-            <h2>Sarkari Exam Results, Cut-Off Scores & Recruitment Merit Lists</h2>
-            <p>Welcome to the verification center of <b>Student Help Club (SHC)</b>. For every applicant participating in state evaluations or union recruitment exams, checking the final score sheet safely is the concluding milestone. Our streamlined portal features responsive tracking pipelines to pull official score sheets, board scorecard thresholds, and category-wise evaluation cut-offs seamlessly.</p>
-            <p>We aggregate direct lookups for key national and state evaluation boards including Staff Selection Commissions (SSC), Union Public Service Commission (UPSC), major public sector banking groups (IBPS), Indian Railways recruitment divisions, and regional civil evaluation panels. By hosting zero-lag paths directly to verified score archives and counseling timetables, we help candidates accurately navigate post-examination cell loops smoothly.</p>
+        <div class="footer-sec">
+            <h3>Resources</h3>
+            <ul>
+                <li><a href="https://tools.studenthelpclub.in" target="_blank" rel="noopener">Tools for Students</a></li>
+                <li><a href="about.html" target="_blank" rel="noopener">Study Material Support</a></li>
+            </ul>
+        </div>
+        <div class="footer-sec">
+            <h3>Connect</h3>
+            <div class="social-box">
+                <a href="https://t.me/studenthelpclub" class="tg-f" target="_blank" aria-label="Join Telegram" rel="noopener"><i class="fab fa-telegram-plane" aria-hidden="true"></i></a>
+                <a href="https://youtube.com/@vishalhelpclub" class="yt-f" target="_blank" aria-label="Subscribe YouTube" rel="noopener"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+                <a href="https://whatsapp.com/channel/0029VbCJ2xI7IUYa1zMB6n1f" class="wa-f" target="_blank" aria-label="Follow WhatsApp" rel="noopener"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+            </div>
         </div>
     </div>
-</div>
-
-<footer>
-    <div class="footer-container">
-        <div class="footer-sec"><h3>Important Pages</h3><ul><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact Us</a></li><li><a href="privacy-policy.html">Privacy Policy</a></li><li><a href="disclaimer.html">Disclaimer</a></li></ul></div>
-        <div class="footer-sec"><h3>Resources</h3><ul><li><a href="https://tools.studenthelpclub.in" target="_blank">Tools for Students</a></li><li><a href="about.html" target="_blank">Study Material Support</a></li></ul></div>
-        <div class="footer-sec"><h3>Connect</h3><div class="social-box"><a href="https://t.me/studenthelpclub" class="tg-f" target="_blank"><i class="fab fa-telegram-plane"></i></a><a href="https://youtube.com/@vishalhelpclub" class="yt-f" target="_blank"><i class="fab fa-youtube"></i></a><a href="https://whatsapp.com/channel/0029VbCJ2xI7IUYa1zMB6n1f" class="wa-f" target="_blank"><i class="fab fa-whatsapp"></i></a></div></div>
-    </div>
     <div class="footer-bottom">
-        <p>© <span id="current-year"></span> Student Help Club | Admin: Vishal</p>
+        <p>© <span id="current-year"></span> Student Help Club | Admin: Vishal Kumar</p>
     </div>
 </footer>
+
+<script>
+    // Setup Basic UI Dates dynamically for freshness
+    const d = new Date();
+    document.getElementById('current-date').innerText = d.toLocaleDateString('en-US', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' });
+    document.getElementById('current-year').innerText = d.getFullYear();
+</script>
 
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
@@ -362,21 +429,16 @@
         'scholarship': { name: "Scholarship Schemes", gradient: "linear-gradient(135deg, #ef4444, #dc2626)", hoverEcho: "#dc2626" }
     };
 
-    const currentTheme = themeConfigs[COLLECTION_NAME] || { name: "Latest Updates", gradient: "linear-gradient(135deg, #1e293b, #0f172a)", hoverEcho: "#2563eb" };
+    const currentTheme = themeConfigs[COLLECTION_NAME] || { name: "Latest Updates", gradient: "linear-gradient(135deg, #1e293b, #0f172a)", hoverEcho: "#10b981" };
 
     document.getElementById('page-title').innerText = currentTheme.name;
     document.getElementById('header-theme-box').style.setProperty('--header-gradient', currentTheme.gradient);
-
-    // Dynamic Future-Proof Calendar Setup
-    const d = new Date();
-    document.getElementById('current-date').innerText = d.toLocaleDateString('en-US', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' });
-    document.getElementById('current-year').innerText = d.getFullYear();
 
     function updateGlobalMarquee() {
         const categories = Object.values(marqueeCandidates);
         if (categories.length > 0) {
             const latest = categories.sort((a, b) => b.time - a.time)[0];
-            document.getElementById('top-ticker').innerHTML = `🔥 <span style="color:#ef4444; font-weight:800;">LATEST:</span> ${latest.title} <a href="post.html?col=${latest.cat}&slug=${latest.slug}" style="color:#2563eb; text-decoration:none; font-weight:700; margin-left:5px;"> [Check Now]</a>`;
+            document.getElementById('top-ticker').innerHTML = `🔥 <span style="color:#10b981; font-weight:800;">RESULT DECLARED:</span> ${latest.title} <a href="post.html?col=${latest.cat}&slug=${latest.slug}" style="color:#059669; text-decoration:underline; font-weight:700; margin-left:5px;"> [Check Now]</a>`;
         }
     }
 
@@ -385,7 +447,8 @@
         onSnapshot(q, (snapshot) => {
             snapshot.docs.forEach((doc, index) => {
                 const data = doc.data();
-                const finalSlug = data.slug || doc.id; // Naya code: Slug nahi to ID use karo
+                const finalSlug = data.slug || doc.id; 
+                
                 if (index === 0 && data.timestamp) {
                     marqueeCandidates[col] = { slug: finalSlug, title: data.title, cat: col, time: data.timestamp.toMillis() };
                     updateGlobalMarquee();
@@ -404,13 +467,13 @@
             const list = document.getElementById('full-list');
             list.innerHTML = '';
             if (snapshot.empty) {
-                list.innerHTML = "<li style='padding:50px; text-align:center; color:#64748b;'>Abhi koi data available nahi hai.</li>";
+                list.innerHTML = "<li style='padding:50px; text-align:center; color:#64748b; font-weight:500;'>Currently no new updates available.</li>";
                 return;
             }
             snapshot.docs.forEach((doc, index) => {
                 const data = doc.data();
                 const date = data.timestamp ? data.timestamp.toDate().toLocaleDateString('hi-IN', {day: '2-digit', month: 'short', year: 'numeric'}) : "Recent";
-                const finalSlug = data.slug || doc.id; // Naya code: Slug nahi to ID use karo
+                const finalSlug = data.slug || doc.id;
                 
                 if (index === 0 && data.timestamp) {
                     marqueeCandidates[COLLECTION_NAME] = { slug: finalSlug, title: data.title, cat: COLLECTION_NAME, time: data.timestamp.toMillis() };
@@ -422,9 +485,9 @@
                 const newTag = index < 2 ? `<span class="new-badge">NEW</span>` : '';
 
                 li.innerHTML = `
-                    <a href="post.html?col=${COLLECTION_NAME}&slug=${finalSlug}">
+                    <a href="post.html?col=${COLLECTION_NAME}&slug=${finalSlug}" aria-label="Check Result for ${data.title}">
                         <span class="post-title">${data.title} ${newTag}</span>
-                        <span class="date"><i class="far fa-calendar-alt" style="font-size:12px;"></i> ${date}</span>
+                        <span class="date"><i class="far fa-calendar-alt" style="font-size:12px;" aria-hidden="true"></i> ${date}</span>
                     </a>
                 `;
                 
@@ -452,7 +515,6 @@
         resultsDiv.innerHTML = '';
         if (val.length < 2) { resultsDiv.style.display = 'none'; return; }
         
-        // Unique results handle by slug instead of id now
         const filtered = searchData.filter((v, i, a) => a.findIndex(t => (t.slug === v.slug)) === i)
                          .filter(item => item.title.toLowerCase().includes(val));
                          
