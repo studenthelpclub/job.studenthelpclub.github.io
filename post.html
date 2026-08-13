@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
+    <!-- ONESIGNAL PUSH NOTIFICATIONS -->
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+    <script>
+      window.OneSignalDeferred = window.OneSignalDeferred || [];
+      OneSignalDeferred.push(async function(OneSignal) {
+        await OneSignal.init({
+          appId: "3d88660b-b1d6-4ee0-89ff-b9b5ee40b28d",
+        });
+      });
+    </script> 
+    
+    <!-- GOOGLE ANALYTICS -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-7RK3WFVY3Q"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -8,14 +20,23 @@
       gtag('js', new Date());
       gtag('config', 'G-7RK3WFVY3Q');
     </script>
+    
     <meta name="google-site-verification" content="ySBKvgRcffZgkku3SImRkt6T7rm0r_L6OfClnFXGrrc" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Post Details | Student Help Club</title>
-    <meta name="description" content="Latest Government Jobs, Results, Admit Card and Scholarship Updates.">
-    <meta name="keywords" content="Student Help Club, Sarkari Result, Latest Jobs, Admit Card 2026">
+    <!-- HIGH-IMPACT DEFAULT SEO TITLE & META (Will be updated dynamically) -->
+    <title id="dynamic-seo-title">Post Details | Student Help Club</title>
+    <meta id="dynamic-seo-desc" name="description" content="Read complete details regarding latest Government Jobs, Exam Results, Admit Cards, and Scholarship Updates on Student Help Club.">
+    <meta name="keywords" content="Student Help Club, Sarkari Result, Latest Jobs, Admit Card 2026, Govt Job Notification, Online Form">
+    <meta name="author" content="Vishal Kumar - Student Help Club">
     <meta name="robots" content="index, follow">
+    
+    <!-- OPEN GRAPH FOR SOCIAL MEDIA SEO -->
+    <meta property="og:title" content="Post Details | Student Help Club">
+    <meta property="og:description" content="Get all the important dates, eligibility criteria, and direct links for this recruitment update.">
+    <meta property="og:image" content="https://jobs.studenthelpclub.in/shc-logo.jpg">
+    <meta property="og:type" content="article">
     
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -73,54 +94,20 @@
         .search-wrapper { flex-grow: 1; max-width: 400px; position: relative; }
         .search-box { display: flex; position: relative; }
         .search-box input { 
-            width: 100%; 
-            padding: 12px 50px 12px 20px; 
-            border-radius: 30px; 
-            border: 2px solid #e2e8f0; 
-            outline: none; 
-            font-size: 14px; 
-            font-weight: 500;
-            transition: var(--transition);
-            background: #f8fafc;
-            box-sizing: border-box;
+            width: 100%; padding: 12px 50px 12px 20px; border-radius: 30px; border: 2px solid #e2e8f0; 
+            outline: none; font-size: 14px; font-weight: 500; transition: var(--transition); background: #f8fafc; box-sizing: border-box;
         }
-        .search-box input:focus { 
-            border-color: var(--primary-light); 
-            background: var(--white);
-            box-shadow: 0 0 0 4px rgba(15, 23, 42, 0.08);
-        }
+        .search-box input:focus { border-color: var(--primary-light); background: var(--white); box-shadow: 0 0 0 4px rgba(15, 23, 42, 0.08); }
         .search-box button { 
-            position: absolute; 
-            right: 5px; 
-            top: 5px; 
-            height: 38px; 
-            width: 38px; 
-            border: none; 
-            background: var(--primary); 
-            color: white; 
-            border-radius: 50%; 
-            cursor: pointer; 
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            position: absolute; right: 5px; top: 5px; height: 38px; width: 38px; 
+            border: none; background: var(--primary); color: white; border-radius: 50%; 
+            cursor: pointer; transition: var(--transition); display: flex; align-items: center; justify-content: center;
         }
 
         #search-results { 
-            position: absolute; 
-            top: 55px; 
-            left: 0; 
-            width: 100%; 
-            background: white; 
-            border-radius: var(--radius); 
-            box-shadow: 0 12px 30px rgba(0,0,0,0.15); 
-            display: none; 
-            z-index: 2000; 
-            max-height: 380px; 
-            overflow-y: auto; 
-            border: 1px solid #e2e8f0;
-            padding: 8px 0;
-            box-sizing: border-box;
+            position: absolute; top: 55px; left: 0; width: 100%; background: white; border-radius: var(--radius); 
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15); display: none; z-index: 2000; max-height: 380px; overflow-y: auto; 
+            border: 1px solid #e2e8f0; padding: 8px 0; box-sizing: border-box;
         }
         #search-results::-webkit-scrollbar { width: 6px; }
         #search-results::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
@@ -138,19 +125,9 @@
         
         .btn-box { display: flex; margin-bottom: 25px; }
         .back-btn { 
-            display: inline-flex; 
-            align-items: center; 
-            gap: 8px; 
-            text-decoration: none; 
-            color: #475569; 
-            font-weight: 600; 
-            font-size: 0.9rem; 
-            transition: var(--transition); 
-            padding: 8px 16px; 
-            border-radius: 20px; 
-            background: #f1f5f9; 
-            border: 1px solid #e2e8f0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+            display: inline-flex; align-items: center; gap: 8px; text-decoration: none; color: #475569; 
+            font-weight: 600; font-size: 0.9rem; transition: var(--transition); padding: 8px 16px; 
+            border-radius: 20px; background: #f1f5f9; border: 1px solid #e2e8f0; box-shadow: 0 2px 5px rgba(0,0,0,0.04);
         }
         .back-btn:hover { color: #2563eb; border-color: #2563eb; background: var(--white); transform: translateX(-3px); }
 
@@ -195,7 +172,7 @@
         .footer-sec h3 { color: #fff; font-size: 1.05rem; margin-bottom: 20px; border-left: 3px solid var(--accent); padding-left: 12px; text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px; }
         .footer-sec ul { list-style: none; padding: 0; margin: 0; }
         .footer-sec ul li { margin-bottom: 12px; }
-        .footer-sec ul li a { color: #94a3b8; text-decoration: none; font-size: 0.92rem; transition: var(--transition); }
+        .footer-sec ul li a { color: #94a3b8; text-decoration: none; font-size: 0.92rem; transition: var(--transition); display: inline-block; }
         .footer-sec ul li a:hover { color: #fff; padding-left: 6px; }
         .social-box { display: flex; gap: 14px; margin-top: 15px; }
         .social-box a { color: white; background: #1e293b; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: var(--transition); text-decoration: none; }
@@ -209,7 +186,6 @@
            UPDATED ENHANCED RESPONSIVE STYLES 
            ========================================= */
 
-        /* Tablets & iPads (max-width: 992px) */
         @media (max-width: 992px) {
             .header-container { flex-direction: column; gap: 15px; padding: 10px 15px; }
             .logo-box { justify-content: center; }
@@ -217,29 +193,23 @@
             .header-menu { flex-wrap: wrap; justify-content: center; gap: 12px; padding-bottom: 5px; }
         }
 
-        /* Standard Mobile (max-width: 768px) */
         @media (max-width: 768px) {
-            /* Top Bar */
             .top-container { flex-direction: column; gap: 10px; text-align: center; justify-content: center; padding: 10px 15px; }
             .top-links { margin-left: 0; display: flex; justify-content: center; gap: 20px; width: 100%; }
             .top-links a { margin-left: 0; }
             
-            /* Header Menu Fixes */
-            .header-menu a { font-size: 0.85rem; padding: 6px 12px; background: #f1f5f9; border-radius: 20px; border: 1px solid #e2e8f0; } /* Looks like clickable pills on mobile */
+            .header-menu a { font-size: 0.85rem; padding: 6px 12px; background: #f1f5f9; border-radius: 20px; border: 1px solid #e2e8f0; } 
             #search-results { max-height: 250px; }
 
-            /* Content Container */
             .container { margin: 15px 10px; padding: 22px 16px; }
             #dynamic-body .box-content { padding: 15px 10px !important; }
             .post-header h1 { font-size: 1.4rem; line-height: 1.35; }
             
-            /* Footer */
             .footer-container { grid-template-columns: 1fr; gap: 35px; text-align: center; }
             .footer-sec h3 { border-left: none; border-bottom: 2px solid var(--accent); display: inline-block; padding-left: 0; padding-bottom: 4px; }
             .social-box { justify-content: center; }
         }
 
-        /* Extra Small Mobile Devices (max-width: 480px) */
         @media (max-width: 480px) {
             .logo-img { height: 38px; }
             .logo-text { font-size: 1.3rem; }
@@ -252,7 +222,6 @@
             .back-btn { font-size: 0.8rem; padding: 6px 12px; }
             .instruction-note { padding: 12px; font-size: 0.85rem; margin-top: 25px; }
 
-            /* Table Optimization for very small screens */
             th, td { padding: 8px 8px !important; font-size: 0.85rem !important; }
             table a, [class*="link-table"] a { padding: 5px 8px !important; font-size: 0.8rem !important; }
             
@@ -269,8 +238,8 @@
     <div class="top-container">
         <span><i class="fas fa-calendar-alt"></i> <span id="current-date"></span></span>
         <div class="top-links">
-            <a href="https://t.me/studenthelpclub" target="_blank"><i class="fab fa-telegram"></i> Telegram</a>
-            <a href="https://whatsapp.com/channel/0029VbCJ2xI7IUYa1zMB6n1f" target="_blank" class="ws-link" style="color: #25D366;"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="https://t.me/studenthelpclub" target="_blank" rel="noopener"><i class="fab fa-telegram"></i> Telegram</a>
+            <a href="https://whatsapp.com/channel/0029VbCJ2xI7IUYa1zMB6n1f" target="_blank" rel="noopener" class="ws-link" style="color: #25D366;"><i class="fab fa-whatsapp"></i> WhatsApp</a>
         </div>
     </div>
 </div>
@@ -283,18 +252,18 @@
         </a>
         <div class="search-wrapper">
             <div class="search-box">
-                <input type="text" id="live-search" placeholder="Search Results, Jobs...">
-                <button aria-label="Search"><i class="fas fa-search"></i></button>
+                <input type="text" id="live-search" aria-label="Search Updates" placeholder="Search Results, Jobs...">
+                <button aria-label="Submit Search"><i class="fas fa-search"></i></button>
             </div>
             <div id="search-results"></div>
         </div>
-        <div class="header-menu">
+        <nav class="header-menu">
             <a href="index.html">Home</a>
             <a href="jobs.html">Jobs</a>
             <a href="admit-cards.html">Admit Card</a>
             <a href="results.html">Results</a>
             <a href="scholarship.html">Scholarship</a>
-        </div>
+        </nav>
     </div>
 </div>
 
@@ -304,37 +273,59 @@
 
 <div id="loader" class="modern-loader">
     <div class="spinner-ring"></div>
-    <span>DATA LOAD HO RAHA HAI...</span>
+    <span>FETCHING OFFICIAL DETAILS...</span>
 </div>
 
-<div class="container" id="main-content" style="display:none;">
+<article class="container" id="main-content" style="display:none;">
     <div class="btn-box">
         <a href="javascript:history.back()" class="back-btn"><i class="fas fa-arrow-left"></i> Back</a>
     </div>
 
-    <div class="post-header">
+    <header class="post-header">
         <h1 id="post-title"></h1>
-        <div class="meta-info"><i class="far fa-calendar-alt"></i> UPDATE DATE: <span id="post-date"></span></div>
-    </div>
+        <div class="meta-info"><i class="far fa-calendar-alt"></i> POST UPDATED: <span id="post-date"></span></div>
+    </header>
 
     <div id="dynamic-body"></div>
 
-    <div class="instruction-note">
-        नोट: फॉर्म भरने से पहले विभाग द्वारा जारी विज्ञापन (Official Notification) को ध्यान से जरूर पढ़ें।
-    </div>
-</div>
+    <aside class="instruction-note">
+        नोट: ऑनलाइन फॉर्म भरने या फीस जमा करने से पहले विभाग द्वारा जारी आधिकारिक विज्ञापन (Official Notification) को ध्यान से जरूर पढ़ें। Student Help Club किसी भी त्रुटि के लिए जिम्मेदार नहीं होगा।
+    </aside>
+</article>
 
 <footer>
     <div class="footer-container">
-        <div class="footer-sec"><h3>Important Pages</h3><ul><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact Us</a></li><li><a href="privacy-policy.html">Privacy Policy</a></li><li><a href="disclaimer.html">Disclaimer</a></li></ul></div>
-        <div class="footer-sec"><h3>Resources</h3><ul><li><a href="https://tools.studenthelpclub.in" target="_blank">Tools for Students</a></li><li><a href="https://studenthelpclub.in" target="_blank">IGNOU Assignment PDF</a></li></ul></div>
-        <div class="footer-sec"><h3>Connect</h3><div class="social-box"><a href="https://t.me/studenthelpclub" class="tg-f" target="_blank"><i class="fab fa-telegram-plane"></i></a><a href="https://youtube.com/@vishalhelpclub" class="yt-f" target="_blank"><i class="fab fa-youtube"></i></a><a href="https://whatsapp.com/channel/0029VbCJ2xI7IUYa1zMB6n1f" class="wa-f" target="_blank"><i class="fab fa-whatsapp"></i></a></div></div>
+        <div class="footer-sec">
+            <h3>Important Pages</h3>
+            <ul>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                <li><a href="disclaimer.html">Disclaimer</a></li>
+            </ul>
+        </div>
+        <div class="footer-sec">
+            <h3>Resources</h3>
+            <ul>
+                <li><a href="https://tools.studenthelpclub.in" target="_blank" rel="noopener">Tools for Students</a></li>
+                <li><a href="https://studenthelpclub.in" target="_blank" rel="noopener">IGNOU Study Materials</a></li>
+            </ul>
+        </div>
+        <div class="footer-sec">
+            <h3>Connect</h3>
+            <div class="social-box">
+                <a href="https://t.me/studenthelpclub" class="tg-f" target="_blank" aria-label="Join Telegram" rel="noopener"><i class="fab fa-telegram-plane"></i></a>
+                <a href="https://youtube.com/@vishalhelpclub" class="yt-f" target="_blank" aria-label="Subscribe YouTube" rel="noopener"><i class="fab fa-youtube"></i></a>
+                <a href="https://whatsapp.com/channel/0029VbCJ2xI7IUYa1zMB6n1f" class="wa-f" target="_blank" aria-label="Follow WhatsApp" rel="noopener"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
     </div>
-    <div class="footer-bottom"><p>© 2026 Student Help Club | Admin: Vishal</p></div>
+    <div class="footer-bottom">
+        <p>© 2026 Student Help Club | Admin: Vishal Kumar</p>
+    </div>
 </footer>
 
 <script type="module">
-    // NAYA CODE: 'where' aur 'getDocs' ko import kiya gaya hai query filter karne ke liye
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
     import { getFirestore, collection, query, orderBy, limit, onSnapshot, doc, getDoc, where, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
@@ -367,7 +358,7 @@
         onSnapshot(q, (snapshot) => {
             snapshot.docs.forEach((doc, index) => {
                 const data = doc.data();
-                const finalSlug = data.slug || doc.id; // Fallback to ID
+                const finalSlug = data.slug || doc.id; 
                 if (index === 0 && data.timestamp) {
                     marqueeCandidates[col] = { slug: finalSlug, title: data.title, cat: col, time: data.timestamp.toMillis() };
                     updateGlobalMarquee();
@@ -380,19 +371,47 @@
     const allCols = ['jobs', 'admit', 'result', 'yojna', 'scholarship'];
     allCols.forEach(col => syncSearchAndMarquee(col));
 
-    // NAYA CODE: URL Params se slug aur id nikalna
     const urlParams = new URLSearchParams(window.location.search);
-    const postSlug = urlParams.get('slug'); // Naya system
-    const postId = urlParams.get('id');     // Purana system (Fallback ke liye)
+    const postSlug = urlParams.get('slug'); 
+    const postId = urlParams.get('id');     
     const colName = urlParams.get('col') || 'jobs'; 
 
-    // Function to render post data on screen
-    const displayPost = (data) => {
-        document.getElementById('post-title').innerText = data.title;
+    // Function to dynamically update SEO tags and JSON-LD schema
+    const updateDynamicSEO = (title, dateStr) => {
+        document.getElementById('dynamic-seo-title').innerText = `${title} | Student Help Club`;
+        document.getElementById('dynamic-seo-desc').setAttribute('content', `Get complete details, syllabus, direct download links, and notifications regarding ${title} on Student Help Club.`);
         
+        // Injecting Dynamic Article Schema for Google Search
+        const schema = {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": title,
+            "image": ["https://jobs.studenthelpclub.in/shc-logo.jpg"],
+            "datePublished": dateStr,
+            "dateModified": dateStr,
+            "author": [{
+                "@type": "Person",
+                "name": "Vishal Kumar",
+                "url": "https://www.studenthelpclub.in/about.html"
+            }]
+        };
+        const script = document.createElement('script');
+        script.type = "application/ld+json";
+        script.text = JSON.stringify(schema);
+        document.head.appendChild(script);
+    };
+
+    const displayPost = (data) => {
+        const postTitle = data.title;
+        document.getElementById('post-title').innerText = postTitle;
+        
+        let dateStr = "Recent";
         if(data.timestamp) {
-            document.getElementById('post-date').innerText = data.timestamp.toDate().toLocaleDateString('hi-IN', {day: '2-digit', month: 'short', year: 'numeric'});
+            dateStr = data.timestamp.toDate().toLocaleDateString('en-GB', {day: '2-digit', month: 'short', year: 'numeric'});
+            document.getElementById('post-date').innerText = dateStr;
         }
+        
+        updateDynamicSEO(postTitle, data.timestamp ? data.timestamp.toDate().toISOString() : new Date().toISOString());
 
         let bodyContent = data.details || "";
         bodyContent = bodyContent.replace('display:flex; gap:10px; flex-wrap:wrap;', 'display:flex; flex-direction:column; gap:25px;');
@@ -401,8 +420,8 @@
 
         if (bodyContent.includes("Important Links")) {
             const toolLinks = `
-                <tr><td><b>Age Calculator (Umar Nikale)</b></td><td><a href="https://tools.studenthelpclub.in/age-calculator.html" target="_blank">Click Here</a></td></tr>
-                <tr><td><b>Image Resizer (KB Kam Kare)</b></td><td><a href="https://tools.studenthelpclub.in/image-resize.html" target="_blank">Click Here</a></td></tr>
+                <tr><td><b>Image Resizer (Reduce KB size)</b></td><td><a href="https://tools.studenthelpclub.in/image-resize.html" target="_blank" rel="noopener">Use Tool</a></td></tr>
+                <tr><td><b>Age Calculator (As on Date)</b></td><td><a href="https://tools.studenthelpclub.in/age-calculator.html" target="_blank" rel="noopener">Use Tool</a></td></tr>
             `;
             if (bodyContent.includes("Join Telegram")) {
                 bodyContent = bodyContent.replace('<tr><td>Join Telegram', toolLinks + '<tr><td>Join Telegram');
@@ -416,18 +435,14 @@
         document.getElementById('main-content').style.display = 'block';
     };
 
-    // NAYA LOGIC: Database Query check karegi pehle 'slug', agar wo nahi mila to 'id'
     if (postSlug) {
-        // Query to find Document where slug == postSlug
         const q = query(collection(db, colName), where("slug", "==", postSlug), limit(1));
         getDocs(q).then((querySnapshot) => {
             if (!querySnapshot.empty) {
-                // Slug mil gaya, data show karo
                 const docSnap = querySnapshot.docs[0];
                 displayPost(docSnap.data());
             } else {
-                // Agar slug galti se galat hua
-                document.getElementById('post-title').innerText = "Post Not Found";
+                document.getElementById('post-title').innerText = "Post Not Found or Removed";
                 document.getElementById('loader').style.display = 'none';
                 document.getElementById('main-content').style.display = 'block';
             }
@@ -436,12 +451,11 @@
         });
 
     } else if (postId) {
-        // Puraana system (Agar kisi ne purane ID wale link par click kiya)
         getDoc(doc(db, colName, postId)).then((docSnap) => {
             if (docSnap.exists()) {
                 displayPost(docSnap.data());
             } else {
-                document.getElementById('post-title').innerText = "Post Not Found";
+                document.getElementById('post-title').innerText = "Post Not Found or Removed";
                 document.getElementById('loader').style.display = 'none';
                 document.getElementById('main-content').style.display = 'block';
             }
@@ -457,7 +471,6 @@
         resultsDiv.innerHTML = '';
         if (val.length < 2) { resultsDiv.style.display = 'none'; return; }
         
-        // Search Filter Updated for Slug
         const filtered = searchData.filter((v, i, a) => a.findIndex(t => (t.slug === v.slug)) === i)
                          .filter(item => item.title.toLowerCase().includes(val));
                          
