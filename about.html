@@ -1,23 +1,18 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-     <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
-
-<script>
-
-  window.OneSignalDeferred = window.OneSignalDeferred || [];
-
-  OneSignalDeferred.push(async function(OneSignal) {
-
-    await OneSignal.init({
-
-      appId: "3d88660b-b1d6-4ee0-89ff-b9b5ee40b28d",
-
-    });
-
-  });
-
-</script> 
+    <!-- ONESIGNAL PUSH NOTIFICATIONS -->
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+    <script>
+      window.OneSignalDeferred = window.OneSignalDeferred || [];
+      OneSignalDeferred.push(async function(OneSignal) {
+        await OneSignal.init({
+          appId: "3d88660b-b1d6-4ee0-89ff-b9b5ee40b28d",
+        });
+      });
+    </script> 
+    
+    <!-- GOOGLE ANALYTICS -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-7RK3WFVY3Q"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -25,20 +20,52 @@
       gtag('js', new Date());
       gtag('config', 'G-7RK3WFVY3Q');
     </script>
+    
     <meta name="google-site-verification" content="ySBKvgRcffZgkku3SImRkt6T7rm0r_L6OfClnFXGrrc" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
+    <!-- HIGH-IMPACT SEO TITLE & META -->
     <title>About Us | Student Help Club - India's Trusted Educational Portal</title>
-    <meta name="description" content="Know more about Student Help Club (SHC), a reliable platform founded by Vishal to provide the latest Government Jobs, Admit Cards, Results, and Scholarships.">
-    <meta name="keywords" content="About Student Help Club, SHC Owner, Vishal Student Help Club, Government Jobs Updates, Education Portal India">
-    <meta name="author" content="Vishal - Student Help Club">
+    <meta name="description" content="Learn about Student Help Club (SHC), founded by Vishal Kumar. Discover how we provide authentic government job updates, admit cards, and educational resources.">
+    <meta name="keywords" content="About Student Help Club, Vishal Kumar SHC, Government Jobs Updates, Education Portal India, Sarkari Results, IGNOU Support">
+    <meta name="author" content="Vishal Kumar - Student Help Club">
     <meta name="robots" content="index, follow">
     
-    <meta property="og:title" content="About Us - Student Help Club">
-    <meta property="og:description" content="Know more about Student Help Club, a reliable source for government job updates.">
+    <!-- OPEN GRAPH FOR SOCIAL MEDIA SEO -->
+    <meta property="og:title" content="About Us | Student Help Club">
+    <meta property="og:description" content="Discover the mission behind Student Help Club, a reliable source for government job updates and educational guidance.">
     <meta property="og:image" content="shc-logo.jpg">
     <meta property="og:url" content="https://www.studenthelpclub.in/about.html">
+    <meta property="og:type" content="website">
+    
+    <link rel="canonical" href="https://www.studenthelpclub.in/about.html" />
+
+    <!-- JSON-LD SCHEMA FOR BRAND TRUST & AUTHOR -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AboutPage",
+      "mainEntity": {
+        "@type": "Organization",
+        "name": "Student Help Club",
+        "url": "https://www.studenthelpclub.in/",
+        "logo": "https://www.studenthelpclub.in/shc-logo.jpg",
+        "description": "A trusted online career guidance and educational information portal in India.",
+        "founder": {
+          "@type": "Person",
+          "name": "Vishal Kumar",
+          "jobTitle": "Founder & Admin"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+91-9776986830",
+          "contactType": "Customer Support",
+          "email": "officialstudenthelpclub@gmail.com"
+        }
+      }
+    }
+    </script>
 
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -165,6 +192,7 @@
 
         .content-main-card p { line-height: 1.8; color: #475569; font-size: 1.05rem; margin-top: 0; margin-bottom: 22px; text-align: justify; }
         .content-main-card b { color: var(--primary); font-weight: 700; }
+        .content-main-card h3 { color: var(--primary); font-size: 1.2rem; margin-top: 30px; margin-bottom: 15px; font-weight: 700; }
         
         .features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 25px 0; }
         .feature-item { background: #f8fafc; border: 1px solid #e2e8f0; padding: 12px 18px; border-radius: 6px; font-weight: 600; color: var(--primary-light); font-size: 0.95rem; display: flex; align-items: center; gap: 10px; }
@@ -248,64 +276,70 @@
     <div class="top-container">
         <span><i class="fas fa-calendar-alt"></i> <span id="current-date"></span></span>
         <div class="top-links">
-            <a href="https://t.me/studenthelpclub" target="_blank"><i class="fab fa-telegram"></i> Telegram</a>
-            <a href="https://whatsapp.com/channel/0029VbCJ2xI7IUYa1zMB6n1f" class="ws-link" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="https://t.me/studenthelpclub" target="_blank" rel="noopener"><i class="fab fa-telegram"></i> Telegram</a>
+            <a href="https://whatsapp.com/channel/0029VbCJ2xI7IUYa1zMB6n1f" class="ws-link" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp</a>
         </div>
     </div>
 </div>
 
-<div class="header-main">
+<header class="header-main">
     <div class="header-container">
         <a href="index.html" class="logo-box">
             <img src="shc-logo.jpg" alt="Student Help Club Logo" class="logo-img">
-            <h1 class="logo-text">Student Help <span>Club</span></h1>
+            <h2 class="logo-text">Student Help <span>Club</span></h2>
         </a>
         <div class="search-wrapper">
             <div class="search-box">
-                <input type="text" id="live-search" placeholder="Search Results, Jobs...">
-                <button aria-label="Search"><i class="fas fa-search"></i></button>
+                <input type="text" id="live-search" aria-label="Search Jobs and Updates" placeholder="Search Results, Jobs...">
+                <button aria-label="Submit Search"><i class="fas fa-search"></i></button>
             </div>
             <div id="search-results"></div>
         </div>
-        <div class="header-menu">
+        <nav class="header-menu">
             <a href="index.html">Home</a>
             <a href="jobs.html">Jobs</a>
             <a href="admit-cards.html">Admit Card</a>
             <a href="results.html">Results</a>
             <a href="scholarship.html">Scholarship</a>
-        </div>
+        </nav>
     </div>
-</div>
+</header>
 
 <div class="ticker-wrap">
-    <marquee id="top-ticker" scrollamount="6" onmouseover="this.stop();" onmouseout="this.start();">Loading latest updates...</marquee>
+    <marquee id="top-ticker" scrollamount="6" onmouseover="this.stop();" onmouseout="this.start();">Loading latest educational updates...</marquee>
 </div>
 
-<div class="main-content">
+<main class="main-content">
     <div class="container">
         <a href="index.html" class="btn-home"><i class="fas fa-arrow-left"></i> Back to Home</a>
         
-        <div class="content-main-card">
-            <div class="page-header-box">
+        <article class="content-main-card">
+            <header class="page-header-box">
                 <h1>About Us</h1>
-            </div>
+            </header>
             
-            <p>स्वागत है <b>Student Help Club (SHC)</b> पर। यह भारत भर के छात्रों, रोजगार चाहने वालों और युवाओं के लिए एक विश्वसनीय और समर्पित ऑनलाइन करियर मार्गदर्शन और सूचना प्रदाता पोर्टल है, जिसकी स्थापना <b>Vishal</b> द्वारा की गई है।</p>
+            <section>
+                <h3>Welcome to Student Help Club</h3>
+                <p>स्वागत है <b>Student Help Club (SHC)</b> पर। यह भारत भर के छात्रों, रोजगार चाहने वालों और युवाओं के लिए एक विश्वसनीय और समर्पित ऑनलाइन करियर मार्गदर्शन और सूचना प्रदाता पोर्टल है, जिसकी स्थापना <b>Vishal Kumar</b> द्वारा की गई है।</p>
+                
+                <p>हमारा मुख्य उद्देश्य देश भर के योग्य उम्मीदवारों को केंद्रीय और राज्य स्तर की सरकारी नौकरियों (Latest Government Jobs), एडमिट कार्ड (Admit Cards), परीक्षा परिणामों (Sarkari Results), उत्तर कुंजी (Answer Keys) और विभिन्न सरकारी छात्रवृत्ति योजनाओं (Scholarship Schemes) की सबसे तेज, सटीक और निष्पक्ष जानकारी प्रदान करना है।</p>
+            </section>
             
-            <p>हमारा मुख्य उद्देश्य देश भर के योग्य उम्मीदवारों को केंद्रीय और राज्य स्तर की सरकारी नौकरियों (Latest Government Jobs), एडमिट कार्ड (Admit Cards), परीक्षा परिणामों (Sarkari Results), उत्तर कुंजी (Answer Keys) और विभिन्न सरकारी छात्रवृत्ति योजनाओं (Scholarship Schemes) की सबसे तेज, सटीक और निष्पक्ष जानकारी प्रदान करना है।</p>
-            
-            <p>आज के डिजिटल युग में इंटरनेट पर सूचनाओं की भरमार है, लेकिन उसी के साथ कई भ्रामक और अधूरी सामग्रियां भी मौजूद हैं। इस समस्या को ध्यान में रखते हुए, हम अपनी विशेषज्ञ टीम के माध्यम से प्रत्येक अधिसूचना की जांच संबंधित विभागों द्वारा जारी आधिकारिक विज्ञापनों (Official Notifications) से करने के बाद ही यहाँ प्रकाशित करते हैं। हम यह सुनिश्चित करते हैं कि हमारे यूज़र्स तक केवल प्रामाणिक क्रेडेंशियल्स ही पहुँचें।</p>
+            <section>
+                <h3>Our Verification Process</h3>
+                <p>आज के डिजिटल युग में इंटरनेट पर सूचनाओं की भरमार है, लेकिन उसी के साथ कई भ्रामक और अधूरी सामग्रियां भी मौजूद हैं। इस समस्या को ध्यान में रखते हुए, हम अपनी विशेषज्ञ टीम के माध्यम से प्रत्येक अधिसूचना की जांच संबंधित विभागों द्वारा जारी आधिकारिक विज्ञापनों (Official Notifications) से करने के बाद ही यहाँ प्रकाशित करते हैं। हम यह सुनिश्चित करते हैं कि हमारे यूज़र्स तक केवल प्रामाणिक क्रेडेंशियल्स ही पहुँचें।</p>
 
-            <div class="features-grid">
-                <div class="feature-item"><i class="fas fa-check-circle"></i> 100% Verified Official Notifications</div>
-                <div class="feature-item"><i class="fas fa-check-circle"></i> Instant Exam Calendar Updates</div>
-                <div class="feature-item"><i class="fas fa-check-circle"></i> Real-time Merit List Tracking</div>
-                <div class="feature-item"><i class="fas fa-check-circle"></i> Seamless Mobile Navigation</div>
-            </div>
-            
-            <p>हमारा लक्ष्य भारत के सुदूर क्षेत्रों में रहने वाले विद्यार्थियों को भी समान अवसर प्रदान करना है ताकि वे किसी भी महत्वपूर्ण भर्ती प्रक्रिया या पात्रता आवेदन से न चूकें। छात्र हित हमारी सर्वोच्च प्राथमिकता है।</p>
-            
-            <div class="contact-info-box">
+                <div class="features-grid">
+                    <div class="feature-item"><i class="fas fa-check-circle"></i> 100% Verified Official Notifications</div>
+                    <div class="feature-item"><i class="fas fa-check-circle"></i> Instant Exam Calendar Updates</div>
+                    <div class="feature-item"><i class="fas fa-check-circle"></i> Real-time Merit List Tracking</div>
+                    <div class="feature-item"><i class="fas fa-check-circle"></i> Seamless Mobile Navigation</div>
+                </div>
+                
+                <p>हमारा लक्ष्य भारत के सुदूर क्षेत्रों में रहने वाले विद्यार्थियों को भी समान अवसर प्रदान करना है ताकि वे किसी भी महत्वपूर्ण भर्ती प्रक्रिया या पात्रता आवेदन से न चूकें। छात्र हित हमारी सर्वोच्च प्राथमिकता है।</p>
+            </section>
+
+            <aside class="contact-info-box">
                 <h2>Contact Information</h2>
                 <div class="contact-item">
                     <i class="fas fa-envelope"></i>
@@ -313,20 +347,43 @@
                 </div>
                 <div class="contact-item">
                     <i class="fas fa-phone-alt"></i>
-                    <span>Contact Support: <a href="tel:+919776986830">+91 9776986830</a></span>
+                    <span>Contact Support: <a href="tel:+919776986830">+91 97769 86830</a></span>
                 </div>
-            </div>
-        </div>
+            </aside>
+        </article>
     </div>
-</div>
+</main>
 
 <footer>
     <div class="footer-container">
-        <div class="footer-sec"><h3>Important Pages</h3><ul><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact Us</a></li><li><a href="privacy-policy.html">Privacy Policy</a></li><li><a href="disclaimer.html">Disclaimer</a></li></ul></div>
-        <div class="footer-sec"><h3>Resources</h3><ul><li><a href="https://tools.studenthelpclub.in" target="_blank">Tools for Students</a></li><li><a href="https://studenthelpclub.in" target="_blank">IGNOU Assignment PDF</a></li></ul></div>
-        <div class="footer-sec"><h3>Connect</h3><div class="social-box"><a href="https://t.me/studenthelpclub" class="tg-f" target="_blank"><i class="fab fa-telegram-plane"></i></a><a href="https://youtube.com/@vishalhelpclub" class="yt-f" target="_blank"><i class="fab fa-youtube"></i></a><a href="https://whatsapp.com/channel/0029VbCJ2xI7IUYa1zMB6n1f" class="wa-f" target="_blank"><i class="fab fa-whatsapp"></i></a></div></div>
+        <div class="footer-sec">
+            <h3>Important Pages</h3>
+            <ul>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                <li><a href="disclaimer.html">Disclaimer</a></li>
+            </ul>
+        </div>
+        <div class="footer-sec">
+            <h3>Resources</h3>
+            <ul>
+                <li><a href="https://tools.studenthelpclub.in" target="_blank" rel="noopener">Tools for Students</a></li>
+                <li><a href="https://studenthelpclub.in" target="_blank" rel="noopener">IGNOU Study Materials</a></li>
+            </ul>
+        </div>
+        <div class="footer-sec">
+            <h3>Connect</h3>
+            <div class="social-box">
+                <a href="https://t.me/studenthelpclub" class="tg-f" aria-label="Telegram" target="_blank" rel="noopener"><i class="fab fa-telegram-plane"></i></a>
+                <a href="https://youtube.com/@vishalhelpclub" class="yt-f" aria-label="YouTube" target="_blank" rel="noopener"><i class="fab fa-youtube"></i></a>
+                <a href="https://whatsapp.com/channel/0029VbCJ2xI7IUYa1zMB6n1f" class="wa-f" aria-label="WhatsApp" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
     </div>
-    <div class="footer-bottom"><p>© 2026 Student Help Club | Admin: Vishal</p></div>
+    <div class="footer-bottom">
+        <p>© 2026 Student Help Club | Admin: Vishal Kumar</p>
+    </div>
 </footer>
 
 <script type="module">
